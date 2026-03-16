@@ -21,7 +21,7 @@ Open http://localhost:5173
 
 ## Features
 
-### Phase 1 (current)
+### Phase 1 
 - Airframe presets: Flying Wing, Flying Wing + Diff Thrust, Airplane, Airplane + Diff Thrust, V-Tail
 - Motor mix editor with per-axis sliders
 - Servo mix editor with per-axis sliders  
@@ -32,17 +32,17 @@ Open http://localhost:5173
 - Validation warnings (yaw over-control, timer conflicts, diff thrust + s-term conflicts)
 - Simple / Advanced / Expert complexity toggle
 
-### Phase 2 (planned)
+### Phase 2 
 - FC target database with pin-to-timer mapping
 - Visual resource mapper — pick your board, assign outputs, auto-detect timer conflicts
 - Resource command generation
 
-### Phase 3 (planned)
+### Phase 3 
 - Import from `diff all` — paste existing config, edit in UI
 - Export as .txt file
 - Config sharing via URL parameters
 
-### Phase 4 (planned)
+### Phase 4 
 - Visual wing diagram showing output assignments
 - Stick input preview showing surface deflections
 - Community preset library
