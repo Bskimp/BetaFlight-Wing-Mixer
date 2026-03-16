@@ -1,15 +1,15 @@
 const TABS = [
-  { id: 'setup', icon: '\u2699', label: 'Setup', minLevel: 'simple' },
-  { id: 'mixer', icon: '\u2630', label: 'Mixer', minLevel: 'simple' },
-  { id: 'pids', icon: '\u2261', label: 'PIDs', minLevel: 'advanced' },
+  { id: 'setup', icon: '\u2699', label: 'Setup', minLevel: 'standard' },
+  { id: 'mixer', icon: '\u2630', label: 'Mixer', minLevel: 'standard' },
+  { id: 'pids', icon: '\u2261', label: 'PIDs', minLevel: 'standard' },
   { id: 'tuning', icon: '\u223F', label: 'Tuning', minLevel: 'expert' },
-  { id: 'output', icon: '\u2756', label: 'Output', minLevel: 'simple' },
+  { id: 'output', icon: '\u2756', label: 'Output', minLevel: 'standard' },
 ];
 
-const COMPLEXITY_LEVELS = ['simple', 'advanced', 'expert'];
+const COMPLEXITY_LEVELS = ['standard', 'expert'];
 
 function isTabEnabled(tab, complexity) {
-  const levels = { simple: 0, advanced: 1, expert: 2 };
+  const levels = { standard: 0, expert: 1 };
   return levels[complexity] >= levels[tab.minLevel];
 }
 

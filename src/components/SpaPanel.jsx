@@ -56,7 +56,7 @@ export default function SpaPanel({ spaSettings, onChange }) {
                 <button key={m}
                   className={mode === m ? 'active' : ''}
                   onClick={() => update(`spa_${axis}_mode`, m)}
-                >{m.replace('_', ' ')}</button>
+                >{m.replaceAll('_', ' ')}</button>
               ))}
             </div>
 

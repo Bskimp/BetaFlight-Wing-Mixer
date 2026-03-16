@@ -107,7 +107,7 @@ export default function App() {
   const [rates, setRates] = useState({ ...RATE_DEFAULTS });
   const [tpaSettings, setTpaSettings] = useState({ ...TPA_DEFAULTS });
   const [spaSettings, setSpaSettings] = useState({ ...SPA_DEFAULTS });
-  const [complexity, setComplexity] = useState('advanced');
+  const [complexity, setComplexity] = useState('standard');
   const [theme, setTheme] = useState(null);
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [assignments, setAssignments] = useState({});
@@ -138,8 +138,8 @@ export default function App() {
 
   // When complexity changes, ensure active tab is still valid
   useEffect(() => {
-    const tabDef = { setup: 'simple', mixer: 'advanced', pids: 'advanced', tuning: 'expert', output: 'simple' };
-    const levels = { simple: 0, advanced: 1, expert: 2 };
+    const tabDef = { setup: 'standard', mixer: 'standard', pids: 'standard', tuning: 'expert', output: 'standard' };
+    const levels = { standard: 0, expert: 1 };
     const minLevel = tabDef[activeTab];
     if (levels[complexity] < levels[minLevel]) {
       setActiveTab('setup');
@@ -271,8 +271,6 @@ export default function App() {
     });
   }, [cliText]);
 
-  const isAdvanced = complexity === 'advanced' || complexity === 'expert';
-
   // Tab content rendering
   const renderTabContent = () => {
     switch (activeTab) {
@@ -312,27 +310,17 @@ export default function App() {
         return (
           <>
             <PresetSelector selectedPreset={preset} onSelect={loadPreset} />
-            <WingDiagram preset={preset} motors={motors} servos={servos} />
-            {isAdvanced && (
-              <MotorMixer motors={motors} onChange={setMotors} />
-            )}
-            <ServoMixer
-              servos={servos}
-              onChange={setServos}
-              mode={complexity === 'simple' ? 'direction' : 'full'}
-            />
+            <WingDiagram preset={preset} motors={motors} servos={servos} assignments={assignments} />
+            <MotorMixer motors={motors} onChange={setMotors} />
+            <ServoMixer servos={servos} onChange={setServos} mode="full" />
           </>
         );
 
       case 'pids':
         return (
           <>
-            {isAdvanced && (
-              <PidPanel pids={pids} onChange={setPids} />
-            )}
-            {isAdvanced && (
-              <RatesPanel rates={rates} onChange={setRates} />
-            )}
+            <PidPanel pids={pids} onChange={setPids} />
+            <RatesPanel rates={rates} onChange={setRates} />
           </>
         );
 
@@ -376,7 +364,7 @@ export default function App() {
         <h1>BF Wing Mixer</h1>
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <div className="segmented-control">
-            {['simple', 'advanced', 'expert'].map(level => (
+            {['standard', 'expert'].map(level => (
               <button
                 key={level}
                 className={complexity === level ? 'active' : ''}
