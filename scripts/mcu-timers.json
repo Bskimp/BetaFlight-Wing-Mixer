@@ -1,0 +1,1647 @@
+{
+  "STM32F4": {
+    "PA00": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA01": [
+      {
+        "timer": "TIM2",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA02": [
+      {
+        "timer": "TIM2",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM9",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA03": [
+      {
+        "timer": "TIM2",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM9",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA05": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA07": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM14",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA08": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA09": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA10": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PA11": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA15": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA06": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM13",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB00": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB01": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB03": [
+      {
+        "timer": "TIM2",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB10": [
+      {
+        "timer": "TIM2",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB11": [
+      {
+        "timer": "TIM2",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PB13": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB14": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM12",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB15": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM12",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB04": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB05": [
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB06": [
+      {
+        "timer": "TIM4",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB07": [
+      {
+        "timer": "TIM4",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB08": [
+      {
+        "timer": "TIM4",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM10",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB09": [
+      {
+        "timer": "TIM4",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM11",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PC06": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PC07": [
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PC08": [
+      {
+        "timer": "TIM3",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PC09": [
+      {
+        "timer": "TIM3",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PD12": [
+      {
+        "timer": "TIM4",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PD13": [
+      {
+        "timer": "TIM4",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PD14": [
+      {
+        "timer": "TIM4",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PD15": [
+      {
+        "timer": "TIM4",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PE08": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE09": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE10": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PE11": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PE12": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PE13": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PE14": [
+      {
+        "timer": "TIM1",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PE05": [
+      {
+        "timer": "TIM9",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE06": [
+      {
+        "timer": "TIM9",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PF06": [
+      {
+        "timer": "TIM10",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PF07": [
+      {
+        "timer": "TIM11",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH10": [
+      {
+        "timer": "TIM5",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH11": [
+      {
+        "timer": "TIM5",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PH12": [
+      {
+        "timer": "TIM5",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PH13": [
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH14": [
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PH15": [
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PH06": [
+      {
+        "timer": "TIM12",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH09": [
+      {
+        "timer": "TIM12",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PI00": [
+      {
+        "timer": "TIM5",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PI02": [
+      {
+        "timer": "TIM8",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PI05": [
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PI06": [
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PI07": [
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ]
+  },
+  "STM32F7": {
+    "PA00": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA01": [
+      {
+        "timer": "TIM2",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA02": [
+      {
+        "timer": "TIM2",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM9",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA03": [
+      {
+        "timer": "TIM2",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM9",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA05": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA07": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM14",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA08": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA09": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA10": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PA11": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA15": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA06": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM13",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB00": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB01": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB03": [
+      {
+        "timer": "TIM2",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB10": [
+      {
+        "timer": "TIM2",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB11": [
+      {
+        "timer": "TIM2",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PB13": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB14": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM12",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB15": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM12",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB04": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB05": [
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB06": [
+      {
+        "timer": "TIM4",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB07": [
+      {
+        "timer": "TIM4",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB08": [
+      {
+        "timer": "TIM4",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM10",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB09": [
+      {
+        "timer": "TIM4",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM11",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PC06": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PC07": [
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PC08": [
+      {
+        "timer": "TIM3",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PC09": [
+      {
+        "timer": "TIM3",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PD12": [
+      {
+        "timer": "TIM4",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PD13": [
+      {
+        "timer": "TIM4",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PD14": [
+      {
+        "timer": "TIM4",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PD15": [
+      {
+        "timer": "TIM4",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PE08": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE09": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE10": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PE11": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PE12": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PE13": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PE14": [
+      {
+        "timer": "TIM1",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PE05": [
+      {
+        "timer": "TIM9",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE06": [
+      {
+        "timer": "TIM9",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PF06": [
+      {
+        "timer": "TIM10",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PF07": [
+      {
+        "timer": "TIM11",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH10": [
+      {
+        "timer": "TIM5",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH11": [
+      {
+        "timer": "TIM5",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PH12": [
+      {
+        "timer": "TIM5",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PH13": [
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH14": [
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PH15": [
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PH06": [
+      {
+        "timer": "TIM12",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH09": [
+      {
+        "timer": "TIM12",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PI00": [
+      {
+        "timer": "TIM5",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PI02": [
+      {
+        "timer": "TIM8",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PI05": [
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PI06": [
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PI07": [
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ]
+  },
+  "STM32H7": {
+    "PA00": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA01": [
+      {
+        "timer": "TIM2",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM15",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA02": [
+      {
+        "timer": "TIM2",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM15",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA03": [
+      {
+        "timer": "TIM2",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM5",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM15",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA05": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA07": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM14",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA08": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA09": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PA10": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PA11": [
+      {
+        "timer": "TIM1",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PA15": [
+      {
+        "timer": "TIM2",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PA06": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM13",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB00": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB01": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM3",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB03": [
+      {
+        "timer": "TIM2",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB06": [
+      {
+        "timer": "TIM16",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM4",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB07": [
+      {
+        "timer": "TIM17",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM4",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB08": [
+      {
+        "timer": "TIM16",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM4",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB09": [
+      {
+        "timer": "TIM17",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM4",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PB10": [
+      {
+        "timer": "TIM2",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB11": [
+      {
+        "timer": "TIM2",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PB13": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB14": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM12",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PB15": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM12",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PB04": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PB05": [
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PC06": [
+      {
+        "timer": "TIM3",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PC07": [
+      {
+        "timer": "TIM3",
+        "channel": 2,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PC08": [
+      {
+        "timer": "TIM3",
+        "channel": 3,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PC09": [
+      {
+        "timer": "TIM3",
+        "channel": 4,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM8",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PD12": [
+      {
+        "timer": "TIM4",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PD13": [
+      {
+        "timer": "TIM4",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PD14": [
+      {
+        "timer": "TIM4",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PD15": [
+      {
+        "timer": "TIM4",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PE08": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE09": [
+      {
+        "timer": "TIM1",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE10": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PE11": [
+      {
+        "timer": "TIM1",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PE12": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PE13": [
+      {
+        "timer": "TIM1",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PE14": [
+      {
+        "timer": "TIM1",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PE04": [
+      {
+        "timer": "TIM15",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE05": [
+      {
+        "timer": "TIM15",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PE06": [
+      {
+        "timer": "TIM15",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PF06": [
+      {
+        "timer": "TIM16",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PF07": [
+      {
+        "timer": "TIM17",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PF08": [
+      {
+        "timer": "TIM16",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM13",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PF09": [
+      {
+        "timer": "TIM17",
+        "channel": 1,
+        "dmaOpt": 0
+      },
+      {
+        "timer": "TIM14",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH10": [
+      {
+        "timer": "TIM5",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH11": [
+      {
+        "timer": "TIM5",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PH12": [
+      {
+        "timer": "TIM5",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PH13": [
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH14": [
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PH15": [
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ],
+    "PH06": [
+      {
+        "timer": "TIM12",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PH09": [
+      {
+        "timer": "TIM12",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PI00": [
+      {
+        "timer": "TIM5",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PI02": [
+      {
+        "timer": "TIM8",
+        "channel": 4,
+        "dmaOpt": 0
+      }
+    ],
+    "PI05": [
+      {
+        "timer": "TIM8",
+        "channel": 1,
+        "dmaOpt": 0
+      }
+    ],
+    "PI06": [
+      {
+        "timer": "TIM8",
+        "channel": 2,
+        "dmaOpt": 0
+      }
+    ],
+    "PI07": [
+      {
+        "timer": "TIM8",
+        "channel": 3,
+        "dmaOpt": 0
+      }
+    ]
+  }
+}

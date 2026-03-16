@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+.env
+.cache/
+CLAUDE.md
+PHASE1_PROMPT.md
+reference-prototype.jsx
+skills/

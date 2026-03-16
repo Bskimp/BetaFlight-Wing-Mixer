@@ -1,0 +1,153 @@
+Entering CLI Mode, type 'exit' to reboot, or 'help'
+
+# 
+# Building AutoComplete Cache ... Done!
+# 
+# diff
+
+# version
+# Betaflight / STM32H743 (H743) 2025.12.0-RC2 Nov  4 2025 / 02:03:32 (9c1a6bfab) MSP API: 1.47
+# config rev: c940ae8
+
+# start the command batch
+batch start
+
+board_name MICOAIR743
+manufacturer_id MICO
+
+# resources
+resource MOTOR 2 E11
+resource MOTOR 3 NONE
+resource MOTOR 4 NONE
+resource MOTOR 5 NONE
+resource MOTOR 6 NONE
+resource MOTOR 7 NONE
+resource MOTOR 8 NONE
+resource SERVO 1 B01
+resource SERVO 2 B00
+resource SERVO 3 D12
+resource SERVO 4 D13
+resource LED_STRIP 1 NONE
+
+# feature
+feature LED_STRIP
+feature OSD
+
+# serial
+serial UART2 0 115200 57600 0 115200
+serial UART8 131073 115200 57600 0 115200
+
+# mixer
+mixer CUSTOMAIRPLANE
+mmix 0  1.000  0.000  0.000  0.300
+mmix 1  1.000  0.000  0.000 -0.300
+
+# servo
+servo 2 1000 2000 1500 -100 -1
+servo 3 1000 2000 1500 -100 -1
+
+# servo mixer
+smix 0 2 0 100 0 0 100 0
+smix 1 3 0 100 0 0 100 0
+smix 2 4 1 100 0 0 100 0
+smix 3 5 2 100 0 0 100 0
+
+# map
+map TAER1234
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 1300 1700 0 0
+aux 2 12 1 1700 2100 0 0
+aux 3 13 5 1700 2100 0 0
+
+# rxrange
+rxrange 0 989 2010
+rxrange 1 989 2012
+rxrange 2 989 2012
+rxrange 3 995 2012
+
+# master
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set acc_calibration = 152,201,32,1
+set mag_hardware = NONE
+set rc_smoothing_auto_factor = 140
+set rc_smoothing_setpoint_cutoff = 25
+set motor_idle = 500
+set dshot_bidir = ON
+set motor_poles = 12
+set align_board_pitch = -12
+set align_board_yaw = 225
+set vbat_max_cell_voltage = 440
+set vbat_min_cell_voltage = 320
+set vbat_warning_cell_voltage = 340
+set servo_pwm_rate = 333
+set small_angle = 180
+set deadband = 5
+set yaw_deadband = 5
+set spa_roll_mode = PD_I_FREEZE
+set spa_pitch_mode = PD_I_FREEZE
+set spa_yaw_mode = PD_I_FREEZE
+set yaw_type = DIFF_THRUST
+set report_cell_voltage = ON
+set osd_flymode_pos = 2083
+set osd_throttle_pos = 2533
+set osd_warnings_pos = 14867
+set osd_avg_cell_voltage_pos = 2564
+set osd_battery_usage_pos = 33109
+set debug_mode = FFT_FREQ
+
+profile 0
+
+# profile 0
+set dterm_lpf1_dyn_min_hz = 60
+set dterm_lpf1_dyn_max_hz = 120
+set dterm_lpf1_static_hz = 60
+set dterm_lpf2_static_hz = 120
+set anti_gravity_gain = 0
+set iterm_relax_cutoff = 5
+set throttle_boost = 0
+set p_pitch = 35
+set i_pitch = 50
+set d_pitch = 15
+set p_roll = 30
+set i_roll = 45
+set d_roll = 12
+set p_yaw = 30
+set i_yaw = 0
+set s_pitch = 50
+set s_roll = 50
+set angle_earth_ref = 0
+set d_max_roll = 0
+set d_max_pitch = 0
+set feedforward_smooth_factor = 45
+set feedforward_jitter_factor = 10
+set simplified_pids_mode = OFF
+set simplified_dterm_filter_multiplier = 80
+set tpa_mode = PD
+set tpa_speed_basic_delay = 1500
+set tpa_speed_max_voltage = 1260
+set tpa_curve_type = HYPERBOLIC
+set tpa_curve_stall_throttle = 10
+set tpa_curve_pid_thr0 = 105
+set tpa_curve_pid_thr100 = 60
+set tpa_curve_expo = 45
+set spa_roll_center = 200
+set spa_roll_width = 70
+set spa_pitch_center = 150
+set spa_pitch_width = 70
+set spa_yaw_center = 150
+set spa_yaw_width = 70
+
+rateprofile 0
+
+# rateprofile 0
+set roll_expo = 35
+set pitch_expo = 30
+set roll_srate = 50
+set pitch_srate = 25
+set yaw_srate = 15
+
+# end the command batch
+batch end

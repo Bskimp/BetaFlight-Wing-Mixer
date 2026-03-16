@@ -1,0 +1,43 @@
+#define FC_TARGET_MCU STM32F405
+#define BOARD_NAME FLYWOOF405NANO
+#define MANUFACTURER_ID FLWO
+
+#define MOTOR1_PIN PB0
+#define MOTOR2_PIN PB1
+#define MOTOR3_PIN PA3
+#define MOTOR4_PIN PA2
+#define MOTOR5_PIN PB5
+#define MOTOR6_PIN PC9
+#define MOTOR7_PIN PB4
+#define MOTOR8_PIN PC8
+
+#define UART1_TX_PIN PB6
+#define UART1_RX_PIN PA10
+#define UART2_TX_PIN PD5
+#define UART2_RX_PIN PD6
+#define UART3_TX_PIN PB10
+#define UART3_RX_PIN PB11
+#define UART4_TX_PIN PA0
+#define UART4_RX_PIN PA1
+#define UART5_RX_PIN PD2
+#define UART6_TX_PIN PC6
+#define UART6_RX_PIN PC7
+
+#define LED_STRIP_PIN PA9
+
+#define GYRO_1_ALIGN CW90_DEG
+
+#define USE_GYRO
+#define USE_ACC
+#define USE_BARO
+#define USE_FLASH
+
+#define TIMER_PIN_MAPPING \
+    TIMER_PIN_MAP(0, PB0, 2, 0) \
+    TIMER_PIN_MAP(1, PB1, 2, 0) \
+    TIMER_PIN_MAP(2, PA3, 1, 0) \
+    TIMER_PIN_MAP(3, PA2, 1, 0) \
+    TIMER_PIN_MAP(4, PB5, 2, 0) \
+    TIMER_PIN_MAP(5, PC9, 3, 0) \
+    TIMER_PIN_MAP(6, PB4, 2, 0) \
+    TIMER_PIN_MAP(7, PC8, 3, 0)
