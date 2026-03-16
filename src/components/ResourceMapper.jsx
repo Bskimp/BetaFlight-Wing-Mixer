@@ -59,9 +59,9 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
   const getLabelForPin = (pin) => {
     const a = assignments[pin];
     if (!a) return '';
-    if (a.type === 'motor') return `M${a.index}`;
-    if (a.type === 'servo') return `S${a.index}`;
-    if (a.type === 'led') return 'LED';
+    if (a.type === 'motor') return `Motor ${a.index}`;
+    if (a.type === 'servo') return `Servo ${a.index}`;
+    if (a.type === 'led') return 'LED Strip';
     return '';
   };
 
