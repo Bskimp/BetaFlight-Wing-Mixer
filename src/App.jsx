@@ -5,7 +5,7 @@ import { validateMotorYaw, validateSTermYaw } from './data/validation';
 import { generateCli } from './utils/cliGenerator';
 import { detectConflicts, autoAssignResources } from './utils/timerCheck';
 import targets from './data/targets.json';
-import Sidebar, { isTabEnabled } from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 import PresetSelector from './components/PresetSelector';
 import MotorMixer from './components/MotorMixer';
 import ServoMixer from './components/ServoMixer';
@@ -107,7 +107,6 @@ export default function App() {
   const [rates, setRates] = useState({ ...RATE_DEFAULTS });
   const [tpaSettings, setTpaSettings] = useState({ ...TPA_DEFAULTS });
   const [spaSettings, setSpaSettings] = useState({ ...SPA_DEFAULTS });
-  const [complexity, setComplexity] = useState('standard');
   const [theme, setTheme] = useState(null);
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [assignments, setAssignments] = useState({});
@@ -135,16 +134,6 @@ export default function App() {
       }
     }
   }, []);
-
-  // When complexity changes, ensure active tab is still valid
-  useEffect(() => {
-    const tabDef = { setup: 'standard', mixer: 'standard', pids: 'standard', tuning: 'expert', output: 'standard' };
-    const levels = { standard: 0, expert: 1 };
-    const minLevel = tabDef[activeTab];
-    if (levels[complexity] < levels[minLevel]) {
-      setActiveTab('setup');
-    }
-  }, [complexity, activeTab]);
 
   const loadPreset = useCallback((key) => {
     const p = AIRFRAME_PRESETS[key];
@@ -203,7 +192,6 @@ export default function App() {
     setPassthrough(state.passthrough);
     setImportSource(state.boardName);
     setShowImport(false);
-    setComplexity('expert');
 
     if (state.boardName && targets[state.boardName]) {
       const target = targets[state.boardName];
@@ -222,7 +210,6 @@ export default function App() {
   const toggleTheme = () => {
     setTheme(prev => {
       const next = prev === null ? 'light' : prev === 'light' ? 'dark' : null;
-      // Remove both classes first
       document.documentElement.classList.remove('light-theme', 'dark-theme');
       if (next !== null) {
         document.documentElement.classList.add(`${next}-theme`);
@@ -230,10 +217,6 @@ export default function App() {
       return next;
     });
   };
-
-  const handleComplexityChange = useCallback((level) => {
-    setComplexity(level);
-  }, []);
 
   // Timer conflict detection
   const conflicts = useMemo(() => {
@@ -243,9 +226,9 @@ export default function App() {
 
   // CLI generation
   const cliText = useMemo(() => generateCli({
-    preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity,
+    preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity: 'expert',
     selectedTarget, assignments, tpaSettings, spaSettings, passthrough,
-  }), [preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity, selectedTarget, assignments, tpaSettings, spaSettings, passthrough]);
+  }), [preset, motors, servos, wingSettings, pids, rates, diffThrust, selectedTarget, assignments, tpaSettings, spaSettings, passthrough]);
 
   // Collect warnings
   const warnings = useMemo(() => {
@@ -288,14 +271,12 @@ export default function App() {
                 Import Config
               </button>
             </div>
-            {complexity === 'expert' && (
-              <TargetSelector
-                targets={targets}
-                selectedTarget={selectedTarget}
-                onSelectTarget={handleTargetSelect}
-              />
-            )}
-            {complexity === 'expert' && selectedTarget && (
+            <TargetSelector
+              targets={targets}
+              selectedTarget={selectedTarget}
+              onSelectTarget={handleTargetSelect}
+            />
+            {selectedTarget && (
               <ResourceMapper
                 target={selectedTarget}
                 assignments={assignments}
@@ -353,8 +334,6 @@ export default function App() {
       <Sidebar
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        complexity={complexity}
-        onComplexityChange={handleComplexityChange}
         theme={theme}
         onThemeToggle={toggleTheme}
       />
@@ -362,22 +341,9 @@ export default function App() {
       {/* Mobile header */}
       <div className="mobile-header">
         <h1>BF Wing Mixer</h1>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-          <div className="segmented-control">
-            {['standard', 'expert'].map(level => (
-              <button
-                key={level}
-                className={complexity === level ? 'active' : ''}
-                onClick={() => handleComplexityChange(level)}
-              >
-                {level.charAt(0).toUpperCase() + level.slice(1)}
-              </button>
-            ))}
-          </div>
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {theme === null ? '\u25D0' : theme === 'dark' ? '\u263E' : '\u2600'}
-          </button>
-        </div>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {theme === null ? '\u25D0' : theme === 'dark' ? '\u263E' : '\u2600'}
+        </button>
       </div>
 
       <main className="content-area">
