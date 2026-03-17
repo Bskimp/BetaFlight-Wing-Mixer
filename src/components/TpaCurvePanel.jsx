@@ -44,10 +44,13 @@ function tpaCurveHyperbolic(x, stallThrottle, pidThr0, pidThr100, expoParam) {
 }
 
 function computeTpaCurve(stallThrottle, pidThr0, pidThr100, expo, points = 100) {
+  const thrStall = stallThrottle / 100;
   const result = [];
   for (let i = 0; i <= points; i++) {
     const x = i / points;
-    const multiplier = tpaCurveHyperbolic(x, stallThrottle, pidThr0, pidThr100, expo);
+    // Mirror the curve shape on the left side of stall
+    const xEval = x < thrStall ? 2 * thrStall - x : x;
+    const multiplier = tpaCurveHyperbolic(xEval, stallThrottle, pidThr0, pidThr100, expo);
     result.push({ speed: x * 100, multiplier: multiplier * 100 });
   }
   return result;
