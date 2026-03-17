@@ -28,17 +28,17 @@ function tpaCurveHyperbolic(x, stallThrottle, pidThr0, pidThr100, expoParam) {
   const thrStall = stallThrottle / 100.0;
   const pThr0 = pidThr0 / 100.0;
 
+  if (x <= thrStall) {
+    return pThr0;
+  }
+
   const expoDivider = expoParam / 10.0 - 1.0;
   const expo = Math.abs(expoDivider) > 1e-3 ? 1.0 / expoDivider : 1e3;
 
   const pThr100 = pidThr100 / 100.0;
-  const xShifted = (x - thrStall) / (1.0 - thrStall);
+  const xShifted = (x - thrStall) / (1.0 - thrStall); // scaleRangef(x, thrStall, 1, 0, 1)
   const base = 1 + (Math.pow(pThr0 / pThr100, 1.0 / expo) - 1) * xShifted;
-
-  // Guard: base <= 0 or non-finite → clamp to pThr0 (high positive expo below stall)
-  if (base <= 1e-6) return pThr0;
   const divisor = Math.pow(base, expo);
-  if (!isFinite(divisor) || divisor <= 1e-6) return pThr0;
 
   return pThr0 / divisor;
 }
@@ -65,9 +65,8 @@ function TpaCurveChart({ stallThrottle, pidThr0, pidThr100, expo }) {
   const plotW = width - padding.left - padding.right;
   const plotH = height - padding.top - padding.bottom;
 
-  const allMult = points.map(p => p.multiplier);
-  const yMin = Math.min(...allMult, 50) - 10;
-  const yMax = Math.max(...allMult, 100) + 10;
+  const yMin = Math.min(pidThr0, pidThr100, 50) - 10;
+  const yMax = Math.max(pidThr0, pidThr100, 100) + 10;
 
   const toX = (speed) => padding.left + (speed / 100) * plotW;
   const toY = (mult) => padding.top + plotH - ((mult - yMin) / (yMax - yMin)) * plotH;
