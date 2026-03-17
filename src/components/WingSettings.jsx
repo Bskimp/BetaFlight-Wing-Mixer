@@ -1,38 +1,19 @@
 import { useState } from 'react';
 import Section from './common/Section';
 import RangeInput from './common/RangeInput';
-import { validateSTermYaw } from '../data/validation';
 
-export default function WingSettings({ wingSettings, diffThrust, onChange }) {
+export default function WingSettings({ wingSettings, onChange }) {
   const [showOther, setShowOther] = useState(false);
 
   const update = (field, value) => {
     onChange({ ...wingSettings, [field]: value });
   };
 
-  const sYawWarn = validateSTermYaw(wingSettings.s_yaw, diffThrust);
-
   return (
     <Section title="Wing settings" defaultCollapsed={false}>
-      {/* S-term — always visible in Expert */}
-      <div className="sub-group">
-        <div className="sub-group-label">S-term (direct stick-to-surface)</div>
-        <div className="setting-note">
-          Maps stick position directly to servo output. Higher = more direct feel, less PID authority.
-        </div>
-        <RangeInput label="Roll" value={wingSettings.s_roll} onChange={v => update('s_roll', v)} min={0} max={200} step={5} />
-        <RangeInput label="Pitch" value={wingSettings.s_pitch} onChange={v => update('s_pitch', v)} min={0} max={200} step={5} />
-        <RangeInput
-          label="Yaw" value={wingSettings.s_yaw} onChange={v => update('s_yaw', v)}
-          min={0} max={200} step={5}
-          warn={!!sYawWarn}
-          warnMessage={sYawWarn?.message}
-        />
-      </div>
-
       {/* Other Wing Settings — collapsible */}
       <button className="target-paste-link" onClick={() => setShowOther(!showOther)}>
-        {showOther ? 'Hide other wing settings' : 'Show other wing settings'}
+        {showOther ? 'Hide wing settings' : 'Show wing settings'}
       </button>
 
       {showOther && (
@@ -48,6 +29,39 @@ export default function WingSettings({ wingSettings, diffThrust, onChange }) {
             <div className="sub-group-label">I-term relax</div>
             <RangeInput label="Cutoff" value={wingSettings.iterm_relax_cutoff}
               onChange={v => update('iterm_relax_cutoff', v)} min={1} max={50} step={1} />
+            <div className="setting-note">
+              Increase for faster, more responsive aircraft. Lower for smoother flight.
+            </div>
+          </div>
+
+          <div className="sub-group">
+            <div className="sub-group-label">GPS</div>
+            <div className="range-row">
+              <span className="range-label">3D speed</span>
+              <div className="segmented-btn">
+                <button
+                  className={wingSettings.gps_use_3d_speed === 'ON' ? 'active' : ''}
+                  onClick={() => update('gps_use_3d_speed', 'ON')}
+                >ON</button>
+                <button
+                  className={wingSettings.gps_use_3d_speed === 'OFF' ? 'active' : ''}
+                  onClick={() => update('gps_use_3d_speed', 'OFF')}
+                >OFF</button>
+              </div>
+            </div>
+            <div className="setting-note">
+              Use 3D GPS speed (includes vertical component) for more accurate speed readout on wings.
+            </div>
+          </div>
+
+          <div className="sub-group">
+            <div className="sub-group-label">D-term filter</div>
+            <RangeInput label="LPF1 expo" value={wingSettings.dterm_lpf1_dyn_expo}
+              onChange={v => update('dterm_lpf1_dyn_expo', v)} min={0} max={10} step={1} />
+            <div className="setting-note">
+              Higher = more filtering. Wing recommendation: 8 (equivalent to 0.8 slider in Configurator).
+              Conservative: 5 (both sliders at 0.5).
+            </div>
           </div>
 
           <div className="sub-group">

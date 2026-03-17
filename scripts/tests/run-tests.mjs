@@ -8,8 +8,9 @@
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseConfigH } from '../parse-targets.mjs';
+import { parseConfigH, parseUnifiedConfig } from '../parse-targets.mjs';
 import { resolveTimerPin, computeTimerGroups, computeResolutionStatus } from '../merge-targets.mjs';
+import { mergeTargets } from '../merge-targets.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturesDir = join(__dirname, 'fixtures');
@@ -104,7 +105,7 @@ console.log('\nTest 3: Flywoo F405 — full timer resolution');
   // Resolve timers
   const timerPins = [];
   for (const entry of target.timerMap) {
-    const resolved = resolveTimerPin(entry.pin, entry.af, target.mcu, mockMcuTimers.STM32F4);
+    const resolved = resolveTimerPin(entry, target.mcu, mockMcuTimers.STM32F4);
     if (resolved) timerPins.push(resolved);
   }
 
@@ -140,6 +141,82 @@ console.log('\nTest 4: No timer map — unresolved');
 
   const status = computeResolutionStatus([], 0);
   assert(status === 'unresolved', `Resolution status: unresolved (got ${status})`);
+}
+
+// Test 5: Unified-targets timer comment parsing
+console.log('\nTest 5: Timer comment parsing in unified-targets');
+{
+  const content = readFixture('unified-timer-comments.config');
+  const target = parseUnifiedConfig(content, 'TEST-BOARD.config');
+  assert(target !== null, 'Target parsed successfully');
+  assert(target.boardName === 'TESTBOARD_WING', `Board name: ${target.boardName}`);
+  assert(target.mcu === 'STM32F4', `MCU: ${target.mcu}`);
+  assert(target.motors.length === 2, `2 motors (got ${target.motors.length})`);
+  assert(target.servos.length === 2, `2 servos (got ${target.servos.length})`);
+
+  // Timer map should have resolvedTimer/resolvedChannel from comments
+  assert(target.timerMap.length === 4, `4 timer map entries (got ${target.timerMap.length})`);
+  const motor1Timer = target.timerMap.find(t => t.pin === 'PB06');
+  assert(motor1Timer !== null && motor1Timer !== undefined, 'Found timer for PB06');
+  assert(motor1Timer.resolvedTimer === 'TIM4', `PB06 resolvedTimer: TIM4 (got ${motor1Timer?.resolvedTimer})`);
+  assert(motor1Timer.resolvedChannel === 1, `PB06 resolvedChannel: 1 (got ${motor1Timer?.resolvedChannel})`);
+
+  // Resolve using mergeTargets — should get exact resolution from comments alone
+  const { targets } = mergeTargets({ TESTBOARD_WING: target }, {}, null);
+  const merged = targets.TESTBOARD_WING;
+  assert(merged.resolutionStatus === 'exact', `Resolution status: exact (got ${merged.resolutionStatus})`);
+  assert(merged.wingCapable === true, `Wing capable: true (got ${merged.wingCapable})`);
+  assert(merged.source === 'unified-targets', `Source: unified-targets (got ${merged.source})`);
+
+  // Timer groups from comments
+  const groups = Object.keys(merged.timerGroups).sort();
+  assert(groups.length >= 2, `At least 2 timer groups (got ${groups.length}: ${groups.join(', ')})`);
+}
+
+// Test 6: Merge priority — config.h wins over unified-targets
+console.log('\nTest 6: Merge priority — config.h wins');
+{
+  const unifiedTargets = {
+    DUPL_BOARD: {
+      boardName: 'DUPL_BOARD', mcu: 'STM32F4', mcuRaw: 'STM32F405',
+      manufacturer: 'UNI', motors: [{ index: 1, pin: 'PB00' }], servos: [],
+      uarts: [], timerMap: [], ledStrip: null, features: [], gyroAlign: null,
+    },
+    UNIQUE_UNIFIED: {
+      boardName: 'UNIQUE_UNIFIED', mcu: 'STM32F4', mcuRaw: 'STM32F405',
+      manufacturer: 'UNI', motors: [{ index: 1, pin: 'PB01' }], servos: [],
+      uarts: [], timerMap: [], ledStrip: null, features: [], gyroAlign: null,
+    },
+  };
+  const configTargets = {
+    DUPL_BOARD: {
+      boardName: 'DUPL_BOARD', mcu: 'STM32F4', mcuRaw: 'STM32F405',
+      manufacturer: 'CFG', motors: [{ index: 1, pin: 'PA00' }, { index: 2, pin: 'PA01' }], servos: [],
+      uarts: [], timerMap: [], ledStrip: null, features: [], gyroAlign: null,
+    },
+    UNIQUE_CONFIG: {
+      boardName: 'UNIQUE_CONFIG', mcu: 'STM32F4', mcuRaw: 'STM32F405',
+      manufacturer: 'CFG', motors: [{ index: 1, pin: 'PA02' }], servos: [],
+      uarts: [], timerMap: [], ledStrip: null, features: [], gyroAlign: null,
+    },
+  };
+
+  const result = mergeTargets(unifiedTargets, {}, configTargets);
+  assert(Object.keys(result.targets).length === 3, `3 total targets (got ${Object.keys(result.targets).length})`);
+  assert(result.fromConfig === 2, `2 from config (got ${result.fromConfig})`);
+  assert(result.fromUnified === 1, `1 from unified (got ${result.fromUnified})`);
+  assert(result.skippedDuplicate === 1, `1 duplicate skipped (got ${result.skippedDuplicate})`);
+
+  // DUPL_BOARD should use config version (2 motors, manufacturer CFG)
+  const dupl = result.targets.DUPL_BOARD;
+  assert(dupl.manufacturer === 'CFG', `DUPL_BOARD uses config version (manufacturer: ${dupl.manufacturer})`);
+  assert(dupl.motors.length === 2, `DUPL_BOARD has 2 motors from config (got ${dupl.motors.length})`);
+  assert(dupl.source === 'config', `DUPL_BOARD source: config (got ${dupl.source})`);
+
+  // UNIQUE_UNIFIED should be present with unified source
+  assert(result.targets.UNIQUE_UNIFIED.source === 'unified-targets', 'UNIQUE_UNIFIED source: unified-targets');
+  // UNIQUE_CONFIG should be present with config source
+  assert(result.targets.UNIQUE_CONFIG.source === 'config', 'UNIQUE_CONFIG source: config');
 }
 
 // Summary

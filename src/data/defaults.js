@@ -5,14 +5,23 @@ export const WING_DEFAULTS = {
   s_yaw: 0,
   servo_pwm_rate: 150,
   iterm_relax_cutoff: 5,
+  gps_use_3d_speed: 'ON',
+  dterm_lpf1_dyn_expo: 8,
 };
 
 // TPA defaults for wings
 export const TPA_DEFAULTS = {
-  tpa_mode: 'PD',
+  tpa_mode: 'PDS',
   tpa_curve_type: 'HYPERBOLIC',
+  tpa_speed_type: 'BASIC',
   tpa_speed_max_voltage: 1260,
   tpa_speed_basic_delay: 0,
+  tpa_speed_basic_gravity: 50,
+  tpa_speed_adv_mass: 1000,
+  tpa_speed_adv_drag_k: 45,
+  tpa_speed_adv_twr: 200,
+  tpa_speed_adv_prop_pitch: 370,
+  tpa_speed_est_pitch_offset: 0,
   tpa_curve_stall_throttle: 30,
   tpa_curve_pid_thr0: 200,
   tpa_curve_pid_thr100: 70,
@@ -33,10 +42,11 @@ export const SPA_DEFAULTS = {
 };
 
 // Wing PID defaults — NOT quad defaults
+// Yaw I = 0 for diff thrust to avoid I-term buildup at high airspeed
 export const PID_DEFAULTS = {
   roll:  { p: 10, i: 10, d: 10, f: 0 },
   pitch: { p: 10, i: 10, d: 10, f: 0 },
-  yaw:   { p: 10, i: 10, d: 10, f: 0 },
+  yaw:   { p: 10, i: 0, d: 10, f: 0 },
 };
 
 // Wing rate defaults
@@ -64,6 +74,7 @@ export const BF_DEFAULTS = {
   pitch_expo: 0,
   // Master context
   servo_pwm_rate: 50,
+  gps_use_3d_speed: 'OFF',
   yaw_type: 'CW',
   spa_roll_mode: 'OFF',
   spa_pitch_mode: 'OFF',
@@ -77,11 +88,19 @@ export const BF_DEFAULTS = {
   d_max_roll: 20,
   d_max_pitch: 22,
   angle_earth_ref: 100,
+  dterm_lpf1_dyn_expo: 5,
   // TPA
   tpa_mode: 'D',
   tpa_curve_type: 'NORMAL',
+  tpa_speed_type: 'BASIC',
   tpa_speed_max_voltage: 2520,
   tpa_speed_basic_delay: 0,
+  tpa_speed_basic_gravity: 50,
+  tpa_speed_adv_mass: 1000,
+  tpa_speed_adv_drag_k: 45,
+  tpa_speed_adv_twr: 200,
+  tpa_speed_adv_prop_pitch: 370,
+  tpa_speed_est_pitch_offset: 0,
   tpa_curve_stall_throttle: 30,
   tpa_curve_pid_thr0: 200,
   tpa_curve_pid_thr100: 70,

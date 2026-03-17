@@ -31,6 +31,13 @@ export function validateElevonSymmetry(servos) {
   return null;
 }
 
+export function validateYawIGain(iValue, diffThrust) {
+  if (diffThrust && iValue > 0) {
+    return { level: 'danger', message: 'Yaw I-term should be 0 with differential thrust to avoid I-term buildup at high airspeed' };
+  }
+  return null;
+}
+
 export function hasDiffThrust(motors) {
   return motors.some(m => m.yaw !== 0);
 }

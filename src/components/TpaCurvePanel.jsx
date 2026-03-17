@@ -3,6 +3,7 @@ import Section from './common/Section';
 import RangeInput from './common/RangeInput';
 
 const TPA_MODES = ['D', 'PD', 'PDS'];
+const SPEED_TYPES = ['BASIC', 'ADVANCED'];
 
 const CELL_VOLTAGES = [
   { label: '2S (8.4V)', value: 840 },
@@ -12,17 +13,38 @@ const CELL_VOLTAGES = [
   { label: '6S (25.2V)', value: 2520 },
 ];
 
+/**
+ * Compute hyperbolic TPA curve — matches BF firmware tpaCurveHyperbolicFunction() exactly.
+ * See betaflight/betaflight PR #13805 for the original implementation.
+ */
 function computeTpaCurve(stallThrottle, pidThr0, pidThr100, expo, points = 50) {
   const result = [];
+  const thrStall = stallThrottle / 100;
+  const pThr0 = pidThr0 / 100;     // e.g. 200% → 2.0
+  const pThr100 = pidThr100 / 100;  // e.g. 70% → 0.7
+
+  // Expo math from BF: expoDivider = expo/10 - 1, expoPow = 1/expoDivider
+  const expoDivider = expo / 10 - 1;
+  const expoPow = Math.abs(expoDivider) > 1e-3 ? 1 / expoDivider : 1000;
+
+  // Precompute the ratio base term
+  const ratio = pThr100 > 1e-6 ? pThr0 / pThr100 : 1000;
+  const ratioTerm = Math.pow(ratio, 1 / expoPow) - 1;
+
   for (let i = 0; i <= points; i++) {
-    const speed = i / points;
-    const stall = stallThrottle / 100;
-    const x = Math.max(0, (speed - stall) / (1 - stall));
-    const e = expo / 100;
-    const denom = 1 + e * (1 - x);
-    const blend = denom !== 0 ? x / denom : x;
-    const multiplier = pidThr0 + (pidThr100 - pidThr0) * blend;
-    result.push({ speed: speed * 100, multiplier });
+    const x = i / points; // 0..1 representing speed
+    let multiplier;
+
+    if (x <= thrStall) {
+      multiplier = pThr0;
+    } else {
+      const xShifted = (x - thrStall) / (1 - thrStall); // 0..1 after stall
+      const base = 1 + ratioTerm * xShifted;
+      const divisor = Math.pow(base, expoPow);
+      multiplier = divisor > 1e-6 ? pThr0 / divisor : pThr0;
+    }
+
+    result.push({ speed: x * 100, multiplier: multiplier * 100 });
   }
   return result;
 }
@@ -99,12 +121,14 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
   };
 
   const voltageMatch = CELL_VOLTAGES.find(c => c.value === tpaSettings.tpa_speed_max_voltage);
+  const isAdvanced = tpaSettings.tpa_speed_type === 'ADVANCED';
 
   return (
     <Section title="TPA airspeed curve" defaultCollapsed={false}>
       <div className="tpa-info-text">
-        BF estimates airspeed from throttle, voltage, and pitch angle. The voltage
-        setting must match your battery for the TPA curve to work correctly.
+        BF estimates airspeed from throttle, voltage, and pitch angle. The TPA curve
+        scales your PIDs based on estimated speed — lower gains at high speed, higher
+        gains near stall.
       </div>
 
       {/* TPA Mode */}
@@ -119,11 +143,34 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
           ))}
         </div>
         <div className="setting-note">
+          {tpaSettings.tpa_mode === 'D' && 'Attenuates D term only'}
+          {tpaSettings.tpa_mode === 'PD' && 'Attenuates P and D terms with speed'}
+          {tpaSettings.tpa_mode === 'PDS' && 'Attenuates P, D, and S-term with speed'}
+        </div>
+        <div className="setting-note">
           Curve type: HYPERBOLIC (required for wing airspeed TPA)
         </div>
       </div>
 
-      {/* Voltage / Cell count */}
+      {/* Speed Estimation Model */}
+      <div className="sub-group">
+        <div className="sub-group-label">Speed estimation model</div>
+        <div className="segmented-btn">
+          {SPEED_TYPES.map(t => (
+            <button key={t}
+              className={tpaSettings.tpa_speed_type === t ? 'active' : ''}
+              onClick={() => update('tpa_speed_type', t)}
+            >{t === 'BASIC' ? 'Basic' : 'Advanced'}</button>
+          ))}
+        </div>
+        <div className="setting-note">
+          {isAdvanced
+            ? 'Physics-based model using mass, drag, TWR, and prop pitch'
+            : 'Simple model using throttle delay and gravity estimate'}
+        </div>
+      </div>
+
+      {/* Voltage / Cell count — shared by both models */}
       <div className="sub-group">
         <div className="sub-group-label">Battery voltage</div>
         <div className="range-row">
@@ -144,12 +191,40 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
         </div>
       </div>
 
-      {/* Delay */}
-      <div className="sub-group">
-        <RangeInput label="Delay" value={tpaSettings.tpa_speed_basic_delay}
-          onChange={v => update('tpa_speed_basic_delay', v)}
-          min={0} max={5000} step={100} unit=" ms" />
-      </div>
+      {/* BASIC model parameters */}
+      {!isAdvanced && (
+        <div className="sub-group">
+          <div className="sub-group-label">Basic speed estimation</div>
+          <RangeInput label="Delay" value={tpaSettings.tpa_speed_basic_delay}
+            onChange={v => update('tpa_speed_basic_delay', v)}
+            min={0} max={5000} step={100} unit=" ms" />
+          <RangeInput label="Gravity effect" value={tpaSettings.tpa_speed_basic_gravity}
+            onChange={v => update('tpa_speed_basic_gravity', v)}
+            min={0} max={200} step={5} unit="%" />
+        </div>
+      )}
+
+      {/* ADVANCED model parameters */}
+      {isAdvanced && (
+        <div className="sub-group">
+          <div className="sub-group-label">Advanced speed estimation</div>
+          <RangeInput label="Aircraft mass" value={tpaSettings.tpa_speed_adv_mass}
+            onChange={v => update('tpa_speed_adv_mass', v)}
+            min={100} max={10000} step={50} unit=" g" />
+          <RangeInput label="Drag coefficient" value={tpaSettings.tpa_speed_adv_drag_k}
+            onChange={v => update('tpa_speed_adv_drag_k', v)}
+            min={1} max={200} step={1} />
+          <RangeInput label="Thrust/weight ratio" value={tpaSettings.tpa_speed_adv_twr}
+            onChange={v => update('tpa_speed_adv_twr', v)}
+            min={50} max={500} step={10} unit="%" />
+          <RangeInput label="Prop pitch" value={tpaSettings.tpa_speed_adv_prop_pitch / 100}
+            onChange={v => update('tpa_speed_adv_prop_pitch', Math.round(v * 100))}
+            min={1} max={10} step={0.1} unit=' in' />
+          <RangeInput label="Pitch offset" value={tpaSettings.tpa_speed_est_pitch_offset / 100}
+            onChange={v => update('tpa_speed_est_pitch_offset', Math.round(v * 100))}
+            min={-10} max={10} step={0.5} unit='°' />
+        </div>
+      )}
 
       {/* Curve parameters */}
       <div className="sub-group">
@@ -185,6 +260,8 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
           <div>Oscillating at high speed? Reduce PID at full speed</div>
           <div>Sloppy at low speed? Increase PID at stall</div>
           <div>Good at extremes, bad in middle? Adjust expo</div>
+          <div>Speed feels laggy? Reduce delay (Basic) or check mass/drag (Advanced)</div>
+          <div>Nose-down dives over-attenuate? Adjust pitch offset or gravity effect</div>
         </div>
       )}
     </Section>

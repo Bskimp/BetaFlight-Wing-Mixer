@@ -93,7 +93,7 @@ export function parseConfigH(content) {
   const timerMap = [];
   const timerPinMapping = defineMap['TIMER_PIN_MAPPING'];
   if (timerPinMapping) {
-    const tpmRegex = /TIMER_PIN_MAP\(\s*(\d+)\s*,\s*(\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/g;
+    const tpmRegex = /TIMER_PIN_MAP\(\s*(\d+)\s*,\s*(\w+)\s*,\s*(\d+)\s*,\s*(-?\d+)\s*\)/g;
     let tm;
     while ((tm = tpmRegex.exec(timerPinMapping)) !== null) {
       const index = parseInt(tm[1], 10);
@@ -119,10 +119,90 @@ export function parseConfigH(content) {
 
   const gyroAlign = defineMap['GYRO_1_ALIGN'] || null;
 
+  // Peripheral pins — for pin accessibility classification
+  const peripheralPins = extractPeripheralPinsFromDefines(defineMap, resolveDefine);
+
+  // UART default functions
+  const serialrxUart = defineMap['SERIALRX_UART'] ? parseInt(defineMap['SERIALRX_UART'], 10) : null;
+  const mspUart = defineMap['MSP_UART'] ? parseInt(defineMap['MSP_UART'], 10) : null;
+
   return {
     boardName, mcu, mcuRaw: mcuRaw || '', manufacturer,
     motors, servos, uarts, timerMap, ledStrip, features, gyroAlign,
+    peripheralPins, serialrxUart, mspUart,
   };
+}
+
+/**
+ * Extract peripheral pin assignments from config.h defines.
+ * Used for pin accessibility classification (which pins are on-board vs user pads).
+ */
+function extractPeripheralPinsFromDefines(defineMap, resolveDefine) {
+  const pp = { spi: [], gyroCs: [], osdCs: null, sdCs: null, flashCs: null, i2c: [], adcVbat: null, adcCurr: null, adcRssi: null, beeper: null, pinio: [], statusLeds: [] };
+
+  // SPI bus pins
+  for (let i = 1; i <= 4; i++) {
+    for (const suffix of ['SCK', 'SDI', 'SDO', 'MISO', 'MOSI']) {
+      const key = `SPI${i}_${suffix}_PIN`;
+      if (defineMap[key]) {
+        const pin = normalizePin(resolveDefine(defineMap[key]));
+        if (pin && !pp.spi.includes(pin)) pp.spi.push(pin);
+      }
+    }
+  }
+
+  // Gyro chip selects
+  for (let i = 1; i <= 2; i++) {
+    const key = `GYRO_${i}_CS_PIN`;
+    if (defineMap[key]) {
+      const pin = normalizePin(resolveDefine(defineMap[key]));
+      if (pin && !pp.gyroCs.includes(pin)) pp.gyroCs.push(pin);
+    }
+  }
+
+  // OSD / SD / Flash chip selects
+  if (defineMap['MAX7456_SPI_CS_PIN']) pp.osdCs = normalizePin(resolveDefine(defineMap['MAX7456_SPI_CS_PIN']));
+  if (defineMap['SDCARD_SPI_CS_PIN']) pp.sdCs = normalizePin(resolveDefine(defineMap['SDCARD_SPI_CS_PIN']));
+  if (defineMap['FLASH_CS_PIN']) pp.flashCs = normalizePin(resolveDefine(defineMap['FLASH_CS_PIN']));
+
+  // I2C bus pins
+  for (let i = 1; i <= 3; i++) {
+    for (const suffix of ['SCL', 'SDA']) {
+      const key = `I2C${i}_${suffix}_PIN`;
+      if (defineMap[key]) {
+        const pin = normalizePin(resolveDefine(defineMap[key]));
+        if (pin && !pp.i2c.includes(pin)) pp.i2c.push(pin);
+      }
+    }
+  }
+
+  // ADC pins
+  if (defineMap['ADC_VBAT_PIN']) pp.adcVbat = normalizePin(resolveDefine(defineMap['ADC_VBAT_PIN']));
+  if (defineMap['ADC_CURR_PIN']) pp.adcCurr = normalizePin(resolveDefine(defineMap['ADC_CURR_PIN']));
+  if (defineMap['ADC_RSSI_PIN']) pp.adcRssi = normalizePin(resolveDefine(defineMap['ADC_RSSI_PIN']));
+
+  // Beeper
+  if (defineMap['BEEPER_PIN']) pp.beeper = normalizePin(resolveDefine(defineMap['BEEPER_PIN']));
+
+  // PINIO (user-controllable outputs like VTX power)
+  for (let i = 1; i <= 4; i++) {
+    const key = `PINIO${i}_PIN`;
+    if (defineMap[key]) {
+      const pin = normalizePin(resolveDefine(defineMap[key]));
+      if (pin) pp.pinio.push(pin);
+    }
+  }
+
+  // Onboard status LEDs (not LED strip)
+  for (let i = 0; i <= 3; i++) {
+    const key = `LED${i}_PIN`;
+    if (defineMap[key]) {
+      const pin = normalizePin(resolveDefine(defineMap[key]));
+      if (pin) pp.statusLeds.push(pin);
+    }
+  }
+
+  return pp;
 }
 
 /**
@@ -149,7 +229,16 @@ export function parseUnifiedConfig(content, filename) {
   const uartTx = {};
   const uartRx = {};
   let ledStrip = null;
+  const spiPins = [];
+  const gyroCsPins = [];
+  let osdCs = null, sdCs = null, flashCs = null;
+  const i2cPins = [];
+  let adcVbat = null, adcCurr = null, adcRssi = null;
+  let beeperPin = null;
+  const pinioPins = [];
+  const statusLeds = [];
 
+  // Two-word resource types: "resource SPI_SCK 1 A05" or "resource GYRO_CS 1 A04"
   const resourceRegex = /^resource\s+(\w+)\s+(\d+)\s+(\w+)/gm;
   let rm;
   while ((rm = resourceRegex.exec(content)) !== null) {
@@ -163,6 +252,20 @@ export function parseUnifiedConfig(content, filename) {
     else if (type === 'SERIAL_TX') uartTx[index] = pin;
     else if (type === 'SERIAL_RX') uartRx[index] = pin;
     else if (type === 'LED_STRIP') ledStrip = pin;
+    else if (type === 'SPI_SCK' || type === 'SPI_SDI' || type === 'SPI_SDO' || type === 'SPI_MISO' || type === 'SPI_MOSI') {
+      if (!spiPins.includes(pin)) spiPins.push(pin);
+    }
+    else if (type === 'GYRO_CS') { if (!gyroCsPins.includes(pin)) gyroCsPins.push(pin); }
+    else if (type === 'OSD_CS') osdCs = pin;
+    else if (type === 'FLASH_CS') flashCs = pin;
+    else if (type === 'SDCARD_CS') sdCs = pin;
+    else if (type === 'I2C_SCL' || type === 'I2C_SDA') { if (!i2cPins.includes(pin)) i2cPins.push(pin); }
+    else if (type === 'ADC_BATT') adcVbat = pin;
+    else if (type === 'ADC_CURR') adcCurr = pin;
+    else if (type === 'ADC_RSSI') adcRssi = pin;
+    else if (type === 'BEEPER') beeperPin = pin;
+    else if (type === 'PINIO') pinioPins.push(pin);
+    else if (type === 'LED') statusLeds.push(pin);
   }
 
   // Build UART list
@@ -173,6 +276,20 @@ export function parseUnifiedConfig(content, filename) {
     rx: uartRx[i] || null,
   }));
 
+  // Timer comment lines: "# pin B06: TIM4 CH1 (AF2)" — gives exact timer resolution
+  const timerComments = {};
+  const timerCommentRegex = /^#\s*pin\s+(\w+):\s+(\w+)\s+CH(\d+)\s+\(AF(\d+)\)/gm;
+  let tc;
+  while ((tc = timerCommentRegex.exec(content)) !== null) {
+    const pin = normalizePin(tc[1]);
+    if (pin) {
+      timerComments[pin] = {
+        timer: tc[2],              // e.g. "TIM4"
+        channel: parseInt(tc[3]),  // e.g. 1
+      };
+    }
+  }
+
   // Timer entries: "timer B00 AF2"
   const timerMap = [];
   const timerRegex = /^timer\s+(\w+)\s+AF(\d+)/gm;
@@ -182,7 +299,13 @@ export function parseUnifiedConfig(content, filename) {
     const pin = normalizePin(tm[1]);
     const af = parseInt(tm[2], 10);
     if (pin) {
-      timerMap.push({ index: idx++, pin, af, dmaOpt: 0 });
+      const entry = { index: idx++, pin, af, dmaOpt: 0 };
+      // Attach exact timer/channel from comment if available
+      if (timerComments[pin]) {
+        entry.resolvedTimer = timerComments[pin].timer;
+        entry.resolvedChannel = timerComments[pin].channel;
+      }
+      timerMap.push(entry);
     }
   }
 
@@ -215,9 +338,22 @@ export function parseUnifiedConfig(content, filename) {
   const gyroMatch = content.match(/^set\s+gyro_1_align\s*=\s*(\S+)/m);
   const gyroAlign = gyroMatch ? gyroMatch[1] : null;
 
+  // UART default functions: "set serialrx_uart = 4"
+  const serialrxMatch = content.match(/^set\s+serialrx_uart\s*=\s*(\d+)/m);
+  const serialrxUart = serialrxMatch ? parseInt(serialrxMatch[1], 10) : null;
+  const mspMatch = content.match(/^set\s+msp_uart\s*=\s*(\d+)/m);
+  const mspUart = mspMatch ? parseInt(mspMatch[1], 10) : null;
+
+  const peripheralPins = {
+    spi: spiPins, gyroCs: gyroCsPins, osdCs, sdCs, flashCs,
+    i2c: i2cPins, adcVbat, adcCurr, adcRssi,
+    beeper: beeperPin, pinio: pinioPins, statusLeds,
+  };
+
   return {
     boardName, mcu, mcuRaw: mcuRaw || '', manufacturer,
     motors, servos, uarts, timerMap, ledStrip, features, gyroAlign,
+    peripheralPins, serialrxUart, mspUart,
   };
 }
 
@@ -235,7 +371,7 @@ export function parseAllTargets(configRepoPath) {
     files = readdirSync(defaultDir).filter(f => f.endsWith('.config'));
   } catch {
     // Fallback: try configs/*/config.h (old format)
-    return parseAllTargetsConfigH(configRepoPath);
+    return parseAllConfigH(configRepoPath);
   }
 
   for (const file of files) {
@@ -252,8 +388,11 @@ export function parseAllTargets(configRepoPath) {
   return { targets: results, skipped };
 }
 
-// Fallback: parse configs subdirectory config.h format.
-function parseAllTargetsConfigH(configRepoPath) {
+/**
+ * Parse all config.h files from the betaflight/config repo.
+ * Structure: configs/BOARDNAME/config.h
+ */
+export function parseAllConfigH(configRepoPath) {
   const configsDir = join(configRepoPath, 'configs');
   const results = {};
   let skipped = 0;

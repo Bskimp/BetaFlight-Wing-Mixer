@@ -3,7 +3,9 @@ const TABS = [
   { id: 'mixer', icon: '\u2630', label: 'Mixer' },
   { id: 'pids', icon: '\u2261', label: 'PIDs' },
   { id: 'tuning', icon: '\u223F', label: 'Tuning' },
+  { id: 'tuning-guide', icon: '\uD83D\uDCD6', label: 'Tuning Guide' },
   { id: 'output', icon: '\u2756', label: 'Output' },
+  { id: 'guide', icon: '\u2139', label: 'How to Use' },
 ];
 
 export default function Sidebar({ activeTab, onTabChange, theme, onThemeToggle }) {

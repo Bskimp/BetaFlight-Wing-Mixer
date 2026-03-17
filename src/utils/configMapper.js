@@ -69,14 +69,23 @@ export function mapConfigToState(parsed) {
     s_yaw: profile.s_yaw ?? WING_DEFAULTS.s_yaw,
     servo_pwm_rate: parsed.master.servo_pwm_rate ?? WING_DEFAULTS.servo_pwm_rate,
     iterm_relax_cutoff: profile.iterm_relax_cutoff ?? WING_DEFAULTS.iterm_relax_cutoff,
+    gps_use_3d_speed: parsed.master.gps_use_3d_speed ?? WING_DEFAULTS.gps_use_3d_speed,
+    dterm_lpf1_dyn_expo: profile.dterm_lpf1_dyn_expo ?? WING_DEFAULTS.dterm_lpf1_dyn_expo,
   };
 
   // TPA settings
   const tpaSettings = {
     tpa_mode: profile.tpa_mode ?? TPA_DEFAULTS.tpa_mode,
     tpa_curve_type: profile.tpa_curve_type ?? TPA_DEFAULTS.tpa_curve_type,
+    tpa_speed_type: profile.tpa_speed_type ?? TPA_DEFAULTS.tpa_speed_type,
     tpa_speed_max_voltage: profile.tpa_speed_max_voltage ?? TPA_DEFAULTS.tpa_speed_max_voltage,
     tpa_speed_basic_delay: profile.tpa_speed_basic_delay ?? TPA_DEFAULTS.tpa_speed_basic_delay,
+    tpa_speed_basic_gravity: profile.tpa_speed_basic_gravity ?? TPA_DEFAULTS.tpa_speed_basic_gravity,
+    tpa_speed_adv_mass: profile.tpa_speed_adv_mass ?? TPA_DEFAULTS.tpa_speed_adv_mass,
+    tpa_speed_adv_drag_k: profile.tpa_speed_adv_drag_k ?? TPA_DEFAULTS.tpa_speed_adv_drag_k,
+    tpa_speed_adv_twr: profile.tpa_speed_adv_twr ?? TPA_DEFAULTS.tpa_speed_adv_twr,
+    tpa_speed_adv_prop_pitch: profile.tpa_speed_adv_prop_pitch ?? TPA_DEFAULTS.tpa_speed_adv_prop_pitch,
+    tpa_speed_est_pitch_offset: profile.tpa_speed_est_pitch_offset ?? TPA_DEFAULTS.tpa_speed_est_pitch_offset,
     tpa_curve_stall_throttle: profile.tpa_curve_stall_throttle ?? TPA_DEFAULTS.tpa_curve_stall_throttle,
     tpa_curve_pid_thr0: profile.tpa_curve_pid_thr0 ?? TPA_DEFAULTS.tpa_curve_pid_thr0,
     tpa_curve_pid_thr100: profile.tpa_curve_pid_thr100 ?? TPA_DEFAULTS.tpa_curve_pid_thr100,

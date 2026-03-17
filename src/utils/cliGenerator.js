@@ -10,7 +10,7 @@ const MIXER_NAMES = {
   24: 'CUSTOMAIRPLANE',
 };
 
-export function generateCli({ preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity, selectedTarget, assignments, tpaSettings, spaSettings, passthrough }) {
+export function generateCli({ preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps }) {
   const lines = [];
   const presetName = AIRFRAME_PRESETS[preset]?.name || preset;
   const imported = passthrough && Object.keys(passthrough).some(k => {
@@ -43,11 +43,60 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
 
     for (const m of motorAssigns) lines.push(`resource MOTOR ${m.index} ${pinToCli(m.pin)}`);
     for (const s of servoAssigns) lines.push(`resource SERVO ${s.index} ${pinToCli(s.pin)}`);
+
+    // UART remap commands
+    if (uartRemaps && Object.keys(uartRemaps).length > 0) {
+      // Group remaps by UART index
+      const byUart = {};
+      for (const [pin, remap] of Object.entries(uartRemaps)) {
+        if (!byUart[remap.uartIndex]) byUart[remap.uartIndex] = [];
+        byUart[remap.uartIndex].push({ pin, ...remap });
+      }
+
+      lines.push('');
+      lines.push('# UART pin remap — sacrifice UARTs for servo outputs');
+
+      for (const [uartIdx, remaps] of Object.entries(byUart)) {
+        lines.push(`# Disable UART${uartIdx} in Betaflight Ports tab`);
+        // Free the UART pins
+        const hasTx = remaps.some(r => r.role === 'tx');
+        const hasRx = remaps.some(r => r.role === 'rx');
+        if (hasTx) lines.push(`resource SERIAL_TX ${uartIdx} NONE`);
+        if (hasRx) lines.push(`resource SERIAL_RX ${uartIdx} NONE`);
+      }
+
+      lines.push('');
+      // Timer AF assignments and servo resource assignments
+      const timerPinSet = new Set((selectedTarget.timerPins || []).map(tp => tp.pin));
+      for (const [pin, remap] of Object.entries(uartRemaps)) {
+        // Skip timer command if pin is already in TIMER_PIN_MAP
+        if (!timerPinSet.has(pin)) {
+          lines.push(`timer ${pinToCli(pin)} AF${remap.af}`);
+        }
+      }
+
+      for (const [pin, remap] of Object.entries(uartRemaps)) {
+        lines.push(`resource SERVO ${remap.servoIndex} ${pinToCli(pin)}`);
+      }
+
+      // DMA — servos don't need DMA
+      for (const pin of Object.keys(uartRemaps)) {
+        if (!timerPinSet.has(pin)) {
+          lines.push(`dma pin ${pinToCli(pin)} NONE`);
+        }
+      }
+    }
+
     lines.push('');
 
     if (selectedTarget.uarts && selectedTarget.uarts.length > 0) {
+      const sacrificedUarts = new Set(Object.values(uartRemaps || {}).map(r => r.uartIndex));
       lines.push('# UART assignments \u2014 configure in Betaflight Ports tab:');
       for (const u of selectedTarget.uarts) {
+        if (sacrificedUarts.has(u.index)) {
+          lines.push(`# UART${u.index}: SACRIFICED for servo output`);
+          continue;
+        }
         const tx = u.tx ? pinToCli(u.tx) : null;
         const rx = u.rx ? pinToCli(u.rx) : null;
         let desc;
@@ -163,6 +212,9 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
   // Servo PWM rate
   emitIfDiff(masterLines, 'servo_pwm_rate', wingSettings.servo_pwm_rate);
 
+  // GPS 3D speed
+  emitIfDiff(masterLines, 'gps_use_3d_speed', wingSettings.gps_use_3d_speed);
+
   // SPA modes are master context
   if (complexity === 'expert' && spaSettings) {
     emitIfDiff(masterLines, 'spa_roll_mode', spaSettings.spa_roll_mode);
@@ -221,8 +273,18 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
       const tpaLines = [];
       emitIfDiff(tpaLines, 'tpa_mode', tpaSettings.tpa_mode);
       emitIfDiff(tpaLines, 'tpa_curve_type', tpaSettings.tpa_curve_type);
+      emitIfDiff(tpaLines, 'tpa_speed_type', tpaSettings.tpa_speed_type);
       emitIfDiff(tpaLines, 'tpa_speed_max_voltage', tpaSettings.tpa_speed_max_voltage);
+      // Basic model
       emitIfDiff(tpaLines, 'tpa_speed_basic_delay', tpaSettings.tpa_speed_basic_delay);
+      emitIfDiff(tpaLines, 'tpa_speed_basic_gravity', tpaSettings.tpa_speed_basic_gravity);
+      // Advanced model
+      emitIfDiff(tpaLines, 'tpa_speed_adv_mass', tpaSettings.tpa_speed_adv_mass);
+      emitIfDiff(tpaLines, 'tpa_speed_adv_drag_k', tpaSettings.tpa_speed_adv_drag_k);
+      emitIfDiff(tpaLines, 'tpa_speed_adv_twr', tpaSettings.tpa_speed_adv_twr);
+      emitIfDiff(tpaLines, 'tpa_speed_adv_prop_pitch', tpaSettings.tpa_speed_adv_prop_pitch);
+      emitIfDiff(tpaLines, 'tpa_speed_est_pitch_offset', tpaSettings.tpa_speed_est_pitch_offset);
+      // Curve shape
       emitIfDiff(tpaLines, 'tpa_curve_stall_throttle', tpaSettings.tpa_curve_stall_throttle);
       emitIfDiff(tpaLines, 'tpa_curve_pid_thr0', tpaSettings.tpa_curve_pid_thr0);
       emitIfDiff(tpaLines, 'tpa_curve_pid_thr100', tpaSettings.tpa_curve_pid_thr100);
@@ -257,6 +319,7 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     emitIfDiff(wingLines, 'd_max_pitch', 0);
     emitIfDiff(wingLines, 'iterm_relax_cutoff', wingSettings.iterm_relax_cutoff);
     emitIfDiff(wingLines, 'angle_earth_ref', 0);
+    emitIfDiff(wingLines, 'dterm_lpf1_dyn_expo', wingSettings.dterm_lpf1_dyn_expo);
     if (wingLines.length > 0) {
       lines.push('# Wing essentials');
       lines.push(...wingLines);
@@ -282,6 +345,88 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
 
   lines.push('batch end');
   lines.push('save');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate a baseline CLI representing the BF factory defaults + target resource assignments.
+ * Used for the side-by-side comparison in the Output tab.
+ */
+export function generateBaselineCli(target) {
+  const lines = [];
+
+  lines.push('# Betaflight Factory Defaults');
+  lines.push(`# Target: ${target.boardName}`);
+  lines.push('');
+
+  // Target resource assignments (what the board ships with)
+  if (target.timerPins && target.timerPins.length > 0) {
+    lines.push('# Default resource assignments');
+    const motors = target.timerPins.filter((_, i) => i < (target.motors || 0));
+    const servos = target.timerPins.filter((_, i) => i >= (target.motors || 0));
+    motors.forEach((tp, i) => {
+      lines.push(`resource MOTOR ${i + 1} ${pinToCli(tp.pin)}`);
+    });
+    servos.forEach((tp, i) => {
+      lines.push(`resource SERVO ${i + 1} ${pinToCli(tp.pin)}`);
+    });
+    lines.push('');
+  }
+
+  lines.push('# master');
+  lines.push(`set servo_pwm_rate = ${BF_DEFAULTS.servo_pwm_rate}`);
+  lines.push(`set gps_use_3d_speed = ${BF_DEFAULTS.gps_use_3d_speed}`);
+  lines.push(`set spa_roll_mode = ${BF_DEFAULTS.spa_roll_mode}`);
+  lines.push(`set spa_pitch_mode = ${BF_DEFAULTS.spa_pitch_mode}`);
+  lines.push(`set spa_yaw_mode = ${BF_DEFAULTS.spa_yaw_mode}`);
+  lines.push('');
+
+  lines.push('profile 0');
+  lines.push('');
+
+  // PID defaults
+  lines.push('# PID tuning');
+  for (const axis of ['roll', 'pitch', 'yaw']) {
+    for (const term of ['p', 'i', 'd', 'f']) {
+      const key = `${term}_${axis}`;
+      lines.push(`set ${key} = ${BF_DEFAULTS[key]}`);
+    }
+  }
+  lines.push('');
+
+  // S-term defaults
+  lines.push('# S-term');
+  lines.push(`set s_roll = ${BF_DEFAULTS.s_roll}`);
+  lines.push(`set s_pitch = ${BF_DEFAULTS.s_pitch}`);
+  lines.push(`set s_yaw = ${BF_DEFAULTS.s_yaw}`);
+  lines.push('');
+
+  // TPA defaults
+  lines.push('# TPA');
+  lines.push(`set tpa_mode = ${BF_DEFAULTS.tpa_mode}`);
+  lines.push(`set tpa_curve_type = ${BF_DEFAULTS.tpa_curve_type}`);
+  lines.push(`set tpa_speed_type = ${BF_DEFAULTS.tpa_speed_type}`);
+  lines.push(`set tpa_speed_max_voltage = ${BF_DEFAULTS.tpa_speed_max_voltage}`);
+  lines.push('');
+
+  // Wing essentials
+  lines.push('# Wing-related');
+  lines.push(`set anti_gravity_gain = ${BF_DEFAULTS.anti_gravity_gain}`);
+  lines.push(`set d_max_roll = ${BF_DEFAULTS.d_max_roll}`);
+  lines.push(`set d_max_pitch = ${BF_DEFAULTS.d_max_pitch}`);
+  lines.push(`set iterm_relax_cutoff = ${BF_DEFAULTS.iterm_relax_cutoff}`);
+  lines.push(`set angle_earth_ref = ${BF_DEFAULTS.angle_earth_ref}`);
+  lines.push(`set dterm_lpf1_dyn_expo = ${BF_DEFAULTS.dterm_lpf1_dyn_expo}`);
+  lines.push('');
+
+  // Rates
+  lines.push('rateprofile 0');
+  lines.push('');
+  lines.push('# Rates');
+  lines.push(`set roll_rc_rate = ${BF_DEFAULTS.roll_rc_rate}`);
+  lines.push(`set pitch_rc_rate = ${BF_DEFAULTS.pitch_rc_rate}`);
+  lines.push(`set yaw_rc_rate = ${BF_DEFAULTS.yaw_rc_rate}`);
 
   return lines.join('\n');
 }

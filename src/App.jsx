@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { AIRFRAME_PRESETS } from './data/presets';
 import { WING_DEFAULTS, PID_DEFAULTS, RATE_DEFAULTS, TPA_DEFAULTS, SPA_DEFAULTS } from './data/defaults';
-import { validateMotorYaw, validateSTermYaw } from './data/validation';
+import { validateMotorYaw, validateSTermYaw, validateYawIGain } from './data/validation';
 import { generateCli } from './utils/cliGenerator';
 import { detectConflicts, autoAssignResources } from './utils/timerCheck';
 import targets from './data/targets.json';
@@ -19,6 +19,8 @@ import ResourceMapper from './components/ResourceMapper';
 import CliOutput from './components/CliOutput';
 import ImportDialog from './components/ImportDialog';
 import WingDiagram from './components/WingDiagram';
+import GuidePanel from './components/GuidePanel';
+import TuningGuidePanel from './components/TuningGuidePanel';
 
 function deepClone(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -94,7 +96,9 @@ const TAB_TITLES = {
   mixer: 'Mixer',
   pids: 'PIDs',
   tuning: 'Tuning',
+  'tuning-guide': 'Tuning Guide',
   output: 'Output',
+  guide: 'How to Use',
 };
 
 export default function App() {
@@ -114,6 +118,7 @@ export default function App() {
   const [showImport, setShowImport] = useState(false);
   const [importSource, setImportSource] = useState(null);
   const [passthrough, setPassthrough] = useState(null);
+  const [uartRemaps, setUartRemaps] = useState({});
   const [activeTab, setActiveTab] = useState('setup');
 
   // Load from URL on mount
@@ -148,7 +153,12 @@ export default function App() {
     setDiffThrust(p.diffThrust);
     setWingSettings(prev => ({
       ...prev,
-      s_yaw: p.diffThrust ? 0 : prev.s_yaw,
+      s_yaw: p.diffThrust ? 0 : (prev.s_yaw || 50),
+    }));
+    // Diff thrust: yaw I-term must be 0 to avoid buildup at high airspeed
+    setPids(prev => ({
+      ...prev,
+      yaw: { ...prev.yaw, i: p.diffThrust ? 0 : prev.yaw.i },
     }));
 
     if (selectedTarget) {
@@ -158,6 +168,7 @@ export default function App() {
 
     setImportSource(null);
     setPassthrough(null);
+    setUartRemaps({});
   }, [selectedTarget, userModifiedResources]);
 
   const handleTargetSelect = useCallback((target) => {
@@ -172,6 +183,7 @@ export default function App() {
       setAssignments({});
     }
     setUserModifiedResources(false);
+    setUartRemaps({});
   }, [preset, userModifiedResources]);
 
   const handleAssignmentsChange = useCallback((newAssignments) => {
@@ -207,6 +219,19 @@ export default function App() {
     navigator.clipboard.writeText(url);
   }, [preset, motors, servos, pids, rates, wingSettings, diffThrust]);
 
+  const handleGuideApply = useCallback((updates) => {
+    if (updates.pids) setPids(prev => ({
+      ...prev,
+      roll: { ...prev.roll, ...updates.pids.roll },
+      pitch: { ...prev.pitch, ...updates.pids.pitch },
+      yaw: { ...prev.yaw, ...updates.pids.yaw },
+    }));
+    if (updates.rates) setRates(prev => ({ ...prev, ...updates.rates }));
+    if (updates.wingSettings) setWingSettings(prev => ({ ...prev, ...updates.wingSettings }));
+    if (updates.tpaSettings) setTpaSettings(prev => ({ ...prev, ...updates.tpaSettings }));
+    if (updates.spaSettings) setSpaSettings(prev => ({ ...prev, ...updates.spaSettings }));
+  }, []);
+
   const toggleTheme = () => {
     setTheme(prev => {
       const next = prev === null ? 'light' : prev === 'light' ? 'dark' : null;
@@ -218,17 +243,18 @@ export default function App() {
     });
   };
 
-  // Timer conflict detection
+  // Timer conflict detection (includes UART-remapped pins)
   const conflicts = useMemo(() => {
     if (!selectedTarget) return [];
-    return detectConflicts(assignments, selectedTarget.timerPins);
-  }, [assignments, selectedTarget]);
+    return detectConflicts(assignments, selectedTarget.timerPins, uartRemaps);
+  }, [assignments, selectedTarget, uartRemaps]);
 
   // CLI generation
   const cliText = useMemo(() => generateCli({
     preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity: 'expert',
-    selectedTarget, assignments, tpaSettings, spaSettings, passthrough,
-  }), [preset, motors, servos, wingSettings, pids, rates, diffThrust, selectedTarget, assignments, tpaSettings, spaSettings, passthrough]);
+    selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps,
+  }), [preset, motors, servos, wingSettings, pids, rates, diffThrust, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps]);
+
 
   // Collect warnings
   const warnings = useMemo(() => {
@@ -239,11 +265,28 @@ export default function App() {
     });
     const sYaw = validateSTermYaw(wingSettings.s_yaw, diffThrust);
     if (sYaw) w.push(sYaw.message);
+    const yawI = validateYawIGain(pids.yaw.i, diffThrust);
+    if (yawI) w.push(yawI.message);
     for (const c of conflicts) {
       w.push(c.message);
     }
+    // UART sacrifice warnings
+    if (selectedTarget && uartRemaps) {
+      const sacrificedUarts = new Set();
+      for (const r of Object.values(uartRemaps)) {
+        sacrificedUarts.add(r.uartIndex);
+      }
+      for (const idx of sacrificedUarts) {
+        if (selectedTarget.serialrxUart === idx) {
+          w.push(`UART${idx} will be disabled — this is the receiver (SERIALRX) port`);
+        }
+        if (selectedTarget.mspUart === idx) {
+          w.push(`UART${idx} will be disabled — this is the MSP/configurator port`);
+        }
+      }
+    }
     return w;
-  }, [motors, wingSettings, diffThrust, conflicts]);
+  }, [motors, wingSettings, diffThrust, conflicts, pids, uartRemaps, selectedTarget]);
 
   // Copy CLI to clipboard
   const [copied, setCopied] = useState(false);
@@ -282,6 +325,9 @@ export default function App() {
                 assignments={assignments}
                 onAssignmentsChange={handleAssignmentsChange}
                 conflicts={conflicts}
+                preset={AIRFRAME_PRESETS[preset]}
+                uartRemaps={uartRemaps}
+                onUartRemapsChange={setUartRemaps}
               />
             )}
           </>
@@ -300,7 +346,7 @@ export default function App() {
       case 'pids':
         return (
           <>
-            <PidPanel pids={pids} onChange={setPids} />
+            <PidPanel pids={pids} onChange={setPids} diffThrust={diffThrust} wingSettings={wingSettings} onWingSettingsChange={setWingSettings} />
             <RatesPanel rates={rates} onChange={setRates} />
           </>
         );
@@ -308,11 +354,14 @@ export default function App() {
       case 'tuning':
         return (
           <>
-            <WingSettings wingSettings={wingSettings} diffThrust={diffThrust} onChange={setWingSettings} />
+            <WingSettings wingSettings={wingSettings} onChange={setWingSettings} />
             <TpaCurvePanel tpaSettings={tpaSettings} onChange={setTpaSettings} />
             <SpaPanel spaSettings={spaSettings} onChange={setSpaSettings} />
           </>
         );
+
+      case 'tuning-guide':
+        return <TuningGuidePanel onApply={handleGuideApply} onTabChange={setActiveTab} />;
 
       case 'output':
         return (
@@ -321,8 +370,13 @@ export default function App() {
             warnings={warnings}
             boardName={importSource || selectedTarget?.boardName}
             onShare={handleShare}
+            selectedTarget={selectedTarget}
+            assignments={assignments}
           />
         );
+
+      case 'guide':
+        return <GuidePanel />;
 
       default:
         return null;

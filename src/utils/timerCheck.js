@@ -45,49 +45,6 @@ export function isWingCapable(target) {
 }
 
 /**
- * Detect timer conflicts in resource assignments.
- * A conflict is when a motor and servo share the same timer (or timerFamily).
- * Motor+motor or servo+servo on the same timer is fine.
- *
- * @param {Object} assignments - {pin: {type: 'motor'|'servo'|'led', index: number}}
- * @param {Array} timerPins - target's timerPins array
- * @returns {Array} [{timer, pins, exact, message}]
- */
-export function detectConflicts(assignments, timerPins) {
-  if (!timerPins || timerPins.length === 0) return [];
-
-  // Build timer/family → assigned pins with their types
-  const groupMap = {};
-  for (const tp of timerPins) {
-    const key = tp.exact ? tp.timer : tp.timerFamily;
-    if (!key) continue;
-    const assignment = assignments[tp.pin];
-    if (!assignment || assignment.type === 'led') continue;
-
-    if (!groupMap[key]) {
-      groupMap[key] = { exact: tp.exact !== false, pins: [] };
-    }
-    groupMap[key].pins.push({ pin: tp.pin, type: assignment.type });
-    if (!tp.exact) groupMap[key].exact = false;
-  }
-
-  const conflicts = [];
-  for (const [timer, group] of Object.entries(groupMap)) {
-    const hasMotor = group.pins.some(p => p.type === 'motor');
-    const hasServo = group.pins.some(p => p.type === 'servo');
-    if (hasMotor && hasServo) {
-      const pinList = group.pins.map(p => p.pin);
-      const message = group.exact
-        ? `${timer} has both Dshot motors and PWM servos \u2014 they cannot share a timer`
-        : `${timer} pins may share a timer \u2014 verify with CLI \`timer\` command`;
-      conflicts.push({ timer, pins: pinList, exact: group.exact, message });
-    }
-  }
-
-  return conflicts;
-}
-
-/**
  * Auto-assign motor and servo pins from different timer groups.
  *
  * Strategy:
@@ -176,6 +133,155 @@ export function autoAssignResources(presetData, target) {
   }
 
   return assignments;
+}
+
+/**
+ * Compute pin budget: how many outputs the preset needs vs what the target has.
+ *
+ * @param {Object} presetData - { motors: [...], servos: [...] }
+ * @param {Object} target - target with timerPins and pinAccess
+ * @returns {{ needed: number, available: number, shortfall: number }}
+ */
+export function computePinBudget(presetData, target) {
+  const needed = presetData.motors.length + presetData.servos.length;
+  const available = (target.timerPins || []).filter(tp => {
+    const access = target.pinAccess?.[tp.pin];
+    return access !== 'blocked';
+  }).length;
+  return { needed, available, shortfall: Math.max(0, needed - available) };
+}
+
+/**
+ * Find UARTs that have at least one pin with timer options (remappable).
+ * Excludes pins that are Tier 2 blocked.
+ * Sorted: UARTs where both TX+RX are remappable on the same timer first.
+ *
+ * @param {Object} target - target with enriched uarts and pinAccess
+ * @returns {Array} filtered and sorted UART entries
+ */
+export function findRemappableUarts(target) {
+  const uarts = target.uarts || [];
+  const remappable = uarts.filter(u => {
+    const txOk = u.txTimers?.length > 0 && target.pinAccess?.[u.tx] !== 'blocked';
+    const rxOk = u.rxTimers?.length > 0 && target.pinAccess?.[u.rx] !== 'blocked';
+    return txOk || rxOk;
+  });
+
+  // Sort: prefer UARTs where both pins share a common timer
+  remappable.sort((a, b) => {
+    const aShared = hasSharedTimer(a);
+    const bShared = hasSharedTimer(b);
+    if (aShared && !bShared) return -1;
+    if (!aShared && bShared) return 1;
+    return a.index - b.index;
+  });
+
+  return remappable;
+}
+
+function hasSharedTimer(uart) {
+  if (!uart.txTimers?.length || !uart.rxTimers?.length) return false;
+  const txTimers = new Set(uart.txTimers.map(t => t.timer));
+  return uart.rxTimers.some(t => txTimers.has(t.timer));
+}
+
+/**
+ * Pick the best timer option for a UART pin being remapped to servo.
+ *
+ * Priority:
+ * 1. Timer already used for other servos (same timer = no new conflict)
+ * 2. Avoid timer used for motors (Dshot/PWM conflict)
+ * 3. Prefer lower-numbered timers
+ *
+ * @param {Array} timerOptions - [{timer, channel, af}] from UART enrichment
+ * @param {Object} assignments - current pin assignments
+ * @param {Array} timerPins - target's timerPins
+ * @returns {Object|null} best {timer, channel, af} or null
+ */
+export function pickBestTimer(timerOptions, assignments, timerPins) {
+  if (!timerOptions || timerOptions.length === 0) return null;
+  if (timerOptions.length === 1) return timerOptions[0];
+
+  // Build set of timers used by motors and servos
+  const motorTimers = new Set();
+  const servoTimers = new Set();
+  for (const tp of timerPins || []) {
+    const a = assignments[tp.pin];
+    if (!a) continue;
+    const timerKey = tp.exact ? tp.timer : tp.timerFamily;
+    if (a.type === 'motor') motorTimers.add(timerKey);
+    if (a.type === 'servo') servoTimers.add(timerKey);
+  }
+
+  // Score each option (lower = better)
+  const scored = timerOptions.map(opt => {
+    let score = 0;
+    if (servoTimers.has(opt.timer)) score -= 10; // prefer servo timer
+    if (motorTimers.has(opt.timer)) score += 20; // avoid motor timer
+    // Prefer lower timer number
+    const num = parseInt(opt.timer.replace('TIM', ''), 10) || 99;
+    score += num;
+    return { ...opt, score };
+  });
+
+  scored.sort((a, b) => a.score - b.score);
+  const { score: _, ...best } = scored[0];
+  return best;
+}
+
+/**
+ * Detect timer conflicts, optionally including UART-remapped pins.
+ * Extends the existing conflict detection to check remapped pins too.
+ *
+ * @param {Object} assignments - {pin: {type: 'motor'|'servo'|'led', index: number}}
+ * @param {Array} timerPins - target's timerPins array
+ * @param {Object} [uartRemaps] - {pin: {timer, type: 'servo', ...}}
+ * @returns {Array} [{timer, pins, exact, message}]
+ */
+export function detectConflicts(assignments, timerPins, uartRemaps) {
+  if (!timerPins || timerPins.length === 0) return [];
+
+  // Build timer/family → assigned pins with their types
+  const groupMap = {};
+  for (const tp of timerPins) {
+    const key = tp.exact ? tp.timer : tp.timerFamily;
+    if (!key) continue;
+    const assignment = assignments[tp.pin];
+    if (!assignment || assignment.type === 'led') continue;
+
+    if (!groupMap[key]) {
+      groupMap[key] = { exact: tp.exact !== false, pins: [] };
+    }
+    groupMap[key].pins.push({ pin: tp.pin, type: assignment.type });
+    if (!tp.exact) groupMap[key].exact = false;
+  }
+
+  // Include UART-remapped pins in conflict checking
+  if (uartRemaps) {
+    for (const [pin, remap] of Object.entries(uartRemaps)) {
+      const key = remap.timer;
+      if (!key) continue;
+      if (!groupMap[key]) {
+        groupMap[key] = { exact: true, pins: [] };
+      }
+      groupMap[key].pins.push({ pin, type: 'servo' });
+    }
+  }
+
+  const conflicts = [];
+  for (const [timer, group] of Object.entries(groupMap)) {
+    const hasMotor = group.pins.some(p => p.type === 'motor');
+    const hasServo = group.pins.some(p => p.type === 'servo');
+    if (hasMotor && hasServo) {
+      const pinList = group.pins.map(p => p.pin);
+      const message = group.exact
+        ? `${timer} has both Dshot motors and PWM servos — they cannot share a timer`
+        : `${timer} pins may share a timer — verify with CLI \`timer\` command`;
+      conflicts.push({ timer, pins: pinList, exact: group.exact, message });
+    }
+  }
+
+  return conflicts;
 }
 
 /**
