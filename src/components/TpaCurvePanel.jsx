@@ -14,36 +14,40 @@ const CELL_VOLTAGES = [
 ];
 
 /**
- * Compute hyperbolic TPA curve — matches BF firmware tpaCurveHyperbolicFunction() exactly.
- * See betaflight/betaflight PR #13805 for the original implementation.
+ * Exact port of BF's tpaCurveHyperbolicFunction() from pid_init.c.
+ * See betaflight/betaflight PR #13805.
+ *
+ * @param {number} x - normalized speed 0.0–1.0
+ * @param {number} stallThrottle - tpa_curve_stall_throttle (0–100, stored as %)
+ * @param {number} pidThr0 - tpa_curve_pid_thr0 (uint16, e.g. 200 = 2.0×)
+ * @param {number} pidThr100 - tpa_curve_pid_thr100 (uint16, e.g. 70 = 0.7×)
+ * @param {number} expoParam - tpa_curve_expo (int8, divided by 10 in formula)
+ * @returns {number} PID multiplier factor (e.g. 2.0 at stall, 0.7 at max)
  */
-function computeTpaCurve(stallThrottle, pidThr0, pidThr100, expo, points = 50) {
+function tpaCurveHyperbolic(x, stallThrottle, pidThr0, pidThr100, expoParam) {
+  const thrStall = stallThrottle / 100.0;
+  const pThr0 = pidThr0 / 100.0;
+
+  if (x <= thrStall) {
+    return pThr0;
+  }
+
+  const expoDivider = expoParam / 10.0 - 1.0;
+  const expo = Math.abs(expoDivider) > 1e-3 ? 1.0 / expoDivider : 1e3;
+
+  const pThr100 = pidThr100 / 100.0;
+  const xShifted = (x - thrStall) / (1.0 - thrStall); // scaleRangef(x, thrStall, 1, 0, 1)
+  const base = 1 + (Math.pow(pThr0 / pThr100, 1.0 / expo) - 1) * xShifted;
+  const divisor = Math.pow(base, expo);
+
+  return pThr0 / divisor;
+}
+
+function computeTpaCurve(stallThrottle, pidThr0, pidThr100, expo, points = 100) {
   const result = [];
-  const thrStall = stallThrottle / 100;
-  const pThr0 = pidThr0 / 100;     // e.g. 200% → 2.0
-  const pThr100 = pidThr100 / 100;  // e.g. 70% → 0.7
-
-  // Expo math from BF: expoDivider = expo/10 - 1, expoPow = 1/expoDivider
-  const expoDivider = expo / 10 - 1;
-  const expoPow = Math.abs(expoDivider) > 1e-3 ? 1 / expoDivider : 1000;
-
-  // Precompute the ratio base term
-  const ratio = pThr100 > 1e-6 ? pThr0 / pThr100 : 1000;
-  const ratioTerm = Math.pow(ratio, 1 / expoPow) - 1;
-
   for (let i = 0; i <= points; i++) {
-    const x = i / points; // 0..1 representing speed
-    let multiplier;
-
-    if (x <= thrStall) {
-      multiplier = pThr0;
-    } else {
-      const xShifted = (x - thrStall) / (1 - thrStall); // 0..1 after stall
-      const base = 1 + ratioTerm * xShifted;
-      const divisor = Math.pow(base, expoPow);
-      multiplier = divisor > 1e-6 ? pThr0 / divisor : pThr0;
-    }
-
+    const x = i / points;
+    const multiplier = tpaCurveHyperbolic(x, stallThrottle, pidThr0, pidThr100, expo);
     result.push({ speed: x * 100, multiplier: multiplier * 100 });
   }
   return result;
