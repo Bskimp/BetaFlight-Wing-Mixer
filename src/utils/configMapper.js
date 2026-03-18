@@ -55,11 +55,11 @@ export function mapConfigToState(parsed) {
     yaw:   { p: profile.p_yaw   ?? PID_DEFAULTS.yaw.p,   i: profile.i_yaw   ?? PID_DEFAULTS.yaw.i,   d: profile.d_yaw   ?? PID_DEFAULTS.yaw.d,   f: profile.f_yaw   ?? PID_DEFAULTS.yaw.f },
   };
 
-  // Rates — BF stores rc_rate as value/10, so multiply to get deg/s for UI
+  // Rates — BF ACTUAL rates stores srate as max_rate/10, so multiply to get deg/s for UI
   const rates = {
-    roll:  (rateProfile.roll_rc_rate  ?? Math.round(RATE_DEFAULTS.roll / 10)) * 10,
-    pitch: (rateProfile.pitch_rc_rate ?? Math.round(RATE_DEFAULTS.pitch / 10)) * 10,
-    yaw:   (rateProfile.yaw_rc_rate   ?? Math.round(RATE_DEFAULTS.yaw / 10)) * 10,
+    roll:  (rateProfile.roll_srate  ?? Math.round(RATE_DEFAULTS.roll / 10)) * 10,
+    pitch: (rateProfile.pitch_srate ?? Math.round(RATE_DEFAULTS.pitch / 10)) * 10,
+    yaw:   (rateProfile.yaw_srate   ?? Math.round(RATE_DEFAULTS.yaw / 10)) * 10,
   };
 
   // Wing settings

@@ -59,6 +59,7 @@ export const BF_DEFAULTS = {
   p_pitch: 47, i_pitch: 84, d_pitch: 46, f_pitch: 125,
   p_yaw: 45, i_yaw: 80, d_yaw: 0, f_yaw: 0,
   // Rates
+  rates_type: 'BETAFLIGHT',
   roll_rc_rate: 7,
   pitch_rc_rate: 7,
   yaw_rc_rate: 7,

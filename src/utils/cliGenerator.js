@@ -323,9 +323,10 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
   // === RATEPROFILE 0 ===
   if (complexity !== 'simple') {
     const rateLines = [];
-    emitIfDiff(rateLines, 'roll_rc_rate', Math.round(rates.roll / 10));
-    emitIfDiff(rateLines, 'pitch_rc_rate', Math.round(rates.pitch / 10));
-    emitIfDiff(rateLines, 'yaw_rc_rate', Math.round(rates.yaw / 10));
+    emitIfDiff(rateLines, 'rates_type', 'ACTUAL');
+    emitIfDiff(rateLines, 'roll_srate', Math.round(rates.roll / 10));
+    emitIfDiff(rateLines, 'pitch_srate', Math.round(rates.pitch / 10));
+    emitIfDiff(rateLines, 'yaw_srate', Math.round(rates.yaw / 10));
 
     if (rateLines.length > 0) {
       lines.push('rateprofile 0');
@@ -417,9 +418,10 @@ export function generateBaselineCli(target) {
   lines.push('rateprofile 0');
   lines.push('');
   lines.push('# Rates');
-  lines.push(`set roll_rc_rate = ${BF_DEFAULTS.roll_rc_rate}`);
-  lines.push(`set pitch_rc_rate = ${BF_DEFAULTS.pitch_rc_rate}`);
-  lines.push(`set yaw_rc_rate = ${BF_DEFAULTS.yaw_rc_rate}`);
+  lines.push(`set rates_type = ${BF_DEFAULTS.rates_type}`);
+  lines.push(`set roll_srate = ${BF_DEFAULTS.roll_srate}`);
+  lines.push(`set pitch_srate = ${BF_DEFAULTS.pitch_srate}`);
+  lines.push(`set yaw_srate = ${BF_DEFAULTS.yaw_srate}`);
 
   return lines.join('\n');
 }
