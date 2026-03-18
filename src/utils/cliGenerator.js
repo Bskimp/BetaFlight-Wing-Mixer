@@ -275,15 +275,8 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
       emitIfDiff(tpaLines, 'tpa_curve_type', tpaSettings.tpa_curve_type);
       emitIfDiff(tpaLines, 'tpa_speed_type', tpaSettings.tpa_speed_type);
       emitIfDiff(tpaLines, 'tpa_speed_max_voltage', tpaSettings.tpa_speed_max_voltage);
-      // Basic model
       emitIfDiff(tpaLines, 'tpa_speed_basic_delay', tpaSettings.tpa_speed_basic_delay);
       emitIfDiff(tpaLines, 'tpa_speed_basic_gravity', tpaSettings.tpa_speed_basic_gravity);
-      // Advanced model
-      emitIfDiff(tpaLines, 'tpa_speed_adv_mass', tpaSettings.tpa_speed_adv_mass);
-      emitIfDiff(tpaLines, 'tpa_speed_adv_drag_k', tpaSettings.tpa_speed_adv_drag_k);
-      emitIfDiff(tpaLines, 'tpa_speed_adv_twr', tpaSettings.tpa_speed_adv_twr);
-      emitIfDiff(tpaLines, 'tpa_speed_adv_prop_pitch', tpaSettings.tpa_speed_adv_prop_pitch);
-      emitIfDiff(tpaLines, 'tpa_speed_est_pitch_offset', tpaSettings.tpa_speed_est_pitch_offset);
       // Curve shape
       emitIfDiff(tpaLines, 'tpa_curve_stall_throttle', tpaSettings.tpa_curve_stall_throttle);
       emitIfDiff(tpaLines, 'tpa_curve_pid_thr0', tpaSettings.tpa_curve_pid_thr0);
@@ -330,9 +323,9 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
   // === RATEPROFILE 0 ===
   if (complexity !== 'simple') {
     const rateLines = [];
-    emitIfDiff(rateLines, 'roll_rc_rate', rates.roll);
-    emitIfDiff(rateLines, 'pitch_rc_rate', rates.pitch);
-    emitIfDiff(rateLines, 'yaw_rc_rate', rates.yaw);
+    emitIfDiff(rateLines, 'roll_rc_rate', Math.round(rates.roll / 10));
+    emitIfDiff(rateLines, 'pitch_rc_rate', Math.round(rates.pitch / 10));
+    emitIfDiff(rateLines, 'yaw_rc_rate', Math.round(rates.yaw / 10));
 
     if (rateLines.length > 0) {
       lines.push('rateprofile 0');

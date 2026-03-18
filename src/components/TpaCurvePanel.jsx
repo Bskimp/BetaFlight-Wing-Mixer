@@ -3,7 +3,7 @@ import Section from './common/Section';
 import RangeInput from './common/RangeInput';
 
 const TPA_MODES = ['D', 'PD', 'PDS'];
-const SPEED_TYPES = ['BASIC', 'ADVANCED'];
+// Speed estimation is always BASIC — advanced model removed per Limon's advice
 
 const CELL_VOLTAGES = [
   { label: '2S (8.4V)', value: 840 },
@@ -125,7 +125,6 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
   };
 
   const voltageMatch = CELL_VOLTAGES.find(c => c.value === tpaSettings.tpa_speed_max_voltage);
-  const isAdvanced = tpaSettings.tpa_speed_type === 'ADVANCED';
 
   return (
     <Section title="TPA airspeed curve" defaultCollapsed={false}>
@@ -156,25 +155,7 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
         </div>
       </div>
 
-      {/* Speed Estimation Model */}
-      <div className="sub-group">
-        <div className="sub-group-label">Speed estimation model</div>
-        <div className="segmented-btn">
-          {SPEED_TYPES.map(t => (
-            <button key={t}
-              className={tpaSettings.tpa_speed_type === t ? 'active' : ''}
-              onClick={() => update('tpa_speed_type', t)}
-            >{t === 'BASIC' ? 'Basic' : 'Advanced'}</button>
-          ))}
-        </div>
-        <div className="setting-note">
-          {isAdvanced
-            ? 'Physics-based model using mass, drag, TWR, and prop pitch'
-            : 'Simple model using throttle delay and gravity estimate'}
-        </div>
-      </div>
-
-      {/* Voltage / Cell count — shared by both models */}
+      {/* Voltage / Cell count */}
       <div className="sub-group">
         <div className="sub-group-label">Battery voltage</div>
         <div className="range-row">
@@ -195,40 +176,16 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
         </div>
       </div>
 
-      {/* BASIC model parameters */}
-      {!isAdvanced && (
-        <div className="sub-group">
-          <div className="sub-group-label">Basic speed estimation</div>
-          <RangeInput label="Delay" value={tpaSettings.tpa_speed_basic_delay}
-            onChange={v => update('tpa_speed_basic_delay', v)}
-            min={0} max={5000} step={100} unit=" ms" />
-          <RangeInput label="Gravity effect" value={tpaSettings.tpa_speed_basic_gravity}
-            onChange={v => update('tpa_speed_basic_gravity', v)}
-            min={0} max={200} step={5} unit="%" />
-        </div>
-      )}
-
-      {/* ADVANCED model parameters */}
-      {isAdvanced && (
-        <div className="sub-group">
-          <div className="sub-group-label">Advanced speed estimation</div>
-          <RangeInput label="Aircraft mass" value={tpaSettings.tpa_speed_adv_mass}
-            onChange={v => update('tpa_speed_adv_mass', v)}
-            min={100} max={10000} step={50} unit=" g" />
-          <RangeInput label="Drag coefficient" value={tpaSettings.tpa_speed_adv_drag_k}
-            onChange={v => update('tpa_speed_adv_drag_k', v)}
-            min={1} max={200} step={1} />
-          <RangeInput label="Thrust/weight ratio" value={tpaSettings.tpa_speed_adv_twr}
-            onChange={v => update('tpa_speed_adv_twr', v)}
-            min={50} max={500} step={10} unit="%" />
-          <RangeInput label="Prop pitch" value={tpaSettings.tpa_speed_adv_prop_pitch / 100}
-            onChange={v => update('tpa_speed_adv_prop_pitch', Math.round(v * 100))}
-            min={1} max={10} step={0.1} unit=' in' />
-          <RangeInput label="Pitch offset" value={tpaSettings.tpa_speed_est_pitch_offset / 100}
-            onChange={v => update('tpa_speed_est_pitch_offset', Math.round(v * 100))}
-            min={-10} max={10} step={0.5} unit='°' />
-        </div>
-      )}
+      {/* Basic speed estimation */}
+      <div className="sub-group">
+        <div className="sub-group-label">Basic speed estimation</div>
+        <RangeInput label="Delay" value={tpaSettings.tpa_speed_basic_delay}
+          onChange={v => update('tpa_speed_basic_delay', v)}
+          min={0} max={5000} step={100} unit=" ms" />
+        <RangeInput label="Gravity effect" value={tpaSettings.tpa_speed_basic_gravity}
+          onChange={v => update('tpa_speed_basic_gravity', v)}
+          min={0} max={200} step={5} unit="%" />
+      </div>
 
       {/* Curve parameters */}
       <div className="sub-group">
@@ -264,8 +221,8 @@ export default function TpaCurvePanel({ tpaSettings, onChange }) {
           <div>Oscillating at high speed? Reduce PID at full speed</div>
           <div>Sloppy at low speed? Increase PID at stall</div>
           <div>Good at extremes, bad in middle? Adjust expo</div>
-          <div>Speed feels laggy? Reduce delay (Basic) or check mass/drag (Advanced)</div>
-          <div>Nose-down dives over-attenuate? Adjust pitch offset or gravity effect</div>
+          <div>Speed feels laggy? Reduce delay</div>
+          <div>Nose-down dives over-attenuate? Adjust gravity effect</div>
         </div>
       )}
     </Section>

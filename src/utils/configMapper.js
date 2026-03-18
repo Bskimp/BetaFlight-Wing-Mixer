@@ -55,11 +55,11 @@ export function mapConfigToState(parsed) {
     yaw:   { p: profile.p_yaw   ?? PID_DEFAULTS.yaw.p,   i: profile.i_yaw   ?? PID_DEFAULTS.yaw.i,   d: profile.d_yaw   ?? PID_DEFAULTS.yaw.d,   f: profile.f_yaw   ?? PID_DEFAULTS.yaw.f },
   };
 
-  // Rates — map from BF names to tool state
+  // Rates — BF stores rc_rate as value/10, so multiply to get deg/s for UI
   const rates = {
-    roll:  rateProfile.roll_rc_rate  ?? RATE_DEFAULTS.roll,
-    pitch: rateProfile.pitch_rc_rate ?? RATE_DEFAULTS.pitch,
-    yaw:   rateProfile.yaw_rc_rate   ?? RATE_DEFAULTS.yaw,
+    roll:  (rateProfile.roll_rc_rate  ?? Math.round(RATE_DEFAULTS.roll / 10)) * 10,
+    pitch: (rateProfile.pitch_rc_rate ?? Math.round(RATE_DEFAULTS.pitch / 10)) * 10,
+    yaw:   (rateProfile.yaw_rc_rate   ?? Math.round(RATE_DEFAULTS.yaw / 10)) * 10,
   };
 
   // Wing settings
@@ -77,15 +77,10 @@ export function mapConfigToState(parsed) {
   const tpaSettings = {
     tpa_mode: profile.tpa_mode ?? TPA_DEFAULTS.tpa_mode,
     tpa_curve_type: profile.tpa_curve_type ?? TPA_DEFAULTS.tpa_curve_type,
-    tpa_speed_type: profile.tpa_speed_type ?? TPA_DEFAULTS.tpa_speed_type,
+    tpa_speed_type: 'BASIC',
     tpa_speed_max_voltage: profile.tpa_speed_max_voltage ?? TPA_DEFAULTS.tpa_speed_max_voltage,
     tpa_speed_basic_delay: profile.tpa_speed_basic_delay ?? TPA_DEFAULTS.tpa_speed_basic_delay,
     tpa_speed_basic_gravity: profile.tpa_speed_basic_gravity ?? TPA_DEFAULTS.tpa_speed_basic_gravity,
-    tpa_speed_adv_mass: profile.tpa_speed_adv_mass ?? TPA_DEFAULTS.tpa_speed_adv_mass,
-    tpa_speed_adv_drag_k: profile.tpa_speed_adv_drag_k ?? TPA_DEFAULTS.tpa_speed_adv_drag_k,
-    tpa_speed_adv_twr: profile.tpa_speed_adv_twr ?? TPA_DEFAULTS.tpa_speed_adv_twr,
-    tpa_speed_adv_prop_pitch: profile.tpa_speed_adv_prop_pitch ?? TPA_DEFAULTS.tpa_speed_adv_prop_pitch,
-    tpa_speed_est_pitch_offset: profile.tpa_speed_est_pitch_offset ?? TPA_DEFAULTS.tpa_speed_est_pitch_offset,
     tpa_curve_stall_throttle: profile.tpa_curve_stall_throttle ?? TPA_DEFAULTS.tpa_curve_stall_throttle,
     tpa_curve_pid_thr0: profile.tpa_curve_pid_thr0 ?? TPA_DEFAULTS.tpa_curve_pid_thr0,
     tpa_curve_pid_thr100: profile.tpa_curve_pid_thr100 ?? TPA_DEFAULTS.tpa_curve_pid_thr100,
