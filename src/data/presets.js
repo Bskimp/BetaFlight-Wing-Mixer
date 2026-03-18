@@ -6,8 +6,8 @@ export const AIRFRAME_PRESETS = {
       { id: 0, label: 'Motor 1', throttle: 1.0, roll: 0, pitch: 0, yaw: 0 },
     ],
     servos: [
-      { id: 0, label: 'Left Elevon', roll: 100, pitch: 100, yaw: 0 },
-      { id: 1, label: 'Right Elevon', roll: -100, pitch: 100, yaw: 0 },
+      { id: 0, label: 'Left Elevon', roll: 50, pitch: 50, yaw: 0 },
+      { id: 1, label: 'Right Elevon', roll: -50, pitch: 50, yaw: 0 },
     ],
     diffThrust: false,
     yawType: 'SERVO',
@@ -20,8 +20,8 @@ export const AIRFRAME_PRESETS = {
       { id: 1, label: 'Right Motor', throttle: 1.0, roll: 0, pitch: 0, yaw: 0.25 },
     ],
     servos: [
-      { id: 0, label: 'Left Elevon', roll: 100, pitch: 100, yaw: 0 },
-      { id: 1, label: 'Right Elevon', roll: -100, pitch: 100, yaw: 0 },
+      { id: 0, label: 'Left Elevon', roll: 50, pitch: 50, yaw: 0 },
+      { id: 1, label: 'Right Elevon', roll: -50, pitch: 50, yaw: 0 },
     ],
     diffThrust: true,
     yawType: 'DIFF_THRUST',
@@ -65,8 +65,8 @@ export const AIRFRAME_PRESETS = {
     servos: [
       { id: 0, label: 'Left Aileron', roll: 100, pitch: 0, yaw: 0 },
       { id: 1, label: 'Right Aileron', roll: -100, pitch: 0, yaw: 0 },
-      { id: 2, label: 'Left V-Tail', roll: 0, pitch: 100, yaw: 100 },
-      { id: 3, label: 'Right V-Tail', roll: 0, pitch: 100, yaw: -100 },
+      { id: 2, label: 'Left V-Tail', roll: 0, pitch: 50, yaw: 50 },
+      { id: 3, label: 'Right V-Tail', roll: 0, pitch: 50, yaw: -50 },
     ],
     diffThrust: false,
     yawType: 'SERVO',
