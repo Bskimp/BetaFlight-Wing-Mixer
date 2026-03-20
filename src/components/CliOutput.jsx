@@ -50,12 +50,23 @@ function parseSettings(text) {
 function CompareView({ target, assignments, cliText }) {
   const stockResources = useMemo(() => buildStockResources(target), [target]);
 
-  // Collect all pins that are in stock or in user assignments
+  // Collect all pins, sorted by resource type/index (Motor 1, Motor 2, ..., Servo 1, Servo 2, ...)
   const allPins = useMemo(() => {
     const pins = new Set();
     for (const pin of Object.keys(stockResources)) pins.add(pin);
     for (const pin of Object.keys(assignments)) pins.add(pin);
-    return [...pins].sort();
+    const typeOrder = { motor: 0, servo: 1, led: 2 };
+    return [...pins].sort((a, b) => {
+      const ra = stockResources[a] || assignments[a];
+      const rb = stockResources[b] || assignments[b];
+      if (!ra && !rb) return a.localeCompare(b);
+      if (!ra) return 1;
+      if (!rb) return -1;
+      const ta = typeOrder[ra.type] ?? 3;
+      const tb = typeOrder[rb.type] ?? 3;
+      if (ta !== tb) return ta - tb;
+      return (ra.index || 0) - (rb.index || 0);
+    });
   }, [stockResources, assignments]);
 
   // Compute resource changes

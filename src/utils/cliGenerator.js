@@ -31,16 +31,20 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     lines.push(`# Resource assignment for ${selectedTarget.boardName}`);
     for (let i = 1; i <= 8; i++) lines.push(`resource MOTOR ${i} NONE`);
     for (let i = 1; i <= 4; i++) lines.push(`resource SERVO ${i} NONE`);
+    lines.push('resource LED_STRIP 1 NONE');
     lines.push('');
 
     const motorAssigns = [];
     const servoAssigns = [];
+    const ledPins = [];
     for (const [pin, a] of Object.entries(assignments)) {
       if (a.type === 'motor') motorAssigns.push({ pin, index: a.index });
       else if (a.type === 'servo') servoAssigns.push({ pin, index: a.index });
+      else if (a.type === 'led') ledPins.push(pin);
     }
     motorAssigns.sort((a, b) => a.index - b.index);
     servoAssigns.sort((a, b) => a.index - b.index);
+    ledPins.sort();
 
     for (const m of motorAssigns) {
       const mObj = presetData?.motors?.[m.index - 1];
@@ -51,6 +55,11 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
       const sObj = presetData?.servos?.[s.index - 1];
       const comment = sObj ? `    # ${sObj.label}` : '';
       lines.push(`resource SERVO ${s.index} ${pinToCli(s.pin)}${comment}`);
+    }
+    if (ledPins.length > 0) {
+      for (let i = 0; i < ledPins.length; i++) {
+        lines.push(`resource LED_STRIP ${i + 1} ${pinToCli(ledPins[i])}`);
+      }
     }
 
     // UART remap commands
