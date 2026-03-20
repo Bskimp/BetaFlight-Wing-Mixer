@@ -311,7 +311,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ACCIF405": {
     "boardName": "ACCIF405",
@@ -546,10 +547,10 @@
     ],
     "gyroAlign": "CW0_DEG",
     "pinAccess": {
-      "PA09": "accessible",
-      "PA08": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
+      "PA09": "locked",
+      "PA08": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
       "PB03": "unknown",
       "PB06": "accessible",
       "PB07": "accessible",
@@ -566,7 +567,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ACROSKYF405": {
     "boardName": "ACROSKYF405",
@@ -836,7 +838,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "ACROSKYH743": {
     "boardName": "ACROSKYH743",
@@ -1153,7 +1156,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "AEDROXH7": {
     "boardName": "AEDROXH7",
@@ -1365,7 +1369,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AEROH7DIGITAL": {
     "boardName": "AEROH7DIGITAL",
@@ -1629,7 +1634,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "AG3XF4": {
     "boardName": "AG3XF4",
@@ -1927,7 +1933,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AG3XF7": {
     "boardName": "AG3XF7",
@@ -2225,7 +2232,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIKONF4": {
     "boardName": "AIKONF4",
@@ -2518,7 +2526,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIKONF4V2": {
     "boardName": "AIKONF4V2",
@@ -2724,10 +2733,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PB06": "accessible",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PB03": "unknown",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -2740,7 +2749,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIKONF4V3": {
     "boardName": "AIKONF4V3",
@@ -2986,7 +2996,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "AIKONF7": {
     "boardName": "AIKONF7",
@@ -3270,7 +3281,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRBOTF4": {
     "boardName": "AIRBOTF4",
@@ -3556,7 +3568,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRBOTF4SD": {
     "boardName": "AIRBOTF4SD",
@@ -3842,7 +3855,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRBOTF4V2": {
     "boardName": "AIRBOTF4V2",
@@ -4073,7 +4087,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRBOTF7": {
     "boardName": "AIRBOTF7",
@@ -4303,7 +4318,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRBOTF7HDV": {
     "boardName": "AIRBOTF7HDV",
@@ -4528,7 +4544,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRBRAINH743": {
     "boardName": "AIRBRAINH743",
@@ -4780,7 +4797,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AIRF7": {
     "boardName": "AIRF7",
@@ -4993,7 +5011,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ALIENFLIGHTF4": {
     "boardName": "ALIENFLIGHTF4",
@@ -5252,7 +5271,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ALIENFLIGHTNGF7": {
     "boardName": "ALIENFLIGHTNGF7",
@@ -5518,7 +5538,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ALIENFLIGHTNGF7_DUAL": {
     "boardName": "ALIENFLIGHTNGF7_DUAL",
@@ -5782,7 +5803,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ALIENFLIGHTNGF7_ELRS": {
     "boardName": "ALIENFLIGHTNGF7_ELRS",
@@ -6008,7 +6030,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ALIENFLIGHTNGF7_RX": {
     "boardName": "ALIENFLIGHTNGF7_RX",
@@ -6234,7 +6257,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ALIENWHOOPF4": {
     "boardName": "ALIENWHOOPF4",
@@ -6416,10 +6440,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PC07": "accessible",
-      "PC06": "accessible",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PC07": "locked",
+      "PC06": "locked",
       "PA00": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -6431,7 +6455,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ANYFCF7": {
     "boardName": "ANYFCF7",
@@ -6761,7 +6786,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ANYFCM7": {
     "boardName": "ANYFCM7",
@@ -7048,7 +7074,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODAF405": {
     "boardName": "AOCODAF405",
@@ -7305,7 +7332,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODAF405V2MPU6000": {
     "boardName": "AOCODAF405V2MPU6000",
@@ -7578,7 +7606,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODAF405V2MPU6500": {
     "boardName": "AOCODAF405V2MPU6500",
@@ -7851,7 +7880,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODAF722BLE": {
     "boardName": "AOCODAF722BLE",
@@ -8102,7 +8132,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODAF722MINI": {
     "boardName": "AOCODAF722MINI",
@@ -8407,7 +8438,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODAF722MINIV2": {
     "boardName": "AOCODAF722MINIV2",
@@ -8717,7 +8749,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODARCF405V3": {
     "boardName": "AOCODARCF405V3",
@@ -8989,7 +9022,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODARCF405V3SD": {
     "boardName": "AOCODARCF405V3SD",
@@ -9260,7 +9294,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODARCF405_AIO": {
     "boardName": "AOCODARCF405_AIO",
@@ -9457,10 +9492,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PB01": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -9474,7 +9509,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "AOCODARCF411_AIO": {
     "boardName": "AOCODARCF411_AIO",
@@ -9656,12 +9692,12 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA10": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB03": "accessible",
-      "PB10": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB03": "locked",
+      "PB10": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA02": "accessible",
@@ -9669,7 +9705,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "AOCODARCF722_AIO": {
     "boardName": "AOCODARCF722_AIO",
@@ -9987,14 +10024,14 @@
     ],
     "gyroAlign": "CW0_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA15": "accessible",
-      "PB03": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA15": "locked",
+      "PB03": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA02": "accessible",
@@ -10009,7 +10046,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "AOCODARCF7DUAL": {
     "boardName": "AOCODARCF7DUAL",
@@ -10269,7 +10307,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AOCODARCH7DUAL": {
     "boardName": "AOCODARCH7DUAL",
@@ -10587,7 +10626,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "APEXF7": {
     "boardName": "APEXF7",
@@ -10818,7 +10858,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "APEXF72023": {
     "boardName": "APEXF72023",
@@ -11036,10 +11077,10 @@
     "pinAccess": {
       "PA15": "accessible",
       "PA08": "unknown",
-      "PC08": "accessible",
-      "PB06": "accessible",
-      "PC09": "accessible",
-      "PB07": "accessible",
+      "PC08": "locked",
+      "PB06": "locked",
+      "PC09": "locked",
+      "PB07": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -11053,7 +11094,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ARESF7": {
     "boardName": "ARESF7",
@@ -11264,10 +11306,10 @@
       "PA09": "accessible",
       "PB00": "accessible",
       "PB06": "unknown",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA10": "accessible",
       "PA02": "accessible",
       "PA03": "accessible",
@@ -11280,7 +11322,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ARK_FPV": {
     "boardName": "ARK_FPV",
@@ -11433,7 +11476,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "ATOMRCF405": {
     "boardName": "ATOMRCF405",
@@ -11699,7 +11743,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ATOMRCF411": {
     "boardName": "ATOMRCF411",
@@ -11855,10 +11900,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA09": "accessible",
@@ -11867,7 +11912,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ATOMRCF722": {
     "boardName": "ATOMRCF722",
@@ -12135,7 +12181,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AXISFLYINGECOF4": {
     "boardName": "AXISFLYINGECOF4",
@@ -12363,7 +12410,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "AXISFLYINGF7": {
     "boardName": "AXISFLYINGF7",
@@ -12635,7 +12683,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AXISFLYINGF745AIO": {
     "boardName": "AXISFLYINGF745AIO",
@@ -12976,14 +13025,14 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PB05": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB00": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PE13": "accessible",
-      "PE14": "accessible",
+      "PB05": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB00": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PE13": "locked",
+      "PE14": "locked",
       "PB06": "accessible",
       "PB07": "accessible",
       "PC09": "accessible",
@@ -13007,7 +13056,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "AXISFLYINGF7AIO": {
     "boardName": "AXISFLYINGF7AIO",
@@ -13235,10 +13285,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA08": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -13252,7 +13302,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "AXISFLYINGF7PRO": {
     "boardName": "AXISFLYINGF7PRO",
@@ -13565,7 +13616,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "AXISFLYINGH743PRO": {
     "boardName": "AXISFLYINGH743PRO",
@@ -13875,7 +13927,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "BEASTFPVF722": {
     "boardName": "BEASTFPVF722",
@@ -14179,7 +14232,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BEEROTORF4": {
     "boardName": "BEEROTORF4",
@@ -14426,7 +14480,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BETAFLIGHTF4": {
     "boardName": "BETAFLIGHTF4",
@@ -14706,7 +14761,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BETAFPVF405": {
     "boardName": "BETAFPVF405",
@@ -14953,13 +15009,13 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PB08": "unknown",
-      "PC08": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PC08": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PB06": "accessible",
-      "PA08": "accessible",
+      "PA08": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PB10": "accessible",
@@ -14972,7 +15028,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "BETAFPVF405_ELRS": {
     "boardName": "BETAFPVF405_ELRS",
@@ -15222,7 +15279,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BETAFPVF411": {
     "boardName": "BETAFPVF411",
@@ -15414,10 +15472,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "unknown",
       "PB10": "unknown",
       "PA00": "unknown",
@@ -15428,7 +15486,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "BETAFPVF411RX": {
     "boardName": "BETAFPVF411RX",
@@ -15592,20 +15651,21 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA00": "accessible",
+      "PA00": "locked",
       "PA08": "unknown",
       "PA10": "accessible",
       "PB01": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
-      "PB10": "accessible",
+      "PB07": "locked",
+      "PB08": "locked",
+      "PB10": "locked",
       "PA09": "accessible",
       "PA02": "accessible",
       "PA03": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "BETAFPVF4SX1280": {
     "boardName": "BETAFPVF4SX1280",
@@ -15789,7 +15849,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BETAFPVF722": {
     "boardName": "BETAFPVF722",
@@ -16022,12 +16083,12 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -16044,7 +16105,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "BETAFPVH725": {
     "boardName": "BETAFPVH725",
@@ -16256,10 +16318,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB10": "accessible",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PB07": "unknown",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -16276,7 +16338,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "BETAFPVH743": {
     "boardName": "BETAFPVH743",
@@ -16615,7 +16678,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BLADEF4": {
     "boardName": "BLADEF4",
@@ -16922,7 +16986,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BLADE_F7": {
     "boardName": "BLADE_F7",
@@ -17194,7 +17259,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BLADE_F7_AIO": {
     "boardName": "BLADE_F7_AIO",
@@ -17486,14 +17552,14 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PB07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
-      "PA08": "accessible",
-      "PA09": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA10": "accessible",
-      "PB04": "accessible",
+      "PC08": "locked",
+      "PC09": "locked",
+      "PA08": "locked",
+      "PA09": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA10": "locked",
+      "PB04": "locked",
       "PB03": "accessible",
       "PB06": "accessible",
       "PA02": "accessible",
@@ -17509,7 +17575,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "BLADE_F7_HD": {
     "boardName": "BLADE_F7_HD",
@@ -17781,7 +17848,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BLUEJAYF4": {
     "boardName": "BLUEJAYF4",
@@ -17988,7 +18056,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BOTWINGF405": {
     "boardName": "BOTWINGF405",
@@ -18254,7 +18323,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "BOTWINGF722": {
     "boardName": "BOTWINGF722",
@@ -18550,7 +18620,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "BRAHMA_F405": {
     "boardName": "BRAHMA_F405",
@@ -18809,7 +18880,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BHF405V2": {
     "boardName": "BHF405V2",
@@ -19116,7 +19188,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BROTHERHOBBYF405V3": {
     "boardName": "BROTHERHOBBYF405V3",
@@ -19407,7 +19480,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "BROTHERHOBBYH743": {
     "boardName": "BROTHERHOBBYH743",
@@ -19697,7 +19771,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "CADDXF4": {
     "boardName": "CADDXF4",
@@ -20023,7 +20098,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CADDXF4_AIO_ELRS": {
     "boardName": "CADDXF4_AIO_ELRS",
@@ -20267,11 +20343,11 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB08": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PB06": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PB06": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -20283,7 +20359,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CADDX_PROTOS_F4": {
     "boardName": "CADDX_PROTOS_F4",
@@ -20507,10 +20584,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC08": "accessible",
-      "PC09": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PC08": "locked",
+      "PC09": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PB06": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -20525,7 +20602,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CCRCF722D": {
     "boardName": "CCRCF722D",
@@ -20825,7 +20903,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CHAMP_H743ICM": {
     "boardName": "CHAMP_H743ICM",
@@ -21037,7 +21116,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "CHAMP_H743MPU": {
     "boardName": "CHAMP_H743MPU",
@@ -21238,7 +21318,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "CHONKERH735": {
     "boardName": "CHONKERH735",
@@ -21395,10 +21476,10 @@
     ],
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
-      "PC06": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PC07": "accessible",
+      "PC06": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PC07": "locked",
       "PD05": "accessible",
       "PD06": "accessible",
       "PD08": "accessible",
@@ -21414,7 +21495,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CKFLIGHTF4": {
     "boardName": "CKFLIGHTF4",
@@ -21596,10 +21678,10 @@
     ],
     "gyroAlign": "CW0_DEG",
     "pinAccess": {
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PA02": "accessible",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PA02": "locked",
       "PC08": "accessible",
       "PB00": "unknown",
       "PA09": "accessible",
@@ -21611,7 +21693,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CLRACINGF4": {
     "boardName": "CLRACINGF4",
@@ -21839,7 +21922,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CLRACINGF4V2": {
     "boardName": "CLRACINGF4V2",
@@ -22068,7 +22152,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CLRACINGF7": {
     "boardName": "CLRACINGF7",
@@ -22427,7 +22512,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "COLIBRI": {
     "boardName": "COLIBRI",
@@ -22741,7 +22827,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CRAZYBEEF405": {
     "boardName": "CRAZYBEEF405",
@@ -22956,10 +23043,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB08": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -22969,7 +23056,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CRAZYBEEF4DX": {
     "boardName": "CRAZYBEEF4DX",
@@ -23150,10 +23238,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -23161,7 +23249,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CRAZYBEEF4DXS": {
     "boardName": "CRAZYBEEF4DXS",
@@ -23344,10 +23433,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -23355,7 +23444,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CRAZYBEEF4FR": {
     "boardName": "CRAZYBEEF4FR",
@@ -23538,10 +23628,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -23549,7 +23639,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CRAZYBEEF4FS": {
     "boardName": "CRAZYBEEF4FS",
@@ -23730,10 +23821,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -23741,7 +23832,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CRAZYBEEF4SX1280": {
     "boardName": "CRAZYBEEF4SX1280",
@@ -23922,10 +24014,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -23933,7 +24025,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "CYCLONEF405_PRO": {
     "boardName": "CYCLONEF405_PRO",
@@ -24261,7 +24354,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "CYCLONEF722_PRO": {
     "boardName": "CYCLONEF722_PRO",
@@ -24588,7 +24682,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DAKEFPVF405": {
     "boardName": "DAKEFPVF405",
@@ -24910,7 +25005,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DAKEFPVF411": {
     "boardName": "DAKEFPVF411",
@@ -25088,17 +25184,18 @@
       "PA01": "accessible",
       "PA02": "accessible",
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB10": "unknown",
       "PA09": "accessible",
       "PA10": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "DAKEFPVF722": {
     "boardName": "DAKEFPVF722",
@@ -25420,7 +25517,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DAKEFPVF722X8": {
     "boardName": "DAKEFPVF722X8",
@@ -25662,7 +25760,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DAKEFPVH743": {
     "boardName": "DAKEFPVH743",
@@ -26007,7 +26106,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DAKEFPVH743PRO": {
     "boardName": "DAKEFPVH743PRO",
@@ -26379,7 +26479,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "DAKEFPVH743_SLIM": {
     "boardName": "DAKEFPVH743_SLIM",
@@ -26696,7 +26797,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "DALRCF405": {
     "boardName": "DALRCF405",
@@ -26992,7 +27094,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DALRCF722DUAL": {
     "boardName": "DALRCF722DUAL",
@@ -27245,7 +27348,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DARWINF411": {
     "boardName": "DARWINF411",
@@ -27460,7 +27564,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DARWINF4SX1280HD": {
     "boardName": "DARWINF4SX1280HD",
@@ -27645,7 +27750,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DARWINF722HD": {
     "boardName": "DARWINF722HD",
@@ -27976,7 +28082,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DARWINF722HDV2": {
     "boardName": "DARWINF722HDV2",
@@ -28307,7 +28414,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DARWINH7DUAL": {
     "boardName": "DARWINH7DUAL",
@@ -28617,7 +28725,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "DFR_F722_DUAL_HD": {
     "boardName": "DFR_F722_DUAL_HD",
@@ -28889,7 +28998,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DREAMFLYF405": {
     "boardName": "DREAMFLYF405",
@@ -29215,7 +29325,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DREAMFLYF411": {
     "boardName": "DREAMFLYF411",
@@ -29377,10 +29488,10 @@
     ],
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -29389,7 +29500,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "DREAMFLYF722": {
     "boardName": "DREAMFLYF722",
@@ -29693,7 +29805,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DREAMWORKSF722": {
     "boardName": "DREAMWORKSF722",
@@ -29992,7 +30105,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DREAMWORKSF722AIO": {
     "boardName": "DREAMWORKSF722AIO",
@@ -30226,10 +30340,10 @@
     "pinAccess": {
       "PA03": "accessible",
       "PA08": "accessible",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PB08": "unknown",
       "PB00": "accessible",
       "PA09": "accessible",
@@ -30244,7 +30358,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "DREAMWORKSH743": {
     "boardName": "DREAMWORKSH743",
@@ -30533,7 +30648,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DRONEERH743DUAL": {
     "boardName": "DRONEERH743DUAL",
@@ -30609,7 +30725,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "DRONIUSF7": {
     "boardName": "DRONIUSF7",
@@ -30859,7 +30976,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DYSF44530D": {
     "boardName": "DYSF44530D",
@@ -31141,7 +31259,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "DYSF4PRO": {
     "boardName": "DYSF4PRO",
@@ -31402,7 +31521,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "EACHINEF411_AIO": {
     "boardName": "EACHINEF411_AIO",
@@ -31587,10 +31707,10 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB05": "accessible",
-      "PB07": "accessible",
-      "PB04": "accessible",
-      "PB06": "accessible",
+      "PB05": "locked",
+      "PB07": "locked",
+      "PB04": "locked",
+      "PB06": "locked",
       "PB03": "unknown",
       "PA00": "unknown",
       "PA02": "accessible",
@@ -31600,7 +31720,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "EACHINEF722": {
     "boardName": "EACHINEF722",
@@ -31933,7 +32054,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "EACHINEF722_AIO": {
     "boardName": "EACHINEF722_AIO",
@@ -32243,14 +32365,14 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA15": "accessible",
-      "PB03": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA15": "locked",
+      "PB03": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA02": "accessible",
@@ -32265,7 +32387,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "EAGLEF405": {
     "boardName": "EAGLEF405",
@@ -32521,7 +32644,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "EAGLEF722": {
     "boardName": "EAGLEF722",
@@ -32777,7 +32901,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ELINF405": {
     "boardName": "ELINF405",
@@ -33008,7 +33133,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ELINF722": {
     "boardName": "ELINF722",
@@ -33239,7 +33365,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ELLE0": {
     "boardName": "ELLE0",
@@ -33449,7 +33576,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "EMAX_BABYHAWK_II_HD": {
     "boardName": "EMAX_BABYHAWK_II_HD",
@@ -33625,11 +33753,11 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA08": "accessible",
-      "PA09": "accessible",
-      "PA10": "accessible",
-      "PB00": "accessible",
-      "PB04": "accessible",
+      "PA08": "locked",
+      "PA09": "locked",
+      "PA10": "locked",
+      "PB00": "locked",
+      "PB04": "locked",
       "PA03": "accessible",
       "PB10": "unknown",
       "PA15": "accessible",
@@ -33639,7 +33767,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "EMAX_F405_ELRS_AIO": {
     "boardName": "EMAX_F405_ELRS_AIO",
@@ -33829,10 +33958,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PA10": "accessible",
       "PA09": "accessible",
       "PB10": "accessible",
@@ -33845,7 +33974,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "EMAX_TINYHAWKF4SX1280": {
     "boardName": "EMAX_TINYHAWKF4SX1280",
@@ -34027,10 +34157,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -34038,7 +34168,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "EMAX_TINYHAWK_F411RX": {
     "boardName": "EMAX_TINYHAWK_F411RX",
@@ -34221,10 +34352,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -34232,7 +34363,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "EXF722DUAL": {
     "boardName": "EXF722DUAL",
@@ -34506,7 +34638,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "EXUAVF4PRO": {
     "boardName": "EXUAVF4PRO",
@@ -34807,7 +34940,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "F4BY": {
     "boardName": "F4BY",
@@ -35110,7 +35244,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FENIX_F405": {
     "boardName": "FENIX_F405",
@@ -35276,7 +35411,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "FF_FORTINIF4": {
     "boardName": "FF_FORTINIF4",
@@ -35475,10 +35611,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PB09": "unknown",
       "PB07": "accessible",
       "PA09": "accessible",
@@ -35494,7 +35630,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FF_FORTINIF4_REV03": {
     "boardName": "FF_FORTINIF4_REV03",
@@ -35752,7 +35889,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FF_PIKOF4": {
     "boardName": "FF_PIKOF4",
@@ -35935,10 +36073,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA03": "accessible",
-      "PB00": "accessible",
-      "PA02": "accessible",
-      "PB01": "accessible",
+      "PA03": "locked",
+      "PB00": "locked",
+      "PA02": "locked",
+      "PB01": "locked",
       "PB07": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -35951,7 +36089,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FF_PIKOF4OSD": {
     "boardName": "FF_PIKOF4OSD",
@@ -36183,7 +36322,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FF_RACEPIT": {
     "boardName": "FF_RACEPIT",
@@ -36433,7 +36573,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FF_RACEPITF7": {
     "boardName": "FF_RACEPITF7",
@@ -36672,7 +36813,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FF_RACEPITF7_MINI": {
     "boardName": "FF_RACEPITF7_MINI",
@@ -36911,7 +37053,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FF_RACEPIT_MINI": {
     "boardName": "FF_RACEPIT_MINI",
@@ -37161,7 +37304,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FISHDRONEF4": {
     "boardName": "FISHDRONEF4",
@@ -37327,10 +37471,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PB00": "unknown",
-      "PB08": "accessible",
-      "PA02": "accessible",
-      "PA15": "accessible",
-      "PA03": "accessible",
+      "PB08": "locked",
+      "PA02": "locked",
+      "PA15": "locked",
+      "PA03": "locked",
       "PA00": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -37341,7 +37485,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FISHERMANF405": {
     "boardName": "FISHERMANF405",
@@ -37593,7 +37738,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLAOF405X8": {
     "boardName": "FLAOF405X8",
@@ -37860,7 +38006,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLASHHOBBYF405": {
     "boardName": "FLASHHOBBYF405",
@@ -38185,7 +38332,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLASHHOBBYF722": {
     "boardName": "FLASHHOBBYF722",
@@ -38508,7 +38656,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLOWBOX": {
     "boardName": "FLOWBOX",
@@ -38653,10 +38802,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB01": "unknown",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PA00": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PA00": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -38664,7 +38813,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLOWBOXV2": {
     "boardName": "FLOWBOXV2",
@@ -38809,10 +38959,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB08": "unknown",
-      "PA00": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB10": "accessible",
+      "PA00": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB10": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -38820,7 +38970,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYCOLORF4": {
     "boardName": "FLYCOLORF4",
@@ -39135,7 +39286,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYCOLORF7": {
     "boardName": "FLYCOLORF7",
@@ -39459,7 +39611,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYCOLORF7MICRO": {
     "boardName": "FLYCOLORF7MICRO",
@@ -39783,7 +39936,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYCOLORF7MINI": {
     "boardName": "FLYCOLORF7MINI",
@@ -40076,7 +40230,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYCOLORF7V2": {
     "boardName": "FLYCOLORF7V2",
@@ -40399,7 +40554,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYCOLORF7_AIO": {
     "boardName": "FLYCOLORF7_AIO",
@@ -40701,12 +40857,12 @@
     "gyroAlign": "CW0_DEG",
     "pinAccess": {
       "PC06": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB03": "accessible",
-      "PA15": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB03": "locked",
+      "PA15": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA08": "accessible",
       "PB08": "unknown",
       "PB10": "accessible",
@@ -40723,7 +40879,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYCOLORF7_AIO_HD": {
     "boardName": "FLYCOLORF7_AIO_HD",
@@ -40981,17 +41138,17 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB08": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB08": "locked",
       "PA15": "unknown",
       "PB09": "unknown",
       "PA08": "accessible",
-      "PB07": "accessible",
-      "PC09": "accessible",
+      "PB07": "locked",
+      "PC09": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -41005,7 +41162,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYCOLORH743": {
     "boardName": "FLYCOLORH743",
@@ -41282,7 +41440,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYFISHRCF405": {
     "boardName": "FLYFISHRCF405",
@@ -41533,7 +41692,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYSPARKF4": {
     "boardName": "FLYSPARKF4",
@@ -41863,7 +42023,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYTEX405V2": {
     "boardName": "FLYTEX405V2",
@@ -42140,7 +42301,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "FLYWOOF405": {
     "boardName": "FLYWOOF405",
@@ -42413,7 +42575,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF405NANO": {
     "boardName": "FLYWOOF405NANO",
@@ -42695,7 +42858,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF405PRO": {
     "boardName": "FLYWOOF405PRO",
@@ -42977,7 +43141,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF405S_AIO": {
     "boardName": "FLYWOOF405S_AIO",
@@ -43228,14 +43393,14 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
-      "PB05": "accessible",
-      "PB07": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
+      "PB05": "locked",
+      "PB07": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
       "PA09": "accessible",
       "PB06": "accessible",
       "PA10": "accessible",
@@ -43251,7 +43416,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYWOOF411": {
     "boardName": "FLYWOOF411",
@@ -43461,7 +43627,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "FLYWOOF411EVO_HD": {
     "boardName": "FLYWOOF411EVO_HD",
@@ -43643,13 +43810,13 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA02": "accessible",
-      "PA08": "accessible",
-      "PA09": "accessible",
-      "PA10": "accessible",
+      "PA08": "locked",
+      "PA09": "locked",
+      "PA10": "locked",
       "PB00": "unknown",
       "PB04": "unknown",
       "PB01": "unknown",
-      "PB10": "accessible",
+      "PB10": "locked",
       "PB05": "accessible",
       "PB06": "accessible",
       "PB07": "accessible",
@@ -43657,7 +43824,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYWOOF411HEX": {
     "boardName": "FLYWOOF411HEX",
@@ -43873,7 +44041,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF411V2": {
     "boardName": "FLYWOOF411V2",
@@ -44068,10 +44237,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA02": "accessible",
-      "PA08": "accessible",
-      "PB03": "accessible",
-      "PB10": "accessible",
-      "PA15": "accessible",
+      "PA08": "locked",
+      "PB03": "locked",
+      "PB10": "locked",
+      "PA15": "locked",
       "PB06": "unknown",
       "PB07": "unknown",
       "PB00": "unknown",
@@ -44083,7 +44252,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYWOOF411_5IN1_AIO": {
     "boardName": "FLYWOOF411_5IN1_AIO",
@@ -44250,10 +44420,10 @@
     "gyroAlign": "CW0_DEG_FLIP",
     "pinAccess": {
       "PA02": "accessible",
-      "PA08": "accessible",
-      "PB06": "accessible",
-      "PB10": "accessible",
-      "PB07": "accessible",
+      "PA08": "locked",
+      "PB06": "locked",
+      "PB10": "locked",
+      "PB07": "locked",
       "PA15": "unknown",
       "PA00": "accessible",
       "PA09": "accessible",
@@ -44262,7 +44432,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "UNKNOWN": {
     "boardName": "UNKNOWN",
@@ -44525,7 +44696,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF745": {
     "boardName": "FLYWOOF745",
@@ -44823,7 +44995,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF745AIO": {
     "boardName": "FLYWOOF745AIO",
@@ -45095,14 +45268,14 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PE13": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PC09": "accessible",
-      "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PC09": "locked",
+      "PA03": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PD12": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -45121,7 +45294,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYWOOF745AIOV2": {
     "boardName": "FLYWOOF745AIOV2",
@@ -45397,14 +45571,14 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PE13": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PC09": "accessible",
-      "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PC09": "locked",
+      "PA03": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PD12": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -45423,7 +45597,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FLYWOOF745HEX": {
     "boardName": "FLYWOOF745HEX",
@@ -45721,7 +45896,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF745NANO": {
     "boardName": "FLYWOOF745NANO",
@@ -46009,7 +46185,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOF7DUAL": {
     "boardName": "FLYWOOF7DUAL",
@@ -46334,7 +46511,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FLYWOOH743PRO": {
     "boardName": "FLYWOOH743PRO",
@@ -46673,7 +46851,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "FOSSF4ELRS": {
     "boardName": "FOSSF4ELRS",
@@ -46811,17 +46990,18 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB01": "accessible",
-      "PB08": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB07": "accessible",
-      "PA08": "accessible",
-      "PA10": "accessible",
+      "PB08": "locked",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB07": "locked",
+      "PA08": "locked",
+      "PA10": "locked",
       "PA09": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FOXEERF405": {
     "boardName": "FOXEERF405",
@@ -47088,7 +47268,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FOXEERF405V2": {
     "boardName": "FOXEERF405V2",
@@ -47396,7 +47577,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FOXEERF722DUAL": {
     "boardName": "FOXEERF722DUAL",
@@ -47660,7 +47842,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FOXEERF722V2": {
     "boardName": "FOXEERF722V2",
@@ -47925,7 +48108,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FOXEERF722V3": {
     "boardName": "FOXEERF722V3",
@@ -48209,7 +48393,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FOXEERF722V4": {
     "boardName": "FOXEERF722V4",
@@ -48494,7 +48679,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FOXEERF745V2_AIO": {
     "boardName": "FOXEERF745V2_AIO",
@@ -48709,10 +48895,10 @@
     "pinAccess": {
       "PA08": "accessible",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -48726,7 +48912,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FOXEERF745V3_AIO": {
     "boardName": "FOXEERF745V3_AIO",
@@ -48944,10 +49131,10 @@
     "pinAccess": {
       "PA08": "accessible",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -48961,7 +49148,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FOXEERF745V4_AIO": {
     "boardName": "FOXEERF745V4_AIO",
@@ -49178,10 +49366,10 @@
     "pinAccess": {
       "PA08": "accessible",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -49195,7 +49383,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FOXEERF745_AIO": {
     "boardName": "FOXEERF745_AIO",
@@ -49413,10 +49602,10 @@
     "pinAccess": {
       "PA08": "accessible",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -49430,7 +49619,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FOXEERH743": {
     "boardName": "FOXEERH743",
@@ -49779,7 +49969,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "FOXEERH743V2": {
     "boardName": "FOXEERH743V2",
@@ -50130,7 +50321,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "FPVCYCLEF401": {
     "boardName": "FPVCYCLEF401",
@@ -50287,17 +50479,18 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA02": "accessible",
       "PA09": "accessible",
       "PA10": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "FPVM_BETAFLIGHTF7": {
     "boardName": "FPVM_BETAFLIGHTF7",
@@ -50579,7 +50772,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FREEAXISF4": {
     "boardName": "FREEAXISF4",
@@ -50763,7 +50957,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FRSKYF4": {
     "boardName": "FRSKYF4",
@@ -51017,7 +51212,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "FURYF4": {
     "boardName": "FURYF4",
@@ -51210,7 +51406,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "FURYF4OSD": {
     "boardName": "FURYF4OSD",
@@ -51385,10 +51582,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PC09": "unknown",
-      "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA02": "accessible",
+      "PA03": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA02": "locked",
       "PA00": "accessible",
       "PB09": "unknown",
       "PA09": "accessible",
@@ -51400,7 +51597,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEELANGF411": {
     "boardName": "GEELANGF411",
@@ -51606,7 +51804,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEMEF411": {
     "boardName": "GEMEF411",
@@ -51821,7 +52020,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEMEF722": {
     "boardName": "GEMEF722",
@@ -52094,7 +52294,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF405": {
     "boardName": "GEPRCF405",
@@ -52371,7 +52572,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF405_BT_HD": {
     "boardName": "GEPRCF405_BT_HD",
@@ -52672,7 +52874,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF411": {
     "boardName": "GEPRCF411",
@@ -52886,7 +53089,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF411SX1280": {
     "boardName": "GEPRCF411SX1280",
@@ -53034,10 +53238,10 @@
     "gyroAlign": "ALIGN_CUSTOM",
     "pinAccess": {
       "PB01": "accessible",
-      "PB08": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB07": "accessible",
+      "PB08": "locked",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB07": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -53045,7 +53249,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "GEPRCF411_AIO": {
     "boardName": "GEPRCF411_AIO",
@@ -53237,12 +53442,12 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB10": "accessible",
-      "PA00": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB10": "locked",
+      "PA00": "locked",
       "PA02": "accessible",
       "PA08": "accessible",
       "PA09": "accessible",
@@ -53250,7 +53455,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "GEPRCF411_PRO": {
     "boardName": "GEPRCF411_PRO",
@@ -53406,10 +53612,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -53417,7 +53623,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "GEPRCF722": {
     "boardName": "GEPRCF722",
@@ -53701,7 +53908,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF722BT": {
     "boardName": "GEPRCF722BT",
@@ -53953,7 +54161,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF722_BT_HD": {
     "boardName": "GEPRCF722_BT_HD",
@@ -54225,7 +54434,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF722_BT_HD_V3": {
     "boardName": "GEPRCF722_BT_HD_V3",
@@ -54489,7 +54699,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRCF745_BT_HD": {
     "boardName": "GEPRCF745_BT_HD",
@@ -54819,7 +55030,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRC_F722_AIO": {
     "boardName": "GEPRC_F722_AIO",
@@ -55055,10 +55267,10 @@
     "pinAccess": {
       "PA00": "unknown",
       "PA03": "accessible",
-      "PC08": "accessible",
-      "PC06": "accessible",
-      "PC09": "accessible",
-      "PC07": "accessible",
+      "PC08": "locked",
+      "PC06": "locked",
+      "PC09": "locked",
+      "PC07": "locked",
       "PB06": "unknown",
       "PB07": "unknown",
       "PB01": "unknown",
@@ -55076,7 +55288,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "GEPRC_TAKER_F405AIO": {
     "boardName": "GEPRC_TAKER_F405AIO",
@@ -55284,10 +55497,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA03": "unknown",
       "PD14": "accessible",
       "PB01": "unknown",
@@ -55306,7 +55519,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "GEPRC_TAKER_H743": {
     "boardName": "GEPRC_TAKER_H743",
@@ -55621,7 +55835,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEPRC_TAKER_H743MINI": {
     "boardName": "GEPRC_TAKER_H743MINI",
@@ -55889,7 +56104,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GEP_F405_VTX_V3": {
     "boardName": "GEP_F405_VTX_V3",
@@ -56189,7 +56405,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "GRAVITYF7": {
     "boardName": "GRAVITYF7",
@@ -56448,7 +56665,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF405": {
     "boardName": "HAKRCF405",
@@ -56705,7 +56923,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF405D": {
     "boardName": "HAKRCF405D",
@@ -56978,7 +57197,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF405V2": {
     "boardName": "HAKRCF405V2",
@@ -57304,7 +57524,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF411": {
     "boardName": "HAKRCF411",
@@ -57499,7 +57720,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF411D": {
     "boardName": "HAKRCF411D",
@@ -57702,10 +57924,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "unknown",
       "PB10": "unknown",
       "PA00": "unknown",
@@ -57717,7 +57939,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HAKRCF722": {
     "boardName": "HAKRCF722",
@@ -57986,7 +58209,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF722D": {
     "boardName": "HAKRCF722D",
@@ -58326,7 +58550,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF722MINI": {
     "boardName": "HAKRCF722MINI",
@@ -58657,7 +58882,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF722V2": {
     "boardName": "HAKRCF722V2",
@@ -58954,7 +59180,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCF7230D": {
     "boardName": "HAKRCF7230D",
@@ -59294,7 +59521,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HAKRCH743": {
     "boardName": "HAKRCH743",
@@ -59644,7 +59872,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "HDZERO_HALO": {
     "boardName": "HDZERO_HALO",
@@ -59853,10 +60082,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA10": "accessible",
       "PD12": "unknown",
       "PB06": "accessible",
@@ -59874,7 +60103,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HELSEL_STRIKERF7": {
     "boardName": "HELSEL_STRIKERF7",
@@ -60106,7 +60336,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF405": {
     "boardName": "HGLRCF405",
@@ -60404,7 +60635,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF405AS": {
     "boardName": "HGLRCF405AS",
@@ -60665,7 +60897,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF405V2": {
     "boardName": "HGLRCF405V2",
@@ -60936,7 +61169,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF411": {
     "boardName": "HGLRCF411",
@@ -61138,7 +61372,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "HGLRCF411ELRS": {
     "boardName": "HGLRCF411ELRS",
@@ -61319,10 +61554,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -61330,7 +61565,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HGLRCF411SX1280": {
     "boardName": "HGLRCF411SX1280",
@@ -61476,10 +61712,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB01": "accessible",
-      "PB08": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB07": "accessible",
+      "PB08": "locked",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB07": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -61487,7 +61723,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HGLRCF411SX1280V2": {
     "boardName": "HGLRCF411SX1280V2",
@@ -61669,10 +61906,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -61680,7 +61917,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HGLRCF722": {
     "boardName": "HGLRCF722",
@@ -62011,7 +62249,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF722AIO": {
     "boardName": "HGLRCF722AIO",
@@ -62320,14 +62559,14 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA15": "accessible",
-      "PB03": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA15": "locked",
+      "PB03": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA02": "accessible",
@@ -62342,7 +62581,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HGLRCF722AIOV2": {
     "boardName": "HGLRCF722AIOV2",
@@ -62658,14 +62898,14 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA15": "accessible",
-      "PB03": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA15": "locked",
+      "PB03": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA02": "accessible",
@@ -62682,7 +62922,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HGLRCF722AIO_X6": {
     "boardName": "HGLRCF722AIO_X6",
@@ -62969,14 +63210,14 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA15": "accessible",
-      "PB03": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA15": "locked",
+      "PB03": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA02": "accessible",
@@ -62991,7 +63232,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "HGLRCF722E": {
     "boardName": "HGLRCF722E",
@@ -63324,7 +63566,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF722MINI": {
     "boardName": "HGLRCF722MINI",
@@ -63628,7 +63871,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF722MINIV2": {
     "boardName": "HGLRCF722MINIV2",
@@ -63923,7 +64167,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRCF745": {
     "boardName": "HGLRCF745",
@@ -64189,7 +64434,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRC_F405_S": {
     "boardName": "HGLRC_F405_S",
@@ -64419,10 +64665,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PB03": "accessible",
       "PB06": "accessible",
       "PB07": "accessible",
@@ -64438,7 +64684,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HGLRC_H743_LITE": {
     "boardName": "HGLRC_H743_LITE",
@@ -64628,10 +64875,10 @@
     "gyroAlign": "CW180_DEG_FLIP",
     "pinAccess": {
       "PE05": "unknown",
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PE13": "accessible",
-      "PE14": "accessible",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PE13": "locked",
+      "PE14": "locked",
       "PA00": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -64650,7 +64897,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HIFIONRCF7": {
     "boardName": "HIFIONRCF7",
@@ -64949,7 +65197,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HOBBYWING_XROTORF4G3": {
     "boardName": "HOBBYWING_XROTORF4G3",
@@ -65220,7 +65469,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "HOBBYWING_XROTORF7CONV": {
     "boardName": "HOBBYWING_XROTORF7CONV",
@@ -65543,7 +65793,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "HOBBYWING_XROTORF7CONV2": {
     "boardName": "HOBBYWING_XROTORF7CONV2",
@@ -65868,7 +66119,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "HUMMINGBIRD_FC305": {
     "boardName": "HUMMINGBIRD_FC305",
@@ -66109,10 +66361,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA08": "accessible",
-      "PB00": "accessible",
-      "PB05": "accessible",
-      "PB04": "accessible",
-      "PB01": "accessible",
+      "PB00": "locked",
+      "PB05": "locked",
+      "PB04": "locked",
+      "PB01": "locked",
       "PB03": "unknown",
       "PB07": "accessible",
       "PA02": "accessible",
@@ -66128,7 +66380,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "HWH7": {
     "boardName": "HWH7",
@@ -66211,7 +66464,8 @@
     "pinAccess": {},
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "IFLIGHT_BLITZ_F405": {
     "boardName": "IFLIGHT_BLITZ_F405",
@@ -66433,10 +66687,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
       "PA03": "accessible",
       "PA08": "accessible",
       "PA09": "accessible",
@@ -66451,7 +66705,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "IFLIGHT_BLITZ_F411RX": {
     "boardName": "IFLIGHT_BLITZ_F411RX",
@@ -66600,17 +66855,18 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA10": "accessible",
       "PA09": "accessible",
       "PA02": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_BLITZ_F722": {
     "boardName": "IFLIGHT_BLITZ_F722",
@@ -66915,7 +67171,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "IFLIGHT_BLITZ_F722_X1": {
     "boardName": "IFLIGHT_BLITZ_F722_X1",
@@ -67191,7 +67448,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "IFLIGHT_BLITZ_F7_AIO": {
     "boardName": "IFLIGHT_BLITZ_F7_AIO",
@@ -67527,14 +67785,14 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB03": "unknown",
-      "PB04": "accessible",
-      "PB00": "accessible",
-      "PB05": "accessible",
-      "PB01": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PE13": "accessible",
-      "PE14": "accessible",
+      "PB04": "locked",
+      "PB00": "locked",
+      "PB05": "locked",
+      "PB01": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PE13": "locked",
+      "PE14": "locked",
       "PB06": "accessible",
       "PB07": "accessible",
       "PC09": "accessible",
@@ -67557,7 +67815,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_BLITZ_F7_PRO": {
     "boardName": "IFLIGHT_BLITZ_F7_PRO",
@@ -67789,7 +68048,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "IFLIGHT_BLITZ_H7_PRO": {
     "boardName": "IFLIGHT_BLITZ_H7_PRO",
@@ -68167,7 +68427,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "IFLIGHT_DEFENDER_F411": {
     "boardName": "IFLIGHT_DEFENDER_F411",
@@ -68325,10 +68586,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -68336,7 +68597,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_F405_AIO": {
     "boardName": "IFLIGHT_F405_AIO",
@@ -68579,10 +68841,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
       "PB06": "accessible",
       "PA00": "accessible",
       "PA09": "accessible",
@@ -68596,7 +68858,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_F405_TWING": {
     "boardName": "IFLIGHT_F405_TWING",
@@ -68830,7 +69093,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "IFLIGHT_F411_AIO32": {
     "boardName": "IFLIGHT_F411_AIO32",
@@ -69023,10 +69287,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "unknown",
       "PB10": "unknown",
       "PA00": "unknown",
@@ -69037,7 +69301,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_F411_PRO": {
     "boardName": "IFLIGHT_F411_PRO",
@@ -69194,10 +69459,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -69205,7 +69470,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_F4SX1280": {
     "boardName": "IFLIGHT_F4SX1280",
@@ -69354,17 +69620,18 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA10": "accessible",
       "PA09": "accessible",
       "PA02": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_F722_TWING": {
     "boardName": "IFLIGHT_F722_TWING",
@@ -69638,7 +69905,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "IFLIGHT_F745_AIO": {
     "boardName": "IFLIGHT_F745_AIO",
@@ -69978,12 +70246,12 @@
     "pinAccess": {
       "PC08": "unknown",
       "PE13": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
       "PD12": "accessible",
       "PB10": "accessible",
       "PB11": "accessible",
@@ -70002,7 +70270,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_F745_AIO_V2": {
     "boardName": "IFLIGHT_F745_AIO_V2",
@@ -70309,14 +70578,14 @@
     "pinAccess": {
       "PA08": "accessible",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PD12": "accessible",
-      "PD13": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PD12": "locked",
+      "PD13": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -70334,7 +70603,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_H743_AIO": {
     "boardName": "IFLIGHT_H743_AIO",
@@ -70592,10 +70862,10 @@
       "PD12": "accessible",
       "PA03": "accessible",
       "PC08": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -70612,7 +70882,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_H743_AIO_V2": {
     "boardName": "IFLIGHT_H743_AIO_V2",
@@ -70907,14 +71178,14 @@
     "pinAccess": {
       "PA08": "accessible",
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PD12": "accessible",
-      "PD13": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PD12": "locked",
+      "PD13": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -70931,7 +71202,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "IFLIGHT_H7_TWING": {
     "boardName": "IFLIGHT_H7_TWING",
@@ -71245,7 +71517,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "IFLIGHT_SUCCEX_E_F4": {
     "boardName": "IFLIGHT_SUCCEX_E_F4",
@@ -71460,10 +71733,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PC09": "accessible",
-      "PC08": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PC09": "locked",
+      "PC08": "locked",
       "PB06": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -71475,7 +71748,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "IFLIGHT_SUCCEX_E_F7": {
     "boardName": "IFLIGHT_SUCCEX_E_F7",
@@ -71726,7 +72000,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JBF7": {
     "boardName": "JBF7",
@@ -72000,7 +72275,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JBF7_DJI": {
     "boardName": "JBF7_DJI",
@@ -72273,7 +72549,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JBF7_V2": {
     "boardName": "JBF7_V2",
@@ -72576,7 +72853,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEF405PRO": {
     "boardName": "JHEF405PRO",
@@ -72840,7 +73118,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEF405WING": {
     "boardName": "JHEF405WING",
@@ -73157,7 +73436,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "JHEF411": {
     "boardName": "JHEF411",
@@ -73364,7 +73644,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "JHEF411HD": {
     "boardName": "JHEF411HD",
@@ -73564,10 +73845,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "unknown",
       "PB10": "unknown",
       "PA00": "unknown",
@@ -73579,7 +73860,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "JHEF722HD": {
     "boardName": "JHEF722HD",
@@ -73877,7 +74159,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEF722PRO": {
     "boardName": "JHEF722PRO",
@@ -74111,10 +74394,10 @@
     "pinAccess": {
       "PA03": "accessible",
       "PA08": "accessible",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PB08": "unknown",
       "PB00": "accessible",
       "PA09": "accessible",
@@ -74129,7 +74412,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEF745": {
     "boardName": "JHEF745",
@@ -74420,7 +74704,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEF745V2": {
     "boardName": "JHEF745V2",
@@ -74695,7 +74980,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEF7DUAL": {
     "boardName": "JHEF7DUAL",
@@ -74983,7 +75269,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEH743PRO": {
     "boardName": "JHEH743PRO",
@@ -75272,7 +75559,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JHEH743_AIO": {
     "boardName": "JHEH743_AIO",
@@ -75602,8 +75890,8 @@
     "pinAccess": {
       "PA08": "unknown",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
       "PD12": "accessible",
       "PD13": "unknown",
       "PC08": "unknown",
@@ -75614,8 +75902,8 @@
       "PA03": "accessible",
       "PB10": "accessible",
       "PB11": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
+      "PE09": "locked",
+      "PE11": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PC06": "accessible",
@@ -75627,7 +75915,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "JHEH743_AIO_HD": {
     "boardName": "JHEH743_AIO_HD",
@@ -75859,14 +76148,14 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PA02": "accessible",
-      "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PA02": "locked",
+      "PA03": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -75887,7 +76176,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "JHEH743_HD": {
     "boardName": "JHEH743_HD",
@@ -76149,7 +76439,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "JMIF722A": {
     "boardName": "JMIF722A",
@@ -76371,10 +76662,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA08": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -76388,7 +76679,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "KAKUTEF4": {
     "boardName": "KAKUTEF4",
@@ -76594,7 +76886,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEF4V2": {
     "boardName": "KAKUTEF4V2",
@@ -76794,10 +77087,10 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PC07": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PC08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -76810,7 +77103,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEF4WING": {
     "boardName": "KAKUTEF4WING",
@@ -77045,7 +77339,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "KAKUTEF7": {
     "boardName": "KAKUTEF7",
@@ -77293,7 +77588,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEF7HDV": {
     "boardName": "KAKUTEF7HDV",
@@ -77540,7 +77836,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEF7MINI": {
     "boardName": "KAKUTEF7MINI",
@@ -77797,7 +78094,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEF7MINIV3": {
     "boardName": "KAKUTEF7MINIV3",
@@ -78074,7 +78372,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEF7V2": {
     "boardName": "KAKUTEF7V2",
@@ -78331,7 +78630,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEH7": {
     "boardName": "KAKUTEH7",
@@ -78580,7 +78880,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEH7MINI": {
     "boardName": "KAKUTEH7MINI",
@@ -78829,7 +79130,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEH7V2": {
     "boardName": "KAKUTEH7V2",
@@ -79079,7 +79381,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KAKUTEH7WING": {
     "boardName": "KAKUTEH7WING",
@@ -79426,7 +79729,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "KD722": {
     "boardName": "KD722",
@@ -79732,7 +80036,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KIWIF4": {
     "boardName": "KIWIF4",
@@ -79887,10 +80192,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA02": "accessible",
+      "PA03": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA02": "locked",
       "PB07": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -79901,7 +80206,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "KIWIF4V2": {
     "boardName": "KIWIF4V2",
@@ -80056,10 +80362,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA02": "accessible",
+      "PA03": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA02": "locked",
       "PB07": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -80070,7 +80376,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "KONEXH743": {
     "boardName": "KONEXH743",
@@ -80336,7 +80643,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "KROOZX": {
     "boardName": "KROOZX",
@@ -80584,7 +80892,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "LDARC_F411": {
     "boardName": "LDARC_F411",
@@ -80775,10 +81084,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "unknown",
       "PB10": "unknown",
       "PA00": "unknown",
@@ -80789,7 +81098,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "LUXAIO": {
     "boardName": "LUXAIO",
@@ -81004,10 +81314,10 @@
     "pinAccess": {
       "PA15": "accessible",
       "PA08": "unknown",
-      "PC09": "accessible",
-      "PB07": "accessible",
-      "PC08": "accessible",
-      "PB06": "accessible",
+      "PC09": "locked",
+      "PB07": "locked",
+      "PC08": "locked",
+      "PB06": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -81021,7 +81331,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "LUXF4OSD": {
     "boardName": "LUXF4OSD",
@@ -81281,7 +81592,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "LUXF7HDV": {
     "boardName": "LUXF7HDV",
@@ -81513,7 +81825,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "LUXH743NDAA": {
     "boardName": "LUXH743NDAA",
@@ -81854,7 +82167,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "LUXMINIF7": {
     "boardName": "LUXMINIF7",
@@ -82085,7 +82399,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF405US": {
     "boardName": "MAMBAF405US",
@@ -82358,7 +82673,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF405US_I2C": {
     "boardName": "MAMBAF405US_I2C",
@@ -82610,7 +82926,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF405_2022A": {
     "boardName": "MAMBAF405_2022A",
@@ -82909,7 +83226,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF405_2022B": {
     "boardName": "MAMBAF405_2022B",
@@ -83209,7 +83527,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF411": {
     "boardName": "MAMBAF411",
@@ -83386,10 +83705,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PB09": "unknown",
-      "PB03": "accessible",
-      "PB04": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB03": "locked",
+      "PB04": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA15": "unknown",
       "PB08": "unknown",
       "PA08": "accessible",
@@ -83400,7 +83719,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "MAMBAF722": {
     "boardName": "MAMBAF722",
@@ -83673,7 +83993,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF722_2022A": {
     "boardName": "MAMBAF722_2022A",
@@ -83999,7 +84320,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF722_2022B": {
     "boardName": "MAMBAF722_2022B",
@@ -84327,7 +84649,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF722_I2C": {
     "boardName": "MAMBAF722_I2C",
@@ -84598,7 +84921,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAF722_X8": {
     "boardName": "MAMBAF722_X8",
@@ -84924,7 +85248,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAH743": {
     "boardName": "MAMBAH743",
@@ -85209,7 +85534,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MAMBAH743_2022B": {
     "boardName": "MAMBAH743_2022B",
@@ -85493,7 +85819,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF405AIO": {
     "boardName": "MATEKF405AIO",
@@ -85759,13 +86086,13 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
-      "PA15": "accessible",
-      "PA08": "accessible",
-      "PB08": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
+      "PA15": "locked",
+      "PA08": "locked",
+      "PB08": "locked",
       "PB06": "accessible",
       "PA00": "accessible",
       "PA01": "accessible",
@@ -85779,7 +86106,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "MATEKF405CTR": {
     "boardName": "MATEKF405CTR",
@@ -86066,7 +86394,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF405MINI": {
     "boardName": "MATEKF405MINI",
@@ -86353,7 +86682,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF405SE": {
     "boardName": "MATEKF405SE",
@@ -86679,7 +87009,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF405STD": {
     "boardName": "MATEKF405STD",
@@ -86979,7 +87310,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF405STD_CLONE": {
     "boardName": "MATEKF405STD_CLONE",
@@ -87279,7 +87611,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF405TE": {
     "boardName": "MATEKF405TE",
@@ -87649,7 +87982,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "MATEKF405TE_SD": {
     "boardName": "MATEKF405TE_SD",
@@ -88008,7 +88342,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "MATEKF405WINGV2": {
     "boardName": "MATEKF405WINGV2",
@@ -88283,7 +88618,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "MATEKF411": {
     "boardName": "MATEKF411",
@@ -88498,7 +88834,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF411RX": {
     "boardName": "MATEKF411RX",
@@ -88680,10 +89017,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -88691,7 +89028,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF411SE": {
     "boardName": "MATEKF411SE",
@@ -88917,7 +89255,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF411WTE": {
     "boardName": "MATEKF411WTE",
@@ -89110,7 +89449,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "MATEKF722": {
     "boardName": "MATEKF722",
@@ -89400,7 +89740,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF722HD": {
     "boardName": "MATEKF722HD",
@@ -89752,7 +90093,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "MATEKF722MINI": {
     "boardName": "MATEKF722MINI",
@@ -90083,7 +90425,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKF722SE": {
     "boardName": "MATEKF722SE",
@@ -90414,7 +90757,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MATEKH743": {
     "boardName": "MATEKH743",
@@ -90729,7 +91073,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "MEPSF411": {
     "boardName": "MEPSF411",
@@ -90886,10 +91231,10 @@
     "gyroAlign": "CW180_DEG_FLIP",
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -90897,7 +91242,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "MEPSF4SX1280": {
     "boardName": "MEPSF4SX1280",
@@ -91048,17 +91394,18 @@
     "gyroAlign": "CW180_DEG_FLIP",
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA10": "accessible",
       "PA09": "accessible",
       "PA02": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "MERAKRCF405": {
     "boardName": "MERAKRCF405",
@@ -91305,7 +91652,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MERAKRCF722": {
     "boardName": "MERAKRCF722",
@@ -91552,7 +91900,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MICOAIR405MINI": {
     "boardName": "MICOAIR405MINI",
@@ -91850,7 +92199,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MICOAIR743": {
     "boardName": "MICOAIR743",
@@ -92134,14 +92484,14 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PE14": "accessible",
-      "PE13": "accessible",
-      "PE11": "accessible",
-      "PE09": "accessible",
-      "PB01": "accessible",
-      "PB00": "accessible",
-      "PD12": "accessible",
-      "PD13": "accessible",
+      "PE14": "locked",
+      "PE13": "locked",
+      "PE11": "locked",
+      "PE09": "locked",
+      "PB01": "locked",
+      "PB00": "locked",
+      "PD12": "locked",
+      "PD13": "locked",
       "PD14": "accessible",
       "PD15": "unknown",
       "PA09": "accessible",
@@ -92161,7 +92511,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MINI_H743_HD": {
     "boardName": "MINI_H743_HD",
@@ -92570,7 +92921,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MLTEMPF4": {
     "boardName": "MLTEMPF4",
@@ -92828,7 +93180,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MLTYPHF4": {
     "boardName": "MLTYPHF4",
@@ -93055,7 +93408,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "MODULARF4": {
     "boardName": "MODULARF4",
@@ -93248,7 +93602,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "NAMIMNOF722": {
     "boardName": "NAMIMNOF722",
@@ -93552,7 +93907,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NBD_CRICKETF7": {
     "boardName": "NBD_CRICKETF7",
@@ -93775,10 +94131,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB01": "accessible",
-      "PB03": "accessible",
-      "PB00": "accessible",
+      "PB04": "locked",
+      "PB01": "locked",
+      "PB03": "locked",
+      "PB00": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -93793,7 +94149,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_CRICKETF7V2": {
     "boardName": "NBD_CRICKETF7V2",
@@ -94037,7 +94394,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NBD_GALAXYAIO255": {
     "boardName": "NBD_GALAXYAIO255",
@@ -94236,10 +94594,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA00": "locked",
+      "PA01": "locked",
       "PA08": "accessible",
       "PA15": "unknown",
       "PA09": "accessible",
@@ -94259,7 +94617,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_INFINITY200RS": {
     "boardName": "NBD_INFINITY200RS",
@@ -94442,10 +94801,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PC08": "accessible",
-      "PC06": "accessible",
-      "PC09": "accessible",
-      "PC07": "accessible",
+      "PC08": "locked",
+      "PC06": "locked",
+      "PC09": "locked",
+      "PC07": "locked",
       "PA09": "accessible",
       "PB06": "accessible",
       "PB07": "accessible",
@@ -94460,7 +94819,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_INFINITYAIO": {
     "boardName": "NBD_INFINITYAIO",
@@ -94626,10 +94986,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB01": "accessible",
-      "PB03": "accessible",
-      "PB00": "accessible",
+      "PB04": "locked",
+      "PB01": "locked",
+      "PB03": "locked",
+      "PB00": "locked",
       "PA08": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -94640,7 +95000,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_INFINITYAIO255": {
     "boardName": "NBD_INFINITYAIO255",
@@ -94834,10 +95195,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PC07": "accessible",
-      "PC06": "accessible",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PC07": "locked",
+      "PC06": "locked",
       "PA09": "accessible",
       "PD13": "unknown",
       "PB07": "accessible",
@@ -94852,7 +95213,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_INFINITYAIOV2": {
     "boardName": "NBD_INFINITYAIOV2",
@@ -95044,10 +95406,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA09": "accessible",
       "PD13": "unknown",
       "PB07": "accessible",
@@ -95062,7 +95424,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_INFINITYAIOV2PRO": {
     "boardName": "NBD_INFINITYAIOV2PRO",
@@ -95254,10 +95617,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PC07": "accessible",
-      "PC06": "accessible",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PC07": "locked",
+      "PC06": "locked",
       "PA09": "accessible",
       "PD13": "unknown",
       "PB07": "accessible",
@@ -95272,7 +95635,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NBD_INFINITYF4": {
     "boardName": "NBD_INFINITYF4",
@@ -95545,7 +95909,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NERO": {
     "boardName": "NERO",
@@ -95761,7 +96126,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NEUTRONRCF407": {
     "boardName": "NEUTRONRCF407",
@@ -96047,7 +96413,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NEUTRONRCF411AIO": {
     "boardName": "NEUTRONRCF411AIO",
@@ -96239,12 +96606,12 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB10": "accessible",
-      "PA00": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB10": "locked",
+      "PA00": "locked",
       "PA02": "accessible",
       "PA08": "accessible",
       "PA09": "accessible",
@@ -96252,7 +96619,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NEUTRONRCF411SX1280": {
     "boardName": "NEUTRONRCF411SX1280",
@@ -96399,10 +96767,10 @@
     "gyroAlign": "ALIGN_CUSTOM",
     "pinAccess": {
       "PB01": "accessible",
-      "PB08": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB07": "accessible",
+      "PB08": "locked",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB07": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -96410,7 +96778,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NEUTRONRCF722AIO": {
     "boardName": "NEUTRONRCF722AIO",
@@ -96644,10 +97013,10 @@
     "pinAccess": {
       "PA00": "unknown",
       "PA03": "accessible",
-      "PC08": "accessible",
-      "PC06": "accessible",
-      "PC09": "accessible",
-      "PC07": "accessible",
+      "PC08": "locked",
+      "PC06": "locked",
+      "PC09": "locked",
+      "PC07": "locked",
       "PB06": "unknown",
       "PB07": "unknown",
       "PB01": "unknown",
@@ -96665,7 +97034,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NEUTRONRCF745": {
     "boardName": "NEUTRONRCF745",
@@ -97006,7 +97376,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NEUTRONRCF745VTX": {
     "boardName": "NEUTRONRCF745VTX",
@@ -97345,7 +97716,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NEUTRONRCF7AIO": {
     "boardName": "NEUTRONRCF7AIO",
@@ -97651,14 +98023,14 @@
     "pinAccess": {
       "PA08": "accessible",
       "PB03": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PD12": "accessible",
-      "PD13": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PD12": "locked",
+      "PD13": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -97676,7 +98048,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NEUTRONRCH743AIO": {
     "boardName": "NEUTRONRCH743AIO",
@@ -97996,14 +98369,14 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PA02": "accessible",
-      "PA03": "accessible",
-      "PD12": "accessible",
-      "PD13": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PA02": "locked",
+      "PA03": "locked",
+      "PD12": "locked",
+      "PD13": "locked",
       "PD14": "unknown",
       "PD15": "unknown",
       "PE05": "unknown",
@@ -98027,7 +98400,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NEUTRONRCH7BT": {
     "boardName": "NEUTRONRCH7BT",
@@ -98292,7 +98666,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NIDICI_F4": {
     "boardName": "NIDICI_F4",
@@ -98573,7 +98948,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NOX": {
     "boardName": "NOX",
@@ -98749,10 +99125,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB10": "unknown",
-      "PA01": "accessible",
-      "PA07": "accessible",
-      "PB08": "accessible",
-      "PB01": "accessible",
+      "PA01": "locked",
+      "PA07": "locked",
+      "PB08": "locked",
+      "PB01": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA03": "accessible",
@@ -98761,7 +99137,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "NUCLEOF446": {
     "boardName": "NUCLEOF446",
@@ -98869,7 +99246,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "NUCLEOF722": {
     "boardName": "NUCLEOF722",
@@ -99058,7 +99436,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "ODDITYRCF7AIO": {
     "boardName": "ODDITYRCF7AIO",
@@ -99279,10 +99658,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA08": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -99296,7 +99675,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "OMNIBUSF4": {
     "boardName": "OMNIBUSF4",
@@ -99556,7 +99936,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF4FW": {
     "boardName": "OMNIBUSF4FW",
@@ -99863,7 +100244,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF4NANO": {
     "boardName": "OMNIBUSF4NANO",
@@ -100138,7 +100520,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF4NANOV7": {
     "boardName": "OMNIBUSF4NANOV7",
@@ -100368,7 +100751,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF4SD": {
     "boardName": "OMNIBUSF4SD",
@@ -100640,7 +101024,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF4V6": {
     "boardName": "OMNIBUSF4V6",
@@ -100944,7 +101329,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF7": {
     "boardName": "OMNIBUSF7",
@@ -101202,7 +101588,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF7NANOV7": {
     "boardName": "OMNIBUSF7NANOV7",
@@ -101433,7 +101820,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNIBUSF7V2": {
     "boardName": "OMNIBUSF7V2",
@@ -101699,7 +102087,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNINXT4": {
     "boardName": "OMNINXT4",
@@ -102096,7 +102485,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "OMNINXT7": {
     "boardName": "OMNINXT7",
@@ -102493,7 +102883,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ORQAF7": {
     "boardName": "ORQAF7",
@@ -102737,10 +103128,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC08": "accessible",
-      "PC09": "accessible",
-      "PA08": "accessible",
-      "PA09": "accessible",
+      "PC08": "locked",
+      "PC09": "locked",
+      "PA08": "locked",
+      "PA09": "locked",
       "PA15": "accessible",
       "PB03": "unknown",
       "PB06": "accessible",
@@ -102758,7 +103149,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "PIRXF4": {
     "boardName": "PIRXF4",
@@ -102971,10 +103363,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB08": "accessible",
-      "PB09": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB08": "locked",
+      "PB09": "locked",
       "PB06": "accessible",
       "PB07": "accessible",
       "PA02": "accessible",
@@ -102988,7 +103380,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "PLUMF4": {
     "boardName": "PLUMF4",
@@ -103143,10 +103536,10 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA02": "accessible",
+      "PA03": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA02": "locked",
       "PB07": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -103157,7 +103550,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "PODIUMF4": {
     "boardName": "PODIUMF4",
@@ -103424,7 +103818,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "PODRACERAIO": {
     "boardName": "PODRACERAIO",
@@ -103575,17 +103970,18 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA02": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "PRINCIPIOTF7": {
     "boardName": "PRINCIPIOTF7",
@@ -103932,7 +104328,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "PRINCIPIOTH7PI": {
     "boardName": "PRINCIPIOTH7PI",
@@ -104185,7 +104582,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "PYRODRONEF4": {
     "boardName": "PYRODRONEF4",
@@ -104450,7 +104848,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "PYRODRONEF4PDB": {
     "boardName": "PYRODRONEF4PDB",
@@ -104714,7 +105113,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "PYRODRONEF7": {
     "boardName": "PYRODRONEF7",
@@ -105073,7 +105473,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "RADIOLINKF405": {
     "boardName": "RADIOLINKF405",
@@ -105326,7 +105727,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "RADIOLINKF722": {
     "boardName": "RADIOLINKF722",
@@ -105625,7 +106027,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "REVO": {
     "boardName": "REVO",
@@ -105896,7 +106299,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "REVOLT": {
     "boardName": "REVOLT",
@@ -106090,10 +106494,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB09": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PB06": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -106106,7 +106510,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "REVOLTOSD": {
     "boardName": "REVOLTOSD",
@@ -106302,10 +106707,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB09": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PB06": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -106318,7 +106723,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "REVONANO": {
     "boardName": "REVONANO",
@@ -106550,7 +106956,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "RMNOVAH7": {
     "boardName": "RMNOVAH7",
@@ -106827,7 +107234,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "RRIOT_F722": {
     "boardName": "RRIOT_F722",
@@ -107107,7 +107515,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "RUSHCORE7": {
     "boardName": "RUSHCORE7",
@@ -107360,7 +107769,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "RUSHF7AIO": {
     "boardName": "RUSHF7AIO",
@@ -107652,14 +108062,14 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PB07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
-      "PA08": "accessible",
-      "PA09": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA10": "accessible",
-      "PB04": "accessible",
+      "PC08": "locked",
+      "PC09": "locked",
+      "PA08": "locked",
+      "PA09": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA10": "locked",
+      "PB04": "locked",
       "PB03": "accessible",
       "PB06": "accessible",
       "PA02": "accessible",
@@ -107675,7 +108085,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "RUSRACE_F4": {
     "boardName": "RUSRACE_F4",
@@ -107904,7 +108315,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "RUSRACE_F7": {
     "boardName": "RUSRACE_F7",
@@ -108131,7 +108543,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "SAKURAH743": {
     "boardName": "SAKURAH743",
@@ -108470,7 +108883,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SDMODELH7V2": {
     "boardName": "SDMODELH7V2",
@@ -108721,7 +109135,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SEQUREH7": {
     "boardName": "SEQUREH7",
@@ -109041,7 +109456,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SEQUREH7V2": {
     "boardName": "SEQUREH7V2",
@@ -109343,7 +109759,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SIMPLIFLYF405": {
     "boardName": "SIMPLIFLYF405",
@@ -109574,10 +109991,10 @@
     ],
     "gyroAlign": "CW270_DEG_FLIP",
     "pinAccess": {
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PB06": "accessible",
       "PB03": "unknown",
       "PA01": "accessible",
@@ -109594,7 +110011,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SIMPLIFLYH7": {
     "boardName": "SIMPLIFLYH7",
@@ -109867,7 +110285,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SIRMIXALOT": {
     "boardName": "SIRMIXALOT",
@@ -110100,7 +110519,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SKYSTARSF405": {
     "boardName": "SKYSTARSF405",
@@ -110399,7 +110819,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SKYSTARSF405AIO": {
     "boardName": "SKYSTARSF405AIO",
@@ -110671,12 +111092,12 @@
     ],
     "gyroAlign": "ALIGN_CUSTOM",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB03": "accessible",
-      "PB04": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB03": "locked",
+      "PB04": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PC08": "accessible",
       "PC09": "unknown",
       "PA08": "unknown",
@@ -110695,7 +111116,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SKYSTARSF405V2": {
     "boardName": "SKYSTARSF405V2",
@@ -110965,7 +111387,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SKYSTARSF411": {
     "boardName": "SKYSTARSF411",
@@ -111156,7 +111579,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "SKYSTARSF7HD": {
     "boardName": "SKYSTARSF7HD",
@@ -111425,7 +111849,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SKYSTARSF7HDPRO": {
     "boardName": "SKYSTARSF7HDPRO",
@@ -111698,7 +112123,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SKYSTARSF7RS": {
     "boardName": "SKYSTARSF7RS",
@@ -111953,11 +112379,11 @@
     "gyroAlign": "CW90_DEG_FLIP",
     "pinAccess": {
       "PB04": "unknown",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC08": "locked",
+      "PC09": "locked",
       "PA08": "unknown",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -111974,7 +112400,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SKYSTARSH7HD": {
     "boardName": "SKYSTARSH7HD",
@@ -112287,7 +112714,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SKYZONEF405": {
     "boardName": "SKYZONEF405",
@@ -112582,7 +113010,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SOLOGOODF722": {
     "boardName": "SOLOGOODF722",
@@ -112886,7 +113315,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SOULF4": {
     "boardName": "SOULF4",
@@ -113157,7 +113587,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPARKY2": {
     "boardName": "SPARKY2",
@@ -113391,7 +113822,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPCMAKERF411": {
     "boardName": "SPCMAKERF411",
@@ -113549,10 +113981,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PA00": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA00": "locked",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -113560,7 +113992,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SPEDIXF4": {
     "boardName": "SPEDIXF4",
@@ -113863,7 +114296,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEDIXF405": {
     "boardName": "SPEDIXF405",
@@ -114188,7 +114622,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEDIXF722": {
     "boardName": "SPEDIXF722",
@@ -114513,7 +114948,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEDIXH743": {
     "boardName": "SPEDIXH743",
@@ -114658,7 +115094,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "SPEEDYBEEF4": {
     "boardName": "SPEEDYBEEF4",
@@ -114917,7 +115354,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF405AIO": {
     "boardName": "SPEEDYBEEF405AIO",
@@ -115043,7 +115481,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SPEEDYBEEF405AIOV2": {
     "boardName": "SPEEDYBEEF405AIOV2",
@@ -115237,10 +115676,10 @@
     ],
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
-      "PA01": "accessible",
-      "PA00": "accessible",
-      "PA02": "accessible",
-      "PA03": "accessible",
+      "PA01": "locked",
+      "PA00": "locked",
+      "PA02": "locked",
+      "PA03": "locked",
       "PA08": "accessible",
       "PD15": "unknown",
       "PC07": "accessible",
@@ -115258,7 +115697,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SPEEDYBEEF405V3": {
     "boardName": "SPEEDYBEEF405V3",
@@ -115585,7 +116025,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF405V4": {
     "boardName": "SPEEDYBEEF405V4",
@@ -115908,7 +116349,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF405V5": {
     "boardName": "SPEEDYBEEF405V5",
@@ -116217,7 +116659,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SPEEDYBEEF405WING": {
     "boardName": "SPEEDYBEEF405WING",
@@ -116534,7 +116977,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SPEEDYBEEF7": {
     "boardName": "SPEEDYBEEF7",
@@ -116797,7 +117241,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF7MINI": {
     "boardName": "SPEEDYBEEF7MINI",
@@ -117120,7 +117565,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF7MINIV2": {
     "boardName": "SPEEDYBEEF7MINIV2",
@@ -117440,7 +117886,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF7V2": {
     "boardName": "SPEEDYBEEF7V2",
@@ -117687,7 +118134,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEEF7V3": {
     "boardName": "SPEEDYBEEF7V3",
@@ -117990,7 +118438,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPEEDYBEE_F745_AIO": {
     "boardName": "SPEEDYBEE_F745_AIO",
@@ -118202,10 +118651,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PA10": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PE09": "accessible",
-      "PE11": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PE09": "locked",
+      "PE11": "locked",
       "PD12": "accessible",
       "PB03": "unknown",
       "PA09": "accessible",
@@ -118220,7 +118669,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SPRACINGF4EVO": {
     "boardName": "SPRACINGF4EVO",
@@ -118541,7 +118991,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SPRACINGF4NEO": {
     "boardName": "SPRACINGF4NEO",
@@ -118842,7 +119293,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SPRACINGF7DUAL": {
     "boardName": "SPRACINGF7DUAL",
@@ -119174,7 +119626,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SPRACINGH7EF": {
     "boardName": "SPRACINGH7EF",
@@ -119406,7 +119859,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPRACINGH7EVO": {
     "boardName": "SPRACINGH7EVO",
@@ -119660,7 +120114,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPRACINGH7EXTREME": {
     "boardName": "SPRACINGH7EXTREME",
@@ -120043,7 +120498,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPRACINGH7NANO": {
     "boardName": "SPRACINGH7NANO",
@@ -120414,7 +120870,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPRACINGH7RF": {
     "boardName": "SPRACINGH7RF",
@@ -120651,7 +121108,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "SPRACINGH7ZERO": {
     "boardName": "SPRACINGH7ZERO",
@@ -121022,7 +121480,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "STACKX": {
     "boardName": "STACKX",
@@ -121188,10 +121647,10 @@
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
       "PB00": "unknown",
-      "PB08": "accessible",
-      "PA02": "accessible",
-      "PA15": "accessible",
-      "PA03": "accessible",
+      "PB08": "locked",
+      "PA02": "locked",
+      "PA15": "locked",
+      "PA03": "locked",
       "PA00": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -121202,7 +121661,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "STELLARF4": {
     "boardName": "STELLARF4",
@@ -121531,7 +121991,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "STELLARF4V2": {
     "boardName": "STELLARF4V2",
@@ -121780,7 +122241,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "STELLARF7": {
     "boardName": "STELLARF7",
@@ -122011,7 +122473,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "STELLARF7V2": {
     "boardName": "STELLARF7V2",
@@ -122243,7 +122706,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "STELLARH7DEV": {
     "boardName": "STELLARH7DEV",
@@ -122355,7 +122819,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "STELLARH7V2": {
     "boardName": "STELLARH7V2",
@@ -122655,7 +123120,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "STM32F411DISCOVERY": {
     "boardName": "STM32F411DISCOVERY",
@@ -122877,7 +123343,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "STM32F4DISCOVERY": {
     "boardName": "STM32F4DISCOVERY",
@@ -123145,7 +123612,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "SUB250F411": {
     "boardName": "SUB250F411",
@@ -123302,10 +123770,10 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -123313,7 +123781,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SUB250REDFOXF722AIO": {
     "boardName": "SUB250REDFOXF722AIO",
@@ -123587,14 +124056,14 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PC08": "accessible",
-      "PC09": "accessible",
-      "PA08": "accessible",
-      "PA09": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA10": "accessible",
-      "PB04": "accessible",
+      "PC08": "locked",
+      "PC09": "locked",
+      "PA08": "locked",
+      "PA09": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA10": "locked",
+      "PB04": "locked",
       "PB03": "accessible",
       "PB06": "accessible",
       "PB07": "accessible",
@@ -123610,7 +124079,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "SYNERGYF4": {
     "boardName": "SYNERGYF4",
@@ -123850,10 +124320,10 @@
       "PC07": "accessible",
       "PC08": "unknown",
       "PC09": "unknown",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA03": "accessible",
-      "PA02": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA03": "locked",
+      "PA02": "locked",
       "PA01": "accessible",
       "PA08": "unknown",
       "PA09": "accessible",
@@ -123863,7 +124333,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TAKERF411": {
     "boardName": "TAKERF411",
@@ -124020,10 +124491,10 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -124031,7 +124502,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TAKERF722SE": {
     "boardName": "TAKERF722SE",
@@ -124356,7 +124828,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TALONF4V2": {
     "boardName": "TALONF4V2",
@@ -124587,7 +125060,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TALONF7DJIHD": {
     "boardName": "TALONF7DJIHD",
@@ -124947,7 +125421,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TALONF7FUSION": {
     "boardName": "TALONF7FUSION",
@@ -125259,7 +125734,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TALONF7V2": {
     "boardName": "TALONF7V2",
@@ -125571,7 +126047,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TBS_LUCID_H7": {
     "boardName": "TBS_LUCID_H7",
@@ -125891,7 +126368,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "TCMM405V3": {
     "boardName": "TCMM405V3",
@@ -126159,7 +126637,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TCMMF411": {
     "boardName": "TCMMF411",
@@ -126365,7 +126844,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TCMMF7": {
     "boardName": "TCMMF7",
@@ -126697,7 +127177,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TJRCH743": {
     "boardName": "TJRCH743",
@@ -126800,7 +127281,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "TMH7": {
     "boardName": "TMH7",
@@ -127080,7 +127562,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORF4": {
     "boardName": "TMOTORF4",
@@ -127383,7 +127866,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORF411": {
     "boardName": "TMOTORF411",
@@ -127539,10 +128023,10 @@
     "gyroAlign": "CW180_DEG_FLIP",
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -127550,7 +128034,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TMOTORF4SX1280": {
     "boardName": "TMOTORF4SX1280",
@@ -127699,17 +128184,18 @@
     "gyroAlign": "CW180_DEG_FLIP",
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA10": "accessible",
       "PA09": "accessible",
       "PA02": "accessible"
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TMOTORF7": {
     "boardName": "TMOTORF7",
@@ -127991,7 +128477,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORF722SE": {
     "boardName": "TMOTORF722SE",
@@ -128323,7 +128810,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORF7V2": {
     "boardName": "TMOTORF7V2",
@@ -128650,7 +129138,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORF7_AIO": {
     "boardName": "TMOTORF7_AIO",
@@ -128909,17 +129398,17 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB08": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB08": "locked",
       "PA15": "unknown",
       "PB09": "unknown",
       "PA08": "accessible",
-      "PB07": "accessible",
-      "PC09": "accessible",
+      "PB07": "locked",
+      "PC09": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -128933,7 +129422,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TMOTORH743": {
     "boardName": "TMOTORH743",
@@ -129194,7 +129684,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORVELOXF7SE": {
     "boardName": "TMOTORVELOXF7SE",
@@ -129502,7 +129993,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMOTORVELOXF7V2": {
     "boardName": "TMOTORVELOXF7V2",
@@ -129807,7 +130299,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMPACERF7": {
     "boardName": "TMPACERF7",
@@ -130085,7 +130578,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMPACERF7MINI": {
     "boardName": "TMPACERF7MINI",
@@ -130275,10 +130769,10 @@
     "pinAccess": {
       "PA15": "accessible",
       "PA08": "unknown",
-      "PC09": "accessible",
-      "PC08": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PC09": "locked",
+      "PC08": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -130290,7 +130784,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMVELOXF411": {
     "boardName": "TMVELOXF411",
@@ -130445,10 +130940,10 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -130456,7 +130951,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TMVELOXF7": {
     "boardName": "TMVELOXF7",
@@ -130780,7 +131276,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TRANSTECF405HD": {
     "boardName": "TRANSTECF405HD",
@@ -130981,10 +131478,10 @@
     ],
     "gyroAlign": null,
     "pinAccess": {
-      "PC06": "accessible",
-      "PC07": "accessible",
-      "PC08": "accessible",
-      "PC09": "accessible",
+      "PC06": "locked",
+      "PC07": "locked",
+      "PC08": "locked",
+      "PC09": "locked",
       "PB06": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -130999,7 +131496,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TRANSTECF411": {
     "boardName": "TRANSTECF411",
@@ -131147,10 +131645,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB10": "accessible",
-      "PB09": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB10": "locked",
+      "PB09": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -131159,7 +131657,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TRANSTECF411AIO": {
     "boardName": "TRANSTECF411AIO",
@@ -131360,12 +131859,12 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB03": "accessible",
-      "PB10": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB03": "locked",
+      "PB10": "locked",
       "PA00": "unknown",
       "PA02": "accessible",
       "PA08": "accessible",
@@ -131374,7 +131873,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TRANSTECF411HD": {
     "boardName": "TRANSTECF411HD",
@@ -131522,10 +132022,10 @@
     ],
     "gyroAlign": "CW90_DEG",
     "pinAccess": {
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PB10": "accessible",
-      "PB09": "accessible",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PB10": "locked",
+      "PB09": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -131534,7 +132034,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "TRANSTECF7": {
     "boardName": "TRANSTECF7",
@@ -131774,7 +132275,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TRANSTECF7HD": {
     "boardName": "TRANSTECF7HD",
@@ -132018,7 +132520,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TUNERCF405": {
     "boardName": "TUNERCF405",
@@ -132280,7 +132783,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "TUNERCF411": {
     "boardName": "TUNERCF411",
@@ -132445,10 +132949,10 @@
     "gyroAlign": "CW270_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA02": "accessible",
       "PA08": "unknown",
       "PA09": "accessible",
@@ -132456,7 +132960,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "UAVPNG030MINI": {
     "boardName": "UAVPNG030MINI",
@@ -132644,7 +133149,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VEKTORF722": {
     "boardName": "VEKTORF722",
@@ -132950,7 +133456,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VGOODF722DUAL": {
     "boardName": "VGOODF722DUAL",
@@ -133215,7 +133722,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VGOODRCF4": {
     "boardName": "VGOODRCF4",
@@ -133493,7 +134001,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VGOODRCF405_DJI": {
     "boardName": "VGOODRCF405_DJI",
@@ -133766,7 +134275,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VGOODRCF411_DJI": {
     "boardName": "VGOODRCF411_DJI",
@@ -133943,10 +134453,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB09": "unknown",
-      "PB03": "accessible",
-      "PB04": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB03": "locked",
+      "PB04": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA15": "unknown",
       "PB08": "unknown",
       "PA08": "accessible",
@@ -133957,7 +134467,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VGOODRCF722_DJI": {
     "boardName": "VGOODRCF722_DJI",
@@ -134230,7 +134741,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VIVAF4AIO": {
     "boardName": "VIVAF4AIO",
@@ -134479,12 +134991,12 @@
     "gyroAlign": null,
     "pinAccess": {
       "PB15": "unknown",
-      "PB00": "accessible",
-      "PC06": "accessible",
-      "PA10": "accessible",
-      "PA08": "accessible",
-      "PC08": "accessible",
-      "PB01": "accessible",
+      "PB00": "locked",
+      "PC06": "locked",
+      "PA10": "locked",
+      "PA08": "locked",
+      "PC08": "locked",
+      "PB01": "locked",
       "PB06": "accessible",
       "PA05": "unknown",
       "PA09": "accessible",
@@ -134500,7 +135012,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "VRRACE": {
     "boardName": "VRRACE",
@@ -134719,7 +135232,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "VWING_F722AIO": {
     "boardName": "VWING_F722AIO",
@@ -134966,7 +135480,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "WARPF7": {
     "boardName": "WARPF7",
@@ -135240,7 +135755,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "WDIYF722": {
     "boardName": "WDIYF722",
@@ -135408,7 +135924,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "WDIYH743": {
     "boardName": "WDIYH743",
@@ -135544,7 +136061,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "unknown"
   },
   "WIZZF7HD": {
     "boardName": "WIZZF7HD",
@@ -135837,7 +136355,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "WORMFC": {
     "boardName": "WORMFC",
@@ -136065,7 +136584,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "XILOF4": {
     "boardName": "XILOF4",
@@ -136295,7 +136815,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "XRACERF4": {
     "boardName": "XRACERF4",
@@ -136555,7 +137076,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "YUPIF4": {
     "boardName": "YUPIF4",
@@ -136783,7 +137305,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "YUPIF7": {
     "boardName": "YUPIF7",
@@ -137013,7 +137536,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ZEEZF7": {
     "boardName": "ZEEZF7",
@@ -137283,7 +137807,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ZEEZF7V2": {
     "boardName": "ZEEZF7V2",
@@ -137571,7 +138096,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ZEEZF7V3": {
     "boardName": "ZEEZF7V3",
@@ -137857,7 +138383,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ZEEZWHOOP": {
     "boardName": "ZEEZWHOOP",
@@ -138011,9 +138538,9 @@
     "pinAccess": {
       "PA03": "accessible",
       "PA00": "unknown",
-      "PA01": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PA01": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA09": "accessible",
       "PA10": "accessible",
@@ -138021,7 +138548,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ZEUSF4EVO": {
     "boardName": "ZEUSF4EVO",
@@ -138215,10 +138743,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PB03": "unknown",
       "PA00": "unknown",
       "PA02": "accessible",
@@ -138229,7 +138757,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ZEUSF4FR": {
     "boardName": "ZEUSF4FR",
@@ -138412,10 +138941,10 @@
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
       "PA03": "accessible",
-      "PB10": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
-      "PB08": "accessible",
+      "PB10": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
+      "PB08": "locked",
       "PA00": "accessible",
       "PA02": "accessible",
       "PA09": "accessible",
@@ -138423,7 +138952,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ZEUSF722_AIO": {
     "boardName": "ZEUSF722_AIO",
@@ -138732,14 +139262,14 @@
     ],
     "gyroAlign": "CW180_DEG",
     "pinAccess": {
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
-      "PA15": "accessible",
-      "PB03": "accessible",
-      "PB06": "accessible",
-      "PB07": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
+      "PA15": "locked",
+      "PB03": "locked",
+      "PB06": "locked",
+      "PB07": "locked",
       "PA08": "accessible",
       "PA03": "accessible",
       "PA02": "accessible",
@@ -138754,7 +139284,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "aio"
   },
   "ZEX_ATHENA_MINI": {
     "boardName": "ZEX_ATHENA_MINI",
@@ -138926,10 +139457,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA08": "accessible",
-      "PA00": "accessible",
-      "PA01": "accessible",
-      "PA02": "accessible",
-      "PA03": "accessible",
+      "PA00": "locked",
+      "PA01": "locked",
+      "PA02": "locked",
+      "PA03": "locked",
       "PB00": "unknown",
       "PA15": "unknown",
       "PA10": "accessible",
@@ -138945,7 +139476,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "fc"
   },
   "ZEX_ATHENA_STD_PRO": {
     "boardName": "ZEX_ATHENA_STD_PRO",
@@ -139261,7 +139793,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "config"
+    "source": "config",
+    "boardType": "wing"
   },
   "ARGUSF7AIO": {
     "boardName": "ARGUSF7AIO",
@@ -139485,10 +140018,10 @@
     "gyroAlign": null,
     "pinAccess": {
       "PA08": "accessible",
-      "PB04": "accessible",
-      "PB05": "accessible",
-      "PB00": "accessible",
-      "PB01": "accessible",
+      "PB04": "locked",
+      "PB05": "locked",
+      "PB00": "locked",
+      "PB01": "locked",
       "PA09": "accessible",
       "PA10": "accessible",
       "PA02": "accessible",
@@ -139502,7 +140035,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "aio"
   },
   "RPMENERGYF722HD": {
     "boardName": "RPMENERGYF722HD",
@@ -139759,7 +140293,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "wing"
   },
   "FLYWOOF722PRO": {
     "boardName": "FLYWOOF722PRO",
@@ -140101,7 +140636,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "fc"
   },
   "FLYWOOF722PROV2": {
     "boardName": "FLYWOOF722PROV2",
@@ -140443,7 +140979,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "fc"
   },
   "BLADE_F4": {
     "boardName": "BLADE_F4",
@@ -140771,7 +141308,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "fc"
   },
   "SDMODELH7": {
     "boardName": "SDMODELH7",
@@ -141023,7 +141561,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "fc"
   },
   "SOLOGOODF405": {
     "boardName": "SOLOGOODF405",
@@ -141329,7 +141868,8 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "fc"
   },
   "SPEEDYBEEF405MINI": {
     "boardName": "SPEEDYBEEF405MINI",
@@ -141590,6 +142130,7 @@
     },
     "serialrxUart": null,
     "mspUart": null,
-    "source": "unified-targets"
+    "source": "unified-targets",
+    "boardType": "fc"
   }
 }
