@@ -839,7 +839,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "ACROSKYH743": {
     "boardName": "ACROSKYH743",
@@ -1157,7 +1157,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "AEDROXH7": {
     "boardName": "AEDROXH7",
@@ -1635,7 +1635,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "AG3XF4": {
     "boardName": "AG3XF4",
@@ -2997,7 +2997,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "AIKONF7": {
     "boardName": "AIKONF7",
@@ -10627,7 +10627,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "APEXF7": {
     "boardName": "APEXF7",
@@ -12411,7 +12411,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "AXISFLYINGF7": {
     "boardName": "AXISFLYINGF7",
@@ -13928,7 +13928,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "BEASTFPVF722": {
     "boardName": "BEASTFPVF722",
@@ -19772,7 +19772,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "CADDXF4": {
     "boardName": "CADDXF4",
@@ -26480,7 +26480,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "DAKEFPVH743_SLIM": {
     "boardName": "DAKEFPVH743_SLIM",
@@ -28726,7 +28726,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "DFR_F722_DUAL_HD": {
     "boardName": "DFR_F722_DUAL_HD",
@@ -42302,7 +42302,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "FLYWOOF405": {
     "boardName": "FLYWOOF405",
@@ -46852,7 +46852,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "FOSSF4ELRS": {
     "boardName": "FOSSF4ELRS",
@@ -49970,7 +49970,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "FOXEERH743V2": {
     "boardName": "FOXEERH743V2",
@@ -50322,7 +50322,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "FPVCYCLEF401": {
     "boardName": "FPVCYCLEF401",
@@ -59873,7 +59873,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "HDZERO_HALO": {
     "boardName": "HDZERO_HALO",
@@ -65470,7 +65470,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "HOBBYWING_XROTORF7CONV": {
     "boardName": "HOBBYWING_XROTORF7CONV",
@@ -65794,7 +65794,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "HOBBYWING_XROTORF7CONV2": {
     "boardName": "HOBBYWING_XROTORF7CONV2",
@@ -66120,7 +66120,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "HUMMINGBIRD_FC305": {
     "boardName": "HUMMINGBIRD_FC305",
@@ -68428,7 +68428,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "IFLIGHT_DEFENDER_F411": {
     "boardName": "IFLIGHT_DEFENDER_F411",
@@ -82168,7 +82168,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "LUXMINIF7": {
     "boardName": "LUXMINIF7",
@@ -87983,7 +87983,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "MATEKF405TE_SD": {
     "boardName": "MATEKF405TE_SD",
@@ -88343,7 +88343,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "MATEKF405WINGV2": {
     "boardName": "MATEKF405WINGV2",
@@ -90094,7 +90094,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "MATEKF722MINI": {
     "boardName": "MATEKF722MINI",
@@ -91074,7 +91074,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "MEPSF411": {
     "boardName": "MEPSF411",
@@ -104329,7 +104329,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "PRINCIPIOTH7PI": {
     "boardName": "PRINCIPIOTH7PI",
@@ -104583,7 +104583,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "PYRODRONEF4": {
     "boardName": "PYRODRONEF4",
@@ -105728,7 +105728,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "RADIOLINKF722": {
     "boardName": "RADIOLINKF722",
@@ -108884,7 +108884,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SDMODELH7V2": {
     "boardName": "SDMODELH7V2",
@@ -110286,7 +110286,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SIRMIXALOT": {
     "boardName": "SIRMIXALOT",
@@ -111388,7 +111388,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SKYSTARSF411": {
     "boardName": "SKYSTARSF411",
@@ -112715,7 +112715,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SKYZONEF405": {
     "boardName": "SKYZONEF405",
@@ -116660,7 +116660,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SPEEDYBEEF405WING": {
     "boardName": "SPEEDYBEEF405WING",
@@ -118992,7 +118992,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SPRACINGF4NEO": {
     "boardName": "SPRACINGF4NEO",
@@ -119294,7 +119294,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SPRACINGF7DUAL": {
     "boardName": "SPRACINGF7DUAL",
@@ -119627,7 +119627,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "SPRACINGH7EF": {
     "boardName": "SPRACINGH7EF",
@@ -121992,7 +121992,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "STELLARF4V2": {
     "boardName": "STELLARF4V2",
@@ -122474,7 +122474,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "STELLARF7V2": {
     "boardName": "STELLARF7V2",
@@ -122707,7 +122707,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "STELLARH7DEV": {
     "boardName": "STELLARH7DEV",
@@ -123121,7 +123121,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "STM32F411DISCOVERY": {
     "boardName": "STM32F411DISCOVERY",
@@ -123613,7 +123613,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "unknown"
   },
   "SUB250F411": {
     "boardName": "SUB250F411",
@@ -126369,7 +126369,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "TCMM405V3": {
     "boardName": "TCMM405V3",
@@ -135481,7 +135481,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "WARPF7": {
     "boardName": "WARPF7",
@@ -139794,7 +139794,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "config",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "ARGUSF7AIO": {
     "boardName": "ARGUSF7AIO",
@@ -140294,7 +140294,7 @@
     "serialrxUart": null,
     "mspUart": null,
     "source": "unified-targets",
-    "boardType": "wing"
+    "boardType": "fc"
   },
   "FLYWOOF722PRO": {
     "boardName": "FLYWOOF722PRO",
