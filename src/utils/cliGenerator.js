@@ -133,12 +133,13 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     lines.push('');
   }
 
-  // Mixer type — use name not number
-  const isCustom = motors.length > 1 || diffThrust;
-  const mixerType = isCustom ? 'Custom Airplane' : (servos.length <= 2 ? 'Flying Wing' : 'Airplane');
-  const mixerNum = isCustom ? 24 : (servos.length <= 2 ? 8 : 14);
-  const mixerName = MIXER_NAMES[mixerNum] || 'CUSTOMAIRPLANE';
-  lines.push(`# Mixer: ${mixerType}`);
+  // Mixer type — FLYING_WING for basic wing (BF handles elevon mixing internally),
+  // CUSTOMAIRPLANE for everything else (diff thrust, airplane, v-tail)
+  const presetData = AIRFRAME_PRESETS[preset];
+  const useBuiltInWing = presetData?.mixerType === 'FLYING_WING';
+  const mixerName = useBuiltInWing ? 'FLYING_WING' : 'CUSTOMAIRPLANE';
+  const mixerLabel = useBuiltInWing ? 'Flying Wing (built-in elevon mix)' : 'Custom Airplane';
+  lines.push(`# Mixer: ${mixerLabel}`);
   lines.push(`mixer ${mixerName}`);
 
   // Motor mix
@@ -157,25 +158,37 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     lines.push('');
   }
 
-  // Servo mix — 8 fields: index servo source rate speed min max box
-  lines.push('# servo mixer');
-  lines.push('smix reset');
-  let smixIdx = 0;
-  servos.forEach((s) => {
-    if (s.roll !== 0) {
-      lines.push(`smix ${smixIdx} ${s.id} 0 ${s.roll} 0 0 100 0`);
-      smixIdx++;
-    }
-    if (s.pitch !== 0) {
-      lines.push(`smix ${smixIdx} ${s.id} 1 ${s.pitch} 0 0 100 0`);
-      smixIdx++;
-    }
-    if (s.yaw !== 0) {
-      lines.push(`smix ${smixIdx} ${s.id} 2 ${s.yaw} 0 0 100 0`);
-      smixIdx++;
-    }
-  });
-  lines.push('');
+  if (useBuiltInWing) {
+    // FLYING_WING: BF mixes elevons internally — no custom smix needed.
+    // Output servo direction commands so user can reverse if needed.
+    lines.push('# Servo direction (FLYING_WING handles mixing internally)');
+    lines.push('# Reverse a servo by changing rate from 100 to -100');
+    servos.forEach((s) => {
+      lines.push(`servo ${s.id} 1000 2000 1500 100 -1`);
+    });
+    lines.push('');
+  } else {
+    // CUSTOMAIRPLANE: custom smix with correct servo slot numbers
+    // Slot mapping: 2=ELEVATOR, 3=FLAPPERON_1, 4=FLAPPERON_2, 5=RUDDER
+    lines.push('# servo mixer');
+    lines.push('smix reset');
+    let smixIdx = 0;
+    servos.forEach((s) => {
+      if (s.roll !== 0) {
+        lines.push(`smix ${smixIdx} ${s.id} 0 ${s.roll} 0 0 100 0`);
+        smixIdx++;
+      }
+      if (s.pitch !== 0) {
+        lines.push(`smix ${smixIdx} ${s.id} 1 ${s.pitch} 0 0 100 0`);
+        smixIdx++;
+      }
+      if (s.yaw !== 0) {
+        lines.push(`smix ${smixIdx} ${s.id} 2 ${s.yaw} 0 0 100 0`);
+        smixIdx++;
+      }
+    });
+    lines.push('');
+  }
 
   // Pass-through: beacon, map, aux, rxrange
   if (imported) {
