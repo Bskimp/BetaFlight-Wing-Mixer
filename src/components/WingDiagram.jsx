@@ -1,19 +1,12 @@
 import { useMemo } from 'react';
-import { pinToCli } from '../utils/timerCheck';
+import { AIRFRAME_PRESETS } from '../data/presets';
+import { findPin } from '../utils/pinLookup';
 
 // Preset type detection
 function getAirframeType(preset) {
   if (preset.startsWith('flying_wing')) return 'flying_wing';
   if (preset === 'vtail') return 'vtail';
   return 'airplane';
-}
-
-// Reverse-lookup: find pin assigned to a given type+index
-function findPin(assignments, type, index) {
-  for (const [pin, a] of Object.entries(assignments)) {
-    if (a.type === type && a.index === index) return pinToCli(pin);
-  }
-  return null;
 }
 
 // Small pin label rendered below a motor/servo label
@@ -33,7 +26,31 @@ function PinTag({ x, y, pin }) {
   );
 }
 
-function FlyingWingSvg({ motors, servos, pinMap }) {
+// Motor rendered as a pill (rounded rect) so function name text fits
+function MotorPill({ cx, cy, label, pin, pinY }) {
+  const w = 50;
+  const h = 20;
+  return (
+    <g>
+      {/* Outer prop disc */}
+      <circle cx={cx} cy={cy} r="24" fill="none" stroke="var(--color-motor)"
+        strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
+      {/* Inner pill */}
+      <rect x={cx - w / 2} y={cy - h / 2} width={w} height={h} rx="10"
+        fill="var(--color-motor)" opacity="0.85" />
+      <text x={cx} y={cy + 4} textAnchor="middle" fill="#000"
+        fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {label}
+      </text>
+      {/* Thrust arrow */}
+      <polygon points={`${cx},${cy - 24} ${cx - 5},${cy - 16} ${cx + 5},${cy - 16}`}
+        fill="var(--color-motor)" opacity="0.7" />
+      <PinTag x={cx} y={pinY} pin={pin} />
+    </g>
+  );
+}
+
+function FlyingWingSvg({ motors, labelMap, pinMap }) {
   const hasTwoMotors = motors.length >= 2;
 
   return (
@@ -49,38 +66,25 @@ function FlyingWingSvg({ motors, servos, pinMap }) {
       {/* Motor(s) */}
       {hasTwoMotors ? (
         <>
-          {/* Left motor */}
-          <circle cx="140" cy="80" r="24" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-          <circle cx="140" cy="80" r="11" fill="var(--color-motor)" opacity="0.85" />
-          <text x="140" y="84" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M1</text>
-          <PinTag x={140} y={112} pin={pinMap.m1} />
-          {/* Right motor */}
-          <circle cx="260" cy="80" r="24" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-          <circle cx="260" cy="80" r="11" fill="var(--color-motor)" opacity="0.85" />
-          <text x="260" y="84" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M2</text>
-          <PinTag x={260} y={112} pin={pinMap.m2} />
-          {/* Thrust arrows */}
-          <polygon points="140,56 135,64 145,64" fill="var(--color-motor)" opacity="0.7" />
-          <polygon points="260,56 255,64 265,64" fill="var(--color-motor)" opacity="0.7" />
+          <MotorPill cx={140} cy={80} label={labelMap.m1} pin={pinMap.m1} pinY={112} />
+          <MotorPill cx={260} cy={80} label={labelMap.m2} pin={pinMap.m2} pinY={112} />
         </>
       ) : (
-        <>
-          <circle cx="200" cy="52" r="24" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-          <circle cx="200" cy="52" r="11" fill="var(--color-motor)" opacity="0.85" />
-          <text x="200" y="56" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M1</text>
-          <PinTag x={200} y={84} pin={pinMap.m1} />
-          <polygon points="200,28 195,36 205,36" fill="var(--color-motor)" opacity="0.7" />
-        </>
+        <MotorPill cx={200} cy={52} label={labelMap.m1} pin={pinMap.m1} pinY={84} />
       )}
 
       {/* Left elevon */}
       <rect x="55" y="178" width="80" height="14" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="95" y="189" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="600" className="wing-diagram-label">S1</text>
+      <text x="95" y="189" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s1}
+      </text>
       <PinTag x={95} y={210} pin={pinMap.s1} />
 
       {/* Right elevon */}
       <rect x="265" y="178" width="80" height="14" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="305" y="189" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="600" className="wing-diagram-label">S2</text>
+      <text x="305" y="189" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s2}
+      </text>
       <PinTag x={305} y={210} pin={pinMap.s2} />
 
       {/* Deflection arrows on servos */}
@@ -95,7 +99,7 @@ function FlyingWingSvg({ motors, servos, pinMap }) {
   );
 }
 
-function AirplaneSvg({ motors, servos, pinMap }) {
+function AirplaneSvg({ motors, servos, labelMap, pinMap }) {
   const hasTwoMotors = motors.length >= 2;
 
   return (
@@ -117,48 +121,41 @@ function AirplaneSvg({ motors, servos, pinMap }) {
       {/* Motor(s) */}
       {hasTwoMotors ? (
         <>
-          <circle cx="130" cy="90" r="20" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-          <circle cx="130" cy="90" r="10" fill="var(--color-motor)" opacity="0.85" />
-          <text x="130" y="94" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M1</text>
-          <PinTag x={130} y={118} pin={pinMap.m1} />
-          <polygon points="130,68 125,76 135,76" fill="var(--color-motor)" opacity="0.7" />
-
-          <circle cx="270" cy="90" r="20" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-          <circle cx="270" cy="90" r="10" fill="var(--color-motor)" opacity="0.85" />
-          <text x="270" y="94" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M2</text>
-          <PinTag x={270} y={118} pin={pinMap.m2} />
-          <polygon points="270,68 265,76 275,76" fill="var(--color-motor)" opacity="0.7" />
+          <MotorPill cx={130} cy={90} label={labelMap.m1} pin={pinMap.m1} pinY={118} />
+          <MotorPill cx={270} cy={90} label={labelMap.m2} pin={pinMap.m2} pinY={118} />
         </>
       ) : (
-        <>
-          <circle cx="200" cy="42" r="20" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-          <circle cx="200" cy="42" r="10" fill="var(--color-motor)" opacity="0.85" />
-          <text x="200" y="46" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M1</text>
-          <PinTag x={200} y={70} pin={pinMap.m1} />
-          <polygon points="200,20 195,28 205,28" fill="var(--color-motor)" opacity="0.7" />
-        </>
+        <MotorPill cx={200} cy={42} label={labelMap.m1} pin={pinMap.m1} pinY={70} />
       )}
 
       {/* Left aileron */}
       <rect x="55" y="145" width="70" height="12" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="90" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">S1</text>
+      <text x="90" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s1}
+      </text>
       <PinTag x={90} y={170} pin={pinMap.s1} />
 
       {/* Right aileron */}
       <rect x="275" y="145" width="70" height="12" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="310" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">S2</text>
+      <text x="310" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s2}
+      </text>
       <PinTag x={310} y={170} pin={pinMap.s2} />
 
       {/* Elevator */}
       <rect x="150" y="263" width="100" height="10" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="200" y="272" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">S3</text>
+      <text x="200" y="272" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s3}
+      </text>
       <PinTag x={200} y={286} pin={pinMap.s3} />
 
       {/* Rudder (only if 4+ servos and not diff thrust) */}
       {servos.length >= 4 && (
         <>
           <rect x="210" y="210" width="10" height="40" rx="3" fill="var(--color-servo)" opacity="0.85" />
-          <text x="230" y="234" fill="var(--color-servo)" fontSize="9" fontWeight="600" className="wing-diagram-label">S4</text>
+          <text x="230" y="234" fill="var(--color-servo)" fontSize="9" fontWeight="600" className="wing-diagram-label">
+            {labelMap.s4}
+          </text>
           <PinTag x={230} y={246} pin={pinMap.s4} />
         </>
       )}
@@ -170,7 +167,7 @@ function AirplaneSvg({ motors, servos, pinMap }) {
   );
 }
 
-function VTailSvg({ motors, servos, pinMap }) {
+function VTailSvg({ labelMap, pinMap }) {
   return (
     <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
       {/* Wings */}
@@ -187,34 +184,38 @@ function VTailSvg({ motors, servos, pinMap }) {
       <line x1="200" y1="235" x2="260" y2="280" stroke="var(--surface-500)" strokeWidth="2" />
 
       {/* Motor */}
-      <circle cx="200" cy="42" r="20" fill="none" stroke="var(--color-motor)" strokeWidth="1" strokeDasharray="4,3" opacity="0.4" />
-      <circle cx="200" cy="42" r="10" fill="var(--color-motor)" opacity="0.85" />
-      <text x="200" y="46" textAnchor="middle" fill="#000" fontSize="10" fontWeight="600" className="wing-diagram-label">M1</text>
-      <PinTag x={200} y={70} pin={pinMap.m1} />
-      <polygon points="200,20 195,28 205,28" fill="var(--color-motor)" opacity="0.7" />
+      <MotorPill cx={200} cy={42} label={labelMap.m1} pin={pinMap.m1} pinY={70} />
 
       {/* Left aileron */}
       <rect x="55" y="145" width="70" height="12" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="90" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">S1</text>
+      <text x="90" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s1}
+      </text>
       <PinTag x={90} y={170} pin={pinMap.s1} />
 
       {/* Right aileron */}
       <rect x="275" y="145" width="70" height="12" rx="3" fill="var(--color-servo)" opacity="0.85" />
-      <text x="310" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">S2</text>
+      <text x="310" y="155" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s2}
+      </text>
       <PinTag x={310} y={170} pin={pinMap.s2} />
 
       {/* Left V-tail surface */}
       <rect x="130" y="268" width="40" height="10" rx="3"
         fill="var(--color-servo)" opacity="0.85"
         transform="rotate(-25, 150, 273)" />
-      <text x="125" y="290" fill="var(--color-servo)" fontSize="9" fontWeight="600" className="wing-diagram-label">S3</text>
+      <text x="125" y="290" fill="var(--color-servo)" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s3}
+      </text>
       <PinTag x={125} y={302} pin={pinMap.s3} />
 
       {/* Right V-tail surface */}
       <rect x="230" y="268" width="40" height="10" rx="3"
         fill="var(--color-servo)" opacity="0.85"
         transform="rotate(25, 250, 273)" />
-      <text x="265" y="290" fill="var(--color-servo)" fontSize="9" fontWeight="600" className="wing-diagram-label">S4</text>
+      <text x="265" y="290" fill="var(--color-servo)" fontSize="9" fontWeight="600" className="wing-diagram-label">
+        {labelMap.s4}
+      </text>
       <PinTag x={265} y={302} pin={pinMap.s4} />
 
       <text x="200" y="330" textAnchor="middle" fill="var(--surface-600)" fontSize="11" fontFamily="var(--font-sans)">
@@ -226,6 +227,16 @@ function VTailSvg({ motors, servos, pinMap }) {
 
 export default function WingDiagram({ preset, motors, servos, assignments }) {
   const airframeType = useMemo(() => getAirframeType(preset), [preset]);
+
+  // Build label map from preset shortLabels
+  const labelMap = useMemo(() => {
+    const pd = AIRFRAME_PRESETS[preset];
+    if (!pd) return {};
+    const map = {};
+    pd.motors.forEach((m, i) => { map[`m${i + 1}`] = m.shortLabel || m.label; });
+    pd.servos.forEach((s, i) => { map[`s${i + 1}`] = s.shortLabel || s.label; });
+    return map;
+  }, [preset]);
 
   // Build pin map: m1, m2, s1, s2, s3, s4
   const pinMap = useMemo(() => {
@@ -242,9 +253,9 @@ export default function WingDiagram({ preset, motors, servos, assignments }) {
 
   return (
     <div className="wing-diagram">
-      {airframeType === 'flying_wing' && <FlyingWingSvg motors={motors} servos={servos} pinMap={pinMap} />}
-      {airframeType === 'airplane' && <AirplaneSvg motors={motors} servos={servos} pinMap={pinMap} />}
-      {airframeType === 'vtail' && <VTailSvg motors={motors} servos={servos} pinMap={pinMap} />}
+      {airframeType === 'flying_wing' && <FlyingWingSvg motors={motors} servos={servos} labelMap={labelMap} pinMap={pinMap} />}
+      {airframeType === 'airplane' && <AirplaneSvg motors={motors} servos={servos} labelMap={labelMap} pinMap={pinMap} />}
+      {airframeType === 'vtail' && <VTailSvg motors={motors} servos={servos} labelMap={labelMap} pinMap={pinMap} />}
     </div>
   );
 }

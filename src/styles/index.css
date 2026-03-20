@@ -1152,6 +1152,12 @@ select {
   cursor: not-allowed;
 }
 
+.pin-badge-locked {
+  color: var(--warning-500);
+  cursor: not-allowed;
+  font-size: 9px;
+}
+
 .pin-badge-maybe {
   color: var(--warning-500);
 }
@@ -1168,6 +1174,59 @@ select {
 
 .pin-slot.blocked:hover {
   border-color: var(--surface-400);
+}
+
+.pin-slot.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  border-style: dashed;
+  border-color: var(--warning-500);
+  background: var(--warning-transparent-1);
+}
+
+.pin-slot.locked:hover {
+  border-color: var(--warning-500);
+}
+
+/* === AIO Board Styles === */
+.aio-banner {
+  background: var(--warning-transparent-1);
+  border: 1px solid var(--warning-500);
+  border-radius: 0.5rem;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--warning-600);
+}
+
+/* === Board Type Badges === */
+.board-type-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.board-type-badge.aio {
+  background: var(--warning-transparent-1);
+  color: var(--warning-500);
+}
+
+.board-type-badge.wing {
+  background: var(--success-transparent-1);
+  color: var(--success-600);
+}
+
+.board-type-badge.fc {
+  background: var(--surface-200);
+  color: var(--surface-600);
+}
+
+.board-type-badge.unknown {
+  background: var(--surface-200);
+  color: var(--surface-500);
 }
 
 /* === Pin Budget Counter === */
@@ -1680,6 +1739,72 @@ select {
   pointer-events: none;
   z-index: 10;
   white-space: nowrap;
+}
+
+/* === Servo Map Panel === */
+.servo-map-wrap {
+  padding: 0 4px;
+}
+
+.servo-map-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.servo-map-table th {
+  text-align: left;
+  padding: 6px 8px;
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--surface-600);
+  border-bottom: 1px solid var(--surface-300);
+}
+
+.servo-map-table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--surface-200);
+}
+
+.servo-map-table .mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.servo-map-table .motor-row {
+  opacity: 0.65;
+}
+
+.servo-map-table .muted {
+  color: var(--surface-400);
+}
+
+.direction-btn {
+  background: var(--surface-200);
+  border: 1px solid var(--surface-400);
+  border-radius: 4px;
+  padding: 2px 10px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  color: var(--surface-800);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.direction-btn:hover {
+  background: var(--surface-300);
+}
+
+.direction-btn.reversed {
+  background: var(--warning-500, #f59e0b);
+  color: #000;
+  border-color: var(--warning-500, #f59e0b);
+}
+
+.servo-map-info {
+  margin: 8px 0 2px;
+  font-size: 11px;
+  color: var(--surface-500);
 }
 
 /* === Header Controls (within tabs) === */

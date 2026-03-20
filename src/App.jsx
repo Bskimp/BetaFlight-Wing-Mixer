@@ -19,6 +19,7 @@ import ResourceMapper from './components/ResourceMapper';
 import CliOutput from './components/CliOutput';
 import ImportDialog from './components/ImportDialog';
 import WingDiagram from './components/WingDiagram';
+import ServoMapPanel from './components/ServoMapPanel';
 import GuidePanel from './components/GuidePanel';
 import TuningGuidePanel from './components/TuningGuidePanel';
 
@@ -119,6 +120,7 @@ export default function App() {
   const [importSource, setImportSource] = useState(null);
   const [passthrough, setPassthrough] = useState(null);
   const [uartRemaps, setUartRemaps] = useState({});
+  const [servoReversed, setServoReversed] = useState({});
   const [activeTab, setActiveTab] = useState('setup');
 
   // Load from URL on mount
@@ -169,6 +171,7 @@ export default function App() {
     setImportSource(null);
     setPassthrough(null);
     setUartRemaps({});
+    setServoReversed({});
   }, [selectedTarget, userModifiedResources]);
 
   const handleTargetSelect = useCallback((target) => {
@@ -252,8 +255,8 @@ export default function App() {
   // CLI generation
   const cliText = useMemo(() => generateCli({
     preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity: 'expert',
-    selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps,
-  }), [preset, motors, servos, wingSettings, pids, rates, diffThrust, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps]);
+    selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps, servoReversed,
+  }), [preset, motors, servos, wingSettings, pids, rates, diffThrust, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps, servoReversed]);
 
 
   // Collect warnings
@@ -338,6 +341,14 @@ export default function App() {
           <>
             <PresetSelector selectedPreset={preset} onSelect={loadPreset} />
             <WingDiagram preset={preset} motors={motors} servos={servos} assignments={assignments} />
+            <ServoMapPanel
+              preset={preset}
+              servos={servos}
+              motors={motors}
+              assignments={assignments}
+              servoReversed={servoReversed}
+              onServoReversedChange={setServoReversed}
+            />
             <MotorMixer motors={motors} onChange={setMotors} />
             <ServoMixer servos={servos} onChange={setServos} mode="full" />
           </>

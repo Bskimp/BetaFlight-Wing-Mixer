@@ -10,9 +10,10 @@ const MIXER_NAMES = {
   24: 'CUSTOMAIRPLANE',
 };
 
-export function generateCli({ preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps }) {
+export function generateCli({ preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps, servoReversed }) {
   const lines = [];
-  const presetName = AIRFRAME_PRESETS[preset]?.name || preset;
+  const presetData = AIRFRAME_PRESETS[preset];
+  const presetName = presetData?.name || preset;
   const imported = passthrough && Object.keys(passthrough).some(k => {
     const v = passthrough[k];
     return v && (Array.isArray(v) ? v.length > 0 : true);
@@ -41,8 +42,16 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     motorAssigns.sort((a, b) => a.index - b.index);
     servoAssigns.sort((a, b) => a.index - b.index);
 
-    for (const m of motorAssigns) lines.push(`resource MOTOR ${m.index} ${pinToCli(m.pin)}`);
-    for (const s of servoAssigns) lines.push(`resource SERVO ${s.index} ${pinToCli(s.pin)}`);
+    for (const m of motorAssigns) {
+      const mObj = presetData?.motors?.[m.index - 1];
+      const comment = mObj ? `    # ${mObj.label}` : '';
+      lines.push(`resource MOTOR ${m.index} ${pinToCli(m.pin)}${comment}`);
+    }
+    for (const s of servoAssigns) {
+      const sObj = presetData?.servos?.[s.index - 1];
+      const comment = sObj ? `    # ${sObj.label}` : '';
+      lines.push(`resource SERVO ${s.index} ${pinToCli(s.pin)}${comment}`);
+    }
 
     // UART remap commands
     if (uartRemaps && Object.keys(uartRemaps).length > 0) {
@@ -135,7 +144,6 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
 
   // Mixer type — FLYING_WING for basic wing (BF handles elevon mixing internally),
   // CUSTOMAIRPLANE for everything else (diff thrust, airplane, v-tail)
-  const presetData = AIRFRAME_PRESETS[preset];
   const useBuiltInWing = presetData?.mixerType === 'FLYING_WING';
   const mixerName = useBuiltInWing ? 'FLYING_WING' : 'CUSTOMAIRPLANE';
   const mixerLabel = useBuiltInWing ? 'Flying Wing (built-in elevon mix)' : 'Custom Airplane';
@@ -162,29 +170,33 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     // FLYING_WING: BF mixes elevons internally — no custom smix needed.
     // Output servo direction commands so user can reverse if needed.
     lines.push('# Servo direction (FLYING_WING handles mixing internally)');
-    lines.push('# Reverse a servo by changing rate from 100 to -100');
     servos.forEach((s) => {
-      lines.push(`servo ${s.id} 1000 2000 1500 100 -1`);
+      const reversed = servoReversed?.[s.id];
+      const rate = reversed ? -100 : 100;
+      const dir = reversed ? 'reversed' : 'normal';
+      lines.push(`servo ${s.id} 1000 2000 1500 ${rate} -1    # ${s.label}: ${dir}`);
     });
     lines.push('');
   } else {
     // CUSTOMAIRPLANE: custom smix with correct servo slot numbers
     // Slot mapping: 2=ELEVATOR, 3=FLAPPERON_1, 4=FLAPPERON_2, 5=RUDDER
-    lines.push('# servo mixer');
+    const slotLabels = servos.map(s => `slot ${s.id} = ${s.label}`).join(', ');
+    lines.push(`# Servo mixing (${slotLabels})`);
     lines.push('smix reset');
     let smixIdx = 0;
     servos.forEach((s) => {
-      if (s.roll !== 0) {
-        lines.push(`smix ${smixIdx} ${s.id} 0 ${s.roll} 0 0 100 0`);
-        smixIdx++;
-      }
-      if (s.pitch !== 0) {
-        lines.push(`smix ${smixIdx} ${s.id} 1 ${s.pitch} 0 0 100 0`);
-        smixIdx++;
-      }
-      if (s.yaw !== 0) {
-        lines.push(`smix ${smixIdx} ${s.id} 2 ${s.yaw} 0 0 100 0`);
-        smixIdx++;
+      const sign = servoReversed?.[s.id] ? -1 : 1;
+      const axes = [
+        { source: 0, name: 'Roll', value: s.roll },
+        { source: 1, name: 'Pitch', value: s.pitch },
+        { source: 2, name: 'Yaw', value: s.yaw },
+      ];
+      for (const axis of axes) {
+        if (axis.value !== 0) {
+          const rate = axis.value * sign;
+          lines.push(`smix ${smixIdx} ${s.id} ${axis.source} ${rate} 0 0 100 0    # ${s.label} \u2192 ${axis.name} ${rate}%`);
+          smixIdx++;
+        }
       }
     });
     lines.push('');
