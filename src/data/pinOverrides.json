@@ -1,1 +1,6 @@
-{}
+{
+  "MICOAIR743": { "boardType": "aio" },
+  "MICOAIRF405": { "boardType": "aio" },
+  "BETAFPVF405": { "boardType": "aio" },
+  "BETAFPVF722": { "boardType": "aio" }
+}

@@ -26,6 +26,7 @@ function getNextIndex(assignments, type, uartRemaps) {
 function AccessBadge({ access }) {
   if (!access || access === 'accessible') return null;
   if (access === 'blocked') return <span className="pin-badge-blocked" title="Routed to on-board peripheral — not accessible">&#128274;</span>;
+  if (access === 'locked') return <span className="pin-badge-locked" title="Hardwired to on-board ESC — not remappable">&#128274; ESC</span>;
   if (access === 'maybe') return <span className="pin-badge-maybe" title="May be broken out — check your board">?</span>;
   if (access === 'unknown') return <span className="pin-badge-unknown" title="Unverified — check your board">?</span>;
   return null;
@@ -64,7 +65,7 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
 
   const handlePinClick = (pin) => {
     const access = target.pinAccess?.[pin];
-    if (access === 'blocked') return; // Can't assign blocked pins
+    if (access === 'blocked' || access === 'locked') return;
 
     const current = assignments[pin];
     const currentType = current ? current.type : null;
@@ -97,6 +98,7 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
     let cls = 'pin-slot';
     if (a) cls += ` ${a.type}`;
     if (access === 'blocked') cls += ' blocked';
+    if (access === 'locked') cls += ' locked';
     return cls;
   };
 
@@ -169,12 +171,21 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
 
   // Grouped by timer
   const groupEntries = Object.entries(target.timerGroups);
-  const showUartSection = pinBudget?.shortfall > 0 || Object.keys(uartRemaps || {}).length > 0;
+  const isAio = target.boardType === 'aio';
+  const showUartSection = isAio || pinBudget?.shortfall > 0 || Object.keys(uartRemaps || {}).length > 0;
 
   return (
     <Section title="Resource mapper">
+      {/* AIO banner */}
+      {isAio && (
+        <div className="aio-banner">
+          <strong>AIO Board</strong> — Motor outputs are hardwired to the on-board ESC and cannot be reassigned.
+          Use UART remapping below to get servo outputs for your wing build.
+        </div>
+      )}
+
       {/* Pin budget counter */}
-      {pinBudget && pinBudget.shortfall > 0 && (
+      {pinBudget && pinBudget.shortfall > 0 && !isAio && (
         <div className="pin-budget">
           Your preset needs <strong>{pinBudget.needed}</strong> outputs.
           This target has <strong>{pinBudget.available}</strong> timer pins.
@@ -239,6 +250,7 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
           uartRemaps={uartRemaps || {}}
           onToggle={handleUartPinToggle}
           onTimerChange={handleUartTimerChange}
+          isAio={isAio}
         />
       )}
 
@@ -248,8 +260,8 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
   );
 }
 
-function UartRemapSection({ uarts, target, uartRemaps, onToggle, onTimerChange }) {
-  const [expanded, setExpanded] = useState(Object.keys(uartRemaps).length > 0);
+function UartRemapSection({ uarts, target, uartRemaps, onToggle, onTimerChange, isAio }) {
+  const [expanded, setExpanded] = useState(isAio || Object.keys(uartRemaps).length > 0);
 
   return (
     <div className="uart-remap-section">
@@ -257,7 +269,7 @@ function UartRemapSection({ uarts, target, uartRemaps, onToggle, onTimerChange }
         className={`uart-remap-toggle${expanded ? ' expanded' : ''}`}
         onClick={() => setExpanded(v => !v)}
       >
-        Need more pins? Sacrifice a UART
+        {isAio ? 'UART Servo Outputs (required for wing on AIO)' : 'Need more pins? Sacrifice a UART'}
         <span className="uart-remap-arrow">{expanded ? '\u25B2' : '\u25BC'}</span>
       </button>
 

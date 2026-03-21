@@ -2,10 +2,25 @@ import { useState, useMemo } from 'react';
 import Section from './common/Section';
 import { normalizePin } from '../utils/timerCheck';
 
+// Classify a target into a display category
+function getBoardCategory(t) {
+  if (t.boardType === 'wing') return 'wing';
+  if (t.boardType === 'aio') return 'aio';
+  if (t.boardType === 'fc') return 'fc';
+  return 'other';
+}
+
+const CATEGORY_ORDER = { wing: 0, fc: 1, aio: 2, other: 3 };
+const CATEGORY_LABELS = {
+  wing: 'Wing FC',
+  fc: 'FC',
+  aio: 'AIO',
+  other: 'Other',
+};
+
 export default function TargetSelector({ targets, selectedTarget, onSelectTarget }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [mcuFilter, setMcuFilter] = useState({ STM32F4: true, STM32F7: true, STM32H7: true });
-  const [wingOnly, setWingOnly] = useState(false);
+  const [typeFilter, setTypeFilter] = useState({ wing: true, fc: true, aio: true, other: true });
   const [showPaste, setShowPaste] = useState(false);
   const [pasteText, setPasteText] = useState('');
 
@@ -13,18 +28,25 @@ export default function TargetSelector({ targets, selectedTarget, onSelectTarget
 
   const filtered = useMemo(() => {
     const q = searchQuery.toLowerCase();
-    return targetList.filter(t => {
-      if (!mcuFilter[t.mcu]) return false;
-      if (wingOnly && t.wingCapable === false) return false;
-      if (q && !t.boardName.toLowerCase().includes(q) && !t.manufacturer.toLowerCase().includes(q)) {
-        return false;
-      }
-      return true;
-    });
-  }, [targetList, searchQuery, mcuFilter, wingOnly]);
+    return targetList
+      .filter(t => {
+        const cat = getBoardCategory(t);
+        if (!typeFilter[cat]) return false;
+        if (q && !t.boardName.toLowerCase().includes(q) && !t.manufacturer.toLowerCase().includes(q)) {
+          return false;
+        }
+        return true;
+      })
+      .sort((a, b) => {
+        const catA = CATEGORY_ORDER[getBoardCategory(a)] ?? 4;
+        const catB = CATEGORY_ORDER[getBoardCategory(b)] ?? 4;
+        if (catA !== catB) return catA - catB;
+        return a.boardName.localeCompare(b.boardName);
+      });
+  }, [targetList, searchQuery, typeFilter]);
 
-  const toggleMcu = (family) => {
-    setMcuFilter(prev => ({ ...prev, [family]: !prev[family] }));
+  const toggleType = (type) => {
+    setTypeFilter(prev => ({ ...prev, [type]: !prev[type] }));
   };
 
   const handlePaste = () => {
@@ -81,21 +103,15 @@ export default function TargetSelector({ targets, selectedTarget, onSelectTarget
       />
 
       <div className="target-filter-row">
-        {['STM32F4', 'STM32F7', 'STM32H7'].map(fam => (
+        {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
           <button
-            key={fam}
-            className={mcuFilter[fam] ? 'active' : ''}
-            onClick={() => toggleMcu(fam)}
+            key={key}
+            className={typeFilter[key] ? 'active' : ''}
+            onClick={() => toggleType(key)}
           >
-            {fam.replace('STM32', '')}
+            {label}
           </button>
         ))}
-        <button
-          className={wingOnly ? 'active' : ''}
-          onClick={() => setWingOnly(v => !v)}
-        >
-          Wing capable
-        </button>
       </div>
 
       <div className="target-list">
@@ -115,6 +131,14 @@ export default function TargetSelector({ targets, selectedTarget, onSelectTarget
             >
               <span className="target-row-name">{t.boardName}</span>
               <span className="mcu-badge">{t.mcu.replace('STM32', '')}</span>
+              {(() => {
+                const cat = getBoardCategory(t);
+                return cat !== 'other' ? (
+                  <span className={`board-type-badge ${cat}`}>
+                    {CATEGORY_LABELS[cat]}
+                  </span>
+                ) : null;
+              })()}
               <span className={`wing-badge ${w.cls}`}>{w.ch}</span>
             </div>
           );
@@ -131,6 +155,20 @@ export default function TargetSelector({ targets, selectedTarget, onSelectTarget
             <span>MCU</span>
             <span>{selectedTarget.mcuRaw || selectedTarget.mcu}</span>
           </div>
+          {selectedTarget.boardType && selectedTarget.boardType !== 'unknown' && (
+            <div className="target-info-row">
+              <span>Type</span>
+              <span className={`board-type-badge ${getBoardCategory(selectedTarget)}`}>
+                {(() => {
+                  const cat = getBoardCategory(selectedTarget);
+                  if (cat === 'aio') return 'AIO (On-board ESC)';
+                  if (cat === 'wing') return 'Wing FC';
+                  if (cat === 'fc') return 'Standalone FC';
+                  return 'Unknown';
+                })()}
+              </span>
+            </div>
+          )}
           <div className="target-info-row">
             <span>Motors</span>
             <span>{selectedTarget.motors.length} pins</span>

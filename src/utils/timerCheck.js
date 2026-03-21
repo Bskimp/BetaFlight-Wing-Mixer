@@ -56,6 +56,10 @@ export function isWingCapable(target) {
  * @returns {Object} {pin: {type, index}} assignment map
  */
 export function autoAssignResources(presetData, target) {
+  if (target.boardType === 'aio') {
+    return autoAssignAioResources(presetData, target);
+  }
+
   const assignments = {};
   const motorCount = presetData.motors.length;
   const servoCount = presetData.servos.length;
@@ -130,6 +134,40 @@ export function autoAssignResources(presetData, target) {
     for (let i = 0; i < Math.min(servoCount, servoGroup.pins.length); i++) {
       assignments[servoGroup.pins[i]] = { type: 'servo', index: i + 1 };
     }
+  }
+
+  return assignments;
+}
+
+/**
+ * Auto-assign resources for AIO boards.
+ * Motor pins are locked to the on-board ESC — assign preset motors to them.
+ * Servos go to non-locked, non-blocked timer pins only.
+ */
+function autoAssignAioResources(presetData, target) {
+  const assignments = {};
+  const motorCount = presetData.motors.length;
+  const servoCount = presetData.servos.length;
+
+  // Motors: assign to the board's existing motor pins (locked but still motor outputs)
+  for (let i = 0; i < Math.min(motorCount, target.motors.length); i++) {
+    assignments[target.motors[i].pin] = { type: 'motor', index: i + 1 };
+  }
+
+  // Servos: only from non-locked, non-blocked timer pins
+  const lockedPins = new Set(target.motors.map(m => m.pin));
+  const availableForServo = [];
+  for (const [, pins] of Object.entries(target.timerGroups || {})) {
+    for (const pin of pins) {
+      if (lockedPins.has(pin)) continue;
+      const access = target.pinAccess?.[pin];
+      if (access === 'blocked') continue;
+      availableForServo.push(pin);
+    }
+  }
+
+  for (let i = 0; i < Math.min(servoCount, availableForServo.length); i++) {
+    assignments[availableForServo[i]] = { type: 'servo', index: i + 1 };
   }
 
   return assignments;

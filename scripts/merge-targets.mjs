@@ -227,9 +227,108 @@ function enrichUartTimerOptions(uarts, mcuFamily, mcuTimerTable) {
 }
 
 /**
+ * Board type classification — Layer 1: Name heuristic.
+ * Returns 'wing', 'aio', or null.
+ */
+function classifyByName(boardName) {
+  const n = boardName.toUpperCase();
+  if (/WING/.test(n)) return 'wing';
+  if (/CRAZYBEE/.test(n)) return 'aio';
+  if (/WHOOP/.test(n)) return 'aio';
+  if (/AIO/.test(n)) return 'aio';
+  return null;
+}
+
+/**
+ * Board type classification — Layer 2: Config fingerprint scoring.
+ * Returns 'wing', 'aio', 'fc', or null (ambiguous).
+ */
+function classifyByFingerprint(target) {
+  let aioScore = 0;
+  let wingScore = 0;
+
+  const motorCount = (target.motors || []).length;
+  const servoCount = (target.servos || []).length;
+  const uartCount = (target.uarts || []).length;
+  const timerGroupCount = Object.keys(target.timerGroups || {}).length;
+  const features = target.features || [];
+
+  // Motor count
+  if (motorCount === 4) aioScore += 3;
+  if (motorCount <= 5) aioScore += 1;
+  if (motorCount >= 8) aioScore -= 5;
+
+  // Servo count
+  if (servoCount === 0) aioScore += 2;
+  if (servoCount >= 2) wingScore += 5;
+  if (servoCount >= 4) wingScore += 3;
+
+  // Features
+  if (features.includes('USE_WING')) wingScore += 10;
+  if (features.includes('USE_SERVOS')) wingScore += 5;
+
+  // UART count
+  if (uartCount <= 2) aioScore += 3;
+  else if (uartCount <= 3) aioScore += 1;
+  if (uartCount >= 6) aioScore -= 2;
+
+  // Timer group count
+  if (timerGroupCount <= 2) aioScore += 2;
+  if (timerGroupCount >= 5) aioScore -= 2;
+
+  // Motor timer concentration
+  if (motorCount >= 4 && target.timerPins) {
+    const motorPins = new Set((target.motors || []).map(m => m.pin));
+    const motorTimers = new Set();
+    for (const tp of target.timerPins) {
+      if (motorPins.has(tp.pin) && tp.timer) motorTimers.add(tp.timer);
+    }
+    if (motorTimers.size <= 1) aioScore += 3;
+    else if (motorTimers.size <= 2) aioScore += 1;
+  }
+
+  if (wingScore >= 5) return 'wing';
+  if (aioScore >= 6) return 'aio';
+  if (aioScore <= -3) return 'fc';
+  return null;
+}
+
+/**
+ * Board type classification — combines all three layers.
+ * @param {Object} target - processed target with motors, servos, uarts, timerPins, timerGroups, features
+ * @param {Object} overrides - pinOverrides.json contents
+ * @returns {'aio'|'wing'|'fc'|'unknown'}
+ */
+function classifyBoardType(target, overrides) {
+  // Layer 3: explicit override always wins
+  if (overrides?.[target.boardName]?.boardType) {
+    return overrides[target.boardName].boardType;
+  }
+
+  // Layer 1: name heuristic
+  const nameResult = classifyByName(target.boardName);
+  if (nameResult === 'wing') return 'wing';
+  if (nameResult === 'aio') return 'aio';
+
+  // Layer 2: fingerprint scoring
+  const fpResult = classifyByFingerprint(target);
+  if (fpResult) return fpResult;
+
+  // Default heuristics for remaining boards
+  const motorCount = (target.motors || []).length;
+  const uartCount = (target.uarts || []).length;
+  if (motorCount >= 6) return 'fc';
+  // 4-motor boards with plenty of UARTs are standalone FCs (not tiny AIOs)
+  if (motorCount >= 4 && uartCount >= 4) return 'fc';
+  // 0-motor boards are dev/carrier boards
+  if (motorCount === 0) return 'unknown';
+  return 'unknown';
+}
+
+/**
  * Process a single raw target: resolve timers, compute groups, determine wing capability.
  */
-function processTarget(target, mcuTimers, source) {
+function processTarget(target, mcuTimers, source, overrides) {
   const mcuTable = mcuTimers[target.mcu] || {};
   const timerPins = [];
 
@@ -253,7 +352,8 @@ function processTarget(target, mcuTimers, source) {
   // Enrich UARTs with timer options
   const enrichedUarts = enrichUartTimerOptions(target.uarts || [], target.mcu, mcuTable);
 
-  return {
+  // Build processed target for classification
+  const processed = {
     boardName: target.boardName,
     mcu: target.mcu,
     mcuRaw: target.mcuRaw,
@@ -273,6 +373,21 @@ function processTarget(target, mcuTimers, source) {
     mspUart: target.mspUart || null,
     source,
   };
+
+  // Classify board type
+  const boardType = classifyBoardType(processed, overrides);
+  processed.boardType = boardType;
+
+  // AIO boards: mark motor pins as 'locked' (hardwired to on-board ESC)
+  if (boardType === 'aio') {
+    for (const m of target.motors || []) {
+      if (pinAccess[m.pin] === 'accessible') {
+        pinAccess[m.pin] = 'locked';
+      }
+    }
+  }
+
+  return processed;
 }
 
 /**
@@ -315,24 +430,26 @@ function supplementTimerResolution(configTarget, unifiedTarget) {
  * Config.h targets take priority for pin/resource definitions.
  * Timer resolution is supplemented from unified-targets comments when available.
  */
-export function mergeTargets(unifiedTargets, mcuTimers, configTargets) {
+export function mergeTargets(unifiedTargets, mcuTimers, configTargets, overrides) {
   const result = {};
   let exactCount = 0;
   let wingCount = 0;
   let fromConfig = 0;
   let fromUnified = 0;
   let skippedDuplicate = 0;
+  const boardTypeCounts = { aio: 0, wing: 0, fc: 0, unknown: 0 };
 
   // Process config.h targets first (they take priority for structure)
   if (configTargets) {
     for (const [name, target] of Object.entries(configTargets)) {
       // Supplement timer resolution from unified-targets if available
       const enhanced = supplementTimerResolution(target, unifiedTargets[name]);
-      const processed = processTarget(enhanced, mcuTimers, 'config');
+      const processed = processTarget(enhanced, mcuTimers, 'config', overrides);
       result[name] = processed;
       fromConfig++;
       if (processed.resolutionStatus === 'exact') exactCount++;
       if (processed.wingCapable === true) wingCount++;
+      boardTypeCounts[processed.boardType] = (boardTypeCounts[processed.boardType] || 0) + 1;
     }
   }
 
@@ -342,14 +459,15 @@ export function mergeTargets(unifiedTargets, mcuTimers, configTargets) {
       skippedDuplicate++;
       continue;
     }
-    const processed = processTarget(target, mcuTimers, 'unified-targets');
+    const processed = processTarget(target, mcuTimers, 'unified-targets', overrides);
     result[name] = processed;
     fromUnified++;
     if (processed.resolutionStatus === 'exact') exactCount++;
     if (processed.wingCapable === true) wingCount++;
+    boardTypeCounts[processed.boardType] = (boardTypeCounts[processed.boardType] || 0) + 1;
   }
 
-  return { targets: result, exactCount, wingCount, fromConfig, fromUnified, skippedDuplicate };
+  return { targets: result, exactCount, wingCount, fromConfig, fromUnified, skippedDuplicate, boardTypeCounts };
 }
 
 // CLI entry point
@@ -361,14 +479,18 @@ if (scriptPath === thisPath) {
   const timersPath = join(__dirname, 'mcu-timers.json');
   const outPath = join(__dirname, '..', 'src', 'data', 'targets.json');
 
+  const overridesPath = join(__dirname, '..', 'src', 'data', 'pinOverrides.json');
   const unifiedRaw = JSON.parse(readFileSync(unifiedRawPath, 'utf-8'));
   const mcuTimers = JSON.parse(readFileSync(timersPath, 'utf-8'));
   const configRaw = existsSync(configRawPath)
     ? JSON.parse(readFileSync(configRawPath, 'utf-8'))
     : null;
+  const overrides = existsSync(overridesPath)
+    ? JSON.parse(readFileSync(overridesPath, 'utf-8'))
+    : {};
 
-  const { targets, exactCount, wingCount, fromConfig, fromUnified, skippedDuplicate } =
-    mergeTargets(unifiedRaw, mcuTimers, configRaw);
+  const { targets, exactCount, wingCount, fromConfig, fromUnified, skippedDuplicate, boardTypeCounts } =
+    mergeTargets(unifiedRaw, mcuTimers, configRaw, overrides);
 
   writeFileSync(outPath, JSON.stringify(targets, null, 2));
   const total = Object.keys(targets).length;
@@ -376,5 +498,6 @@ if (scriptPath === thisPath) {
   if (configRaw) {
     console.log(`  ${fromConfig} from config.h, ${fromUnified} from unified-targets, ${skippedDuplicate} duplicates skipped`);
   }
+  console.log(`  Board types: ${boardTypeCounts.aio} aio, ${boardTypeCounts.wing} wing, ${boardTypeCounts.fc} fc, ${boardTypeCounts.unknown} unknown`);
   console.log(`Output: ${outPath}`);
 }
