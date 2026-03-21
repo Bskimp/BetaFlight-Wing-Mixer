@@ -186,8 +186,8 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
       {/* AIO banner */}
       {isAio && (
         <div className="aio-banner">
-          <strong>AIO Board</strong> — Motor pads are hardwired to the on-board ESC and can only be used as motor outputs.
-          You can remap motor indexes (e.g. swap Motor 1 and 2). Use UART remapping below for servo outputs.
+          <strong>AIO Board</strong> — Motor pads 1–4 are hardwired to the on-board ESC and can only be used as motor outputs.
+          Additional signal pads (5+) can be freely assigned. Use UART remapping below if you need more servo outputs.
         </div>
       )}
 

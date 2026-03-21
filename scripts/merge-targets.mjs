@@ -403,10 +403,11 @@ function processTarget(target, mcuTimers, source, overrides) {
   const boardType = classifyBoardType(processed, overrides);
   processed.boardType = boardType;
 
-  // AIO boards: mark motor pins as 'locked' (hardwired to on-board ESC)
+  // AIO boards: mark first 4 motor pins as 'locked' (hardwired to on-board ESC)
+  // Motor pads 5+ are broken-out signal pads and can be used for servos/LEDs
   if (boardType === 'aio') {
     for (const m of target.motors || []) {
-      if (pinAccess[m.pin] === 'accessible') {
+      if (m.index <= 4 && pinAccess[m.pin] === 'accessible') {
         pinAccess[m.pin] = 'locked';
       }
     }

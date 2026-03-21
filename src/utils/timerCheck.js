@@ -155,13 +155,12 @@ function autoAssignAioResources(presetData, target) {
   }
 
   // Servos: only from non-locked, non-blocked timer pins
-  const lockedPins = new Set(target.motors.map(m => m.pin));
   const availableForServo = [];
   for (const [, pins] of Object.entries(target.timerGroups || {})) {
     for (const pin of pins) {
-      if (lockedPins.has(pin)) continue;
       const access = target.pinAccess?.[pin];
-      if (access === 'blocked') continue;
+      if (access === 'locked' || access === 'blocked') continue;
+      if (assignments[pin]) continue; // already assigned as motor
       availableForServo.push(pin);
     }
   }
