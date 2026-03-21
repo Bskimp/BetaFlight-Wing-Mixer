@@ -26,7 +26,7 @@ function getNextIndex(assignments, type, uartRemaps) {
 function AccessBadge({ access }) {
   if (!access || access === 'accessible') return null;
   if (access === 'blocked') return <span className="pin-badge-blocked" title="Routed to on-board peripheral — not accessible">&#128274;</span>;
-  if (access === 'locked') return <span className="pin-badge-locked" title="Hardwired to on-board ESC — not remappable">&#128274; ESC</span>;
+  if (access === 'locked') return <span className="pin-badge-locked" title="Hardwired to on-board ESC — motor only">&#128274; ESC</span>;
   if (access === 'maybe') return <span className="pin-badge-maybe" title="May be broken out — check your board">?</span>;
   if (access === 'unknown') return <span className="pin-badge-unknown" title="Unverified — check your board">?</span>;
   return null;
@@ -65,11 +65,18 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
 
   const handlePinClick = (pin) => {
     const access = target.pinAccess?.[pin];
-    if (access === 'blocked' || access === 'locked') return;
+    if (access === 'blocked') return;
 
     const current = assignments[pin];
     const currentType = current ? current.type : null;
-    const next = nextType(currentType);
+
+    let next;
+    if (access === 'locked') {
+      // Locked ESC pads: toggle motor on/off only (can't assign servo/LED)
+      next = currentType === 'motor' ? null : 'motor';
+    } else {
+      next = nextType(currentType);
+    }
 
     let newAssignments;
     if (next === null) {
@@ -179,8 +186,8 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
       {/* AIO banner */}
       {isAio && (
         <div className="aio-banner">
-          <strong>AIO Board</strong> — Motor outputs are hardwired to the on-board ESC and cannot be reassigned.
-          Use UART remapping below to get servo outputs for your wing build.
+          <strong>AIO Board</strong> — Motor pads are hardwired to the on-board ESC and can only be used as motor outputs.
+          You can remap motor indexes (e.g. swap Motor 1 and 2). Use UART remapping below for servo outputs.
         </div>
       )}
 
