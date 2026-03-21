@@ -300,6 +300,7 @@ function UartRemapSection({ uarts, target, uartRemaps, onToggle, onTimerChange, 
 
 function UartRemapRow({ uart, target, uartRemaps, onToggle, onTimerChange }) {
   const isSerialRx = target.serialrxUart === uart.index;
+  const isOnboardRx = isSerialRx && target.onboardRx && target.onboardRx.includes(`UART${uart.index}`);
   const isMsp = target.mspUart === uart.index;
   const anyRemapped = (uart.tx && uartRemaps[uart.tx]) || (uart.rx && uartRemaps[uart.rx]);
 
@@ -310,7 +311,7 @@ function UartRemapRow({ uart, target, uartRemaps, onToggle, onTimerChange }) {
         {uart.tx && uart.rx && ` (${pinToCli(uart.tx)} / ${pinToCli(uart.rx)})`}
         {uart.tx && !uart.rx && ` (TX: ${pinToCli(uart.tx)})`}
         {!uart.tx && uart.rx && ` (RX: ${pinToCli(uart.rx)})`}
-        {isSerialRx && <span className="uart-remap-warning"> — Receiver UART</span>}
+        {isOnboardRx && <span className="uart-remap-warning"> — On-board RX (do not remap)</span>}
         {isMsp && <span className="uart-remap-warning"> — MSP/Configurator</span>}
       </div>
 

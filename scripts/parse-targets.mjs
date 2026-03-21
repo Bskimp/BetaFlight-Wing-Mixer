@@ -14,6 +14,17 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+/**
+ * Parse SERIAL_PORT_USARTx / SERIAL_PORT_UARTx / numeric string → UART index.
+ */
+function parseSerialPort(val) {
+  if (!val) return null;
+  const m = val.match(/SERIAL_PORT_U(?:S?ART)(\d+)/i);
+  if (m) return parseInt(m[1], 10);
+  const n = parseInt(val, 10);
+  return isNaN(n) ? null : n;
+}
+
 function normalizePin(raw) {
   if (!raw || typeof raw !== 'string') return null;
   const m = raw.trim().match(/^P?([A-Ia-i])(\d{1,2})$/i);
@@ -108,11 +119,23 @@ export function parseConfigH(content) {
 
   const ledStrip = defineMap['LED_STRIP_PIN'] ? normalizePin(resolveDefine(defineMap['LED_STRIP_PIN'])) : null;
 
+  const FEATURE_WHITELIST = new Set([
+    'USE_GYRO', 'USE_ACC', 'USE_BARO',
+    'USE_FLASH', 'USE_MAX7456', 'USE_SDCARD',
+    'USE_GPS', 'USE_SERVOS', 'USE_WING',
+    'USE_RX_SPI', 'USE_RX_EXPRESSLRS', 'USE_RX_CC2500',
+    'USE_RX_FRSKY_SPI', 'USE_RX_FLYSKY',
+  ]);
   const features = [];
-  for (const key of Object.keys(defineMap)) {
-    if (key === 'USE_GYRO' || key === 'USE_ACC' || key === 'USE_BARO' ||
-        key === 'USE_FLASH' || key === 'USE_MAX7456' || key === 'USE_SDCARD' ||
-        key === 'USE_GPS' || key === 'USE_SERVOS' || key === 'USE_WING') {
+  // Check defineMap (defines with values) and also scan for bare #define flags
+  const bareDefineRegex = /^#define\s+(\w+)\s*$/gm;
+  const allDefines = new Set(Object.keys(defineMap));
+  let bd;
+  while ((bd = bareDefineRegex.exec(joined)) !== null) {
+    allDefines.add(bd[1]);
+  }
+  for (const key of allDefines) {
+    if (FEATURE_WHITELIST.has(key)) {
       features.push(key);
     }
   }
@@ -122,14 +145,18 @@ export function parseConfigH(content) {
   // Peripheral pins — for pin accessibility classification
   const peripheralPins = extractPeripheralPinsFromDefines(defineMap, resolveDefine);
 
-  // UART default functions
-  const serialrxUart = defineMap['SERIALRX_UART'] ? parseInt(defineMap['SERIALRX_UART'], 10) : null;
-  const mspUart = defineMap['MSP_UART'] ? parseInt(defineMap['MSP_UART'], 10) : null;
+  // UART default functions — value may be a number or SERIAL_PORT_USARTx/SERIAL_PORT_UARTx
+  const serialrxUart = parseSerialPort(defineMap['SERIALRX_UART']);
+  const mspUart = parseSerialPort(defineMap['MSP_UART']);
+
+  // On-board RX detection
+  const hasRxSpi = features.some(f => f.startsWith('USE_RX_'));
+  const rxSpiProtocol = defineMap['RX_SPI_DEFAULT_PROTOCOL'] || null;
 
   return {
     boardName, mcu, mcuRaw: mcuRaw || '', manufacturer,
     motors, servos, uarts, timerMap, ledStrip, features, gyroAlign,
-    peripheralPins, serialrxUart, mspUart,
+    peripheralPins, serialrxUart, mspUart, hasRxSpi, rxSpiProtocol,
   };
 }
 
@@ -322,15 +349,19 @@ export function parseUnifiedConfig(content, filename) {
   }
 
   // Features from #define lines
+  const FEATURE_WHITELIST = new Set([
+    'USE_GYRO', 'USE_ACC', 'USE_BARO',
+    'USE_FLASH', 'USE_MAX7456', 'USE_SDCARD',
+    'USE_GPS', 'USE_SERVOS', 'USE_WING',
+    'USE_RX_SPI', 'USE_RX_EXPRESSLRS', 'USE_RX_CC2500',
+    'USE_RX_FRSKY_SPI', 'USE_RX_FLYSKY',
+  ]);
   const features = [];
   const featureRegex = /^#define\s+(USE_\w+)/gm;
   let fm;
   while ((fm = featureRegex.exec(content)) !== null) {
-    const key = fm[1];
-    if (key === 'USE_GYRO' || key === 'USE_ACC' || key === 'USE_BARO' ||
-        key === 'USE_FLASH' || key === 'USE_MAX7456' || key === 'USE_SDCARD' ||
-        key === 'USE_GPS' || key === 'USE_SERVOS' || key === 'USE_WING') {
-      features.push(key);
+    if (FEATURE_WHITELIST.has(fm[1])) {
+      features.push(fm[1]);
     }
   }
 
@@ -350,10 +381,15 @@ export function parseUnifiedConfig(content, filename) {
     beeper: beeperPin, pinio: pinioPins, statusLeds,
   };
 
+  // On-board RX detection
+  const hasRxSpi = features.some(f => f.startsWith('USE_RX_'));
+  const rxSpiMatch = content.match(/^set\s+rx_spi_protocol\s*=\s*(\S+)/m);
+  const rxSpiProtocol = rxSpiMatch ? rxSpiMatch[1] : null;
+
   return {
     boardName, mcu, mcuRaw: mcuRaw || '', manufacturer,
     motors, servos, uarts, timerMap, ledStrip, features, gyroAlign,
-    peripheralPins, serialrxUart, mspUart,
+    peripheralPins, serialrxUart, mspUart, hasRxSpi, rxSpiProtocol,
   };
 }
 

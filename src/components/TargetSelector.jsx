@@ -191,6 +191,12 @@ export default function TargetSelector({ targets, selectedTarget, onSelectTarget
               {selectedTarget.resolutionStatus}
             </span>
           </div>
+          {selectedTarget.onboardRx && (
+            <div className="target-info-row">
+              <span>On-board RX</span>
+              <span>{selectedTarget.onboardRx}</span>
+            </div>
+          )}
         </div>
       )}
 

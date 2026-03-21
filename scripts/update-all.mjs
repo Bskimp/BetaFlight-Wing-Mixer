@@ -13,7 +13,7 @@
  * 6. Run merge-targets.mjs → src/data/targets.json (config.h wins, unified fills gaps)
  */
 
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -109,8 +109,12 @@ console.log(`  ${Object.keys(configRaw).length} targets parsed, ${configSkipped}
 
 // Step 6: Merge
 console.log('\nMerging targets with timer data...');
+const overridesPath = join(projectRoot, 'src', 'data', 'pinOverrides.json');
+const overrides = existsSync(overridesPath)
+  ? JSON.parse(readFileSync(overridesPath, 'utf-8'))
+  : {};
 const { targets: finalTargets, exactCount, wingCount, fromConfig, fromUnified, skippedDuplicate } =
-  mergeTargets(unifiedRaw, mcuTimers, configRaw);
+  mergeTargets(unifiedRaw, mcuTimers, configRaw, overrides);
 const outPath = join(projectRoot, 'src', 'data', 'targets.json');
 writeFileSync(outPath, JSON.stringify(finalTargets, null, 2));
 

@@ -228,11 +228,12 @@ function enrichUartTimerOptions(uarts, mcuFamily, mcuTimerTable) {
 
 /**
  * Board type classification — Layer 1: Name heuristic.
- * Returns 'wing', 'aio', or null.
+ * Returns 'aio' or null. Wing is NOT detected by name — many general-purpose
+ * FCs have "WING" in the name but are not wing-dedicated. Wing classification
+ * relies on USE_WING feature flag (Layer 2) or explicit overrides (Layer 3).
  */
 function classifyByName(boardName) {
   const n = boardName.toUpperCase();
-  if (/WING/.test(n)) return 'wing';
   if (/CRAZYBEE/.test(n)) return 'aio';
   if (/WHOOP/.test(n)) return 'aio';
   if (/AIO/.test(n)) return 'aio';
@@ -263,9 +264,10 @@ function classifyByFingerprint(target) {
   if (servoCount >= 2) wingScore += 5;
   if (servoCount >= 4) wingScore += 3;
 
-  // Features
+  // Features — only USE_WING is a strong wing signal.
+  // USE_SERVOS alone doesn't mean wing — many FCs support servos for camera gimbals etc.
   if (features.includes('USE_WING')) wingScore += 10;
-  if (features.includes('USE_SERVOS')) wingScore += 5;
+  if (features.includes('USE_SERVOS')) wingScore += 2;
 
   // UART count
   if (uartCount <= 2) aioScore += 3;
@@ -287,7 +289,7 @@ function classifyByFingerprint(target) {
     else if (motorTimers.size <= 2) aioScore += 1;
   }
 
-  if (wingScore >= 5) return 'wing';
+  if (wingScore >= 10) return 'wing';
   if (aioScore >= 6) return 'aio';
   if (aioScore <= -3) return 'fc';
   return null;
@@ -323,6 +325,27 @@ function classifyBoardType(target, overrides) {
   // 0-motor boards are dev/carrier boards
   if (motorCount === 0) return 'unknown';
   return 'unknown';
+}
+
+/**
+ * Detect on-board receiver. Returns description string or null.
+ * SPI RX = always on-board. UART RX = only if board name indicates built-in receiver.
+ */
+function detectOnboardRx(target) {
+  // SPI-based on-board receivers
+  if (target.hasRxSpi) {
+    const proto = target.rxSpiProtocol || '';
+    if (/EXPRESSLRS/i.test(proto)) return 'SPI ELRS';
+    if (/FRSKY/i.test(proto) || /CC2500/i.test(proto)) return 'SPI FrSky';
+    if (/FLYSKY/i.test(proto) || /A7105/i.test(proto)) return 'SPI FlySky';
+    if (/NRF24/i.test(proto)) return 'SPI NRF24';
+    return 'SPI RX';
+  }
+  // UART-based on-board receivers — only if board name indicates built-in
+  if (target.serialrxUart && /ELRS|CRSF/i.test(target.boardName)) {
+    return `UART${target.serialrxUart} ELRS`;
+  }
+  return null;
 }
 
 /**
@@ -371,6 +394,8 @@ function processTarget(target, mcuTimers, source, overrides) {
     pinAccess,
     serialrxUart: target.serialrxUart || null,
     mspUart: target.mspUart || null,
+    rxSpi: target.hasRxSpi ? (target.rxSpiProtocol || true) : null,
+    onboardRx: detectOnboardRx(target),
     source,
   };
 
@@ -385,6 +410,14 @@ function processTarget(target, mcuTimers, source, overrides) {
         pinAccess[m.pin] = 'locked';
       }
     }
+  }
+
+  // Apply RX overrides from pinOverrides.json
+  const boardOverride = overrides?.[target.boardName];
+  if (boardOverride) {
+    if (boardOverride.serialrxUart != null) processed.serialrxUart = boardOverride.serialrxUart;
+    if (boardOverride.rxSpi != null) processed.rxSpi = boardOverride.rxSpi;
+    if (boardOverride.onboardRx != null) processed.onboardRx = boardOverride.onboardRx;
   }
 
   return processed;
