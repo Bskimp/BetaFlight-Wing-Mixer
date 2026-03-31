@@ -1,10 +1,13 @@
 import Section from './common/Section';
 import { AIRFRAME_PRESETS } from '../data/presets';
-import { findPin } from '../utils/pinLookup';
+import { findPin, findPinBySlotId } from '../utils/pinLookup';
 
 export default function ServoMapPanel({ preset, servos, motors, assignments, servoReversed, onServoReversedChange }) {
   const presetData = AIRFRAME_PRESETS[preset];
   if (!presetData) return null;
+
+  const useBuiltInWing = presetData.mixerType === 'FLYING_WING';
+  const minSlot = useBuiltInWing ? 3 : 2;
 
   const toggleReversed = (servoId) => {
     onServoReversedChange(prev => ({ ...prev, [servoId]: !prev[servoId] }));
@@ -20,12 +23,12 @@ export default function ServoMapPanel({ preset, servos, motors, assignments, ser
     direction: null,
   }));
 
-  const servoRows = presetData.servos.map((s, i) => ({
+  const servoRows = presetData.servos.map((s) => ({
     key: `s-${s.id}`,
     type: 'servo',
     fn: s.label,
-    pin: findPin(assignments, 'servo', i + 1) || '\u2014',
-    resource: `SERVO ${i + 1}`,
+    pin: findPinBySlotId(assignments, s.id) || '\u2014',
+    resource: `SERVO ${s.id - minSlot + 1}`,
     bfSlot: `slot ${s.id}`,
     direction: servoReversed?.[s.id] ? 'Reversed' : 'Normal',
     servoId: s.id,

@@ -10,10 +10,21 @@ const MIXER_NAMES = {
   24: 'CUSTOMAIRPLANE',
 };
 
+/**
+ * Compute BF resource SERVO index from a servo slot ID.
+ * CUSTOMAIRPLANE: resource SERVO N drives slot N+1, so index = slotId - 1
+ * FLYING_WING: resource SERVO N drives slot N+2, so index = slotId - 2
+ */
+function servoResourceIndex(slotId, useBuiltInWing) {
+  const minSlot = useBuiltInWing ? 3 : 2;
+  return slotId - minSlot + 1;
+}
+
 export function generateCli({ preset, motors, servos, wingSettings, pids, rates, diffThrust, complexity, selectedTarget, assignments, tpaSettings, spaSettings, passthrough, uartRemaps, servoReversed }) {
   const lines = [];
   const presetData = AIRFRAME_PRESETS[preset];
   const presetName = presetData?.name || preset;
+  const useBuiltInWing = presetData?.mixerType === 'FLYING_WING';
   const imported = passthrough && Object.keys(passthrough).some(k => {
     const v = passthrough[k];
     return v && (Array.isArray(v) ? v.length > 0 : true);
@@ -30,7 +41,11 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
   if (selectedTarget && assignments && Object.keys(assignments).length > 0) {
     lines.push(`# Resource assignment for ${selectedTarget.boardName}`);
     for (let i = 1; i <= 8; i++) lines.push(`resource MOTOR ${i} NONE`);
-    for (let i = 1; i <= 4; i++) lines.push(`resource SERVO ${i} NONE`);
+    // Clear enough SERVO resources to cover the highest slot used
+    const maxServoResource = presetData?.servos?.reduce((max, s) => {
+      return Math.max(max, servoResourceIndex(s.id, useBuiltInWing));
+    }, 0) || 0;
+    for (let i = 1; i <= Math.max(maxServoResource, 4); i++) lines.push(`resource SERVO ${i} NONE`);
     lines.push('resource LED_STRIP 1 NONE');
     lines.push('');
 
@@ -39,11 +54,16 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
     const ledPins = [];
     for (const [pin, a] of Object.entries(assignments)) {
       if (a.type === 'motor') motorAssigns.push({ pin, index: a.index });
-      else if (a.type === 'servo') servoAssigns.push({ pin, index: a.index });
+      else if (a.type === 'servo') servoAssigns.push({ pin, index: a.index, slotId: a.slotId });
       else if (a.type === 'led') ledPins.push(pin);
     }
     motorAssigns.sort((a, b) => a.index - b.index);
-    servoAssigns.sort((a, b) => a.index - b.index);
+    // Sort servos by resource index (derived from slot ID) for clean output
+    servoAssigns.sort((a, b) => {
+      const aIdx = a.slotId != null ? servoResourceIndex(a.slotId, useBuiltInWing) : a.index;
+      const bIdx = b.slotId != null ? servoResourceIndex(b.slotId, useBuiltInWing) : b.index;
+      return aIdx - bIdx;
+    });
     ledPins.sort();
 
     for (const m of motorAssigns) {
@@ -52,9 +72,12 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
       lines.push(`resource MOTOR ${m.index} ${pinToCli(m.pin)}${comment}`);
     }
     for (const s of servoAssigns) {
-      const sObj = presetData?.servos?.[s.index - 1];
-      const comment = sObj ? `    # ${sObj.label}` : '';
-      lines.push(`resource SERVO ${s.index} ${pinToCli(s.pin)}${comment}`);
+      const resourceIdx = s.slotId != null
+        ? servoResourceIndex(s.slotId, useBuiltInWing)
+        : s.index;
+      const sObj = presetData?.servos?.find(sv => sv.id === s.slotId);
+      const comment = sObj ? `    # ${sObj.label} (slot ${s.slotId})` : '';
+      lines.push(`resource SERVO ${resourceIdx} ${pinToCli(s.pin)}${comment}`);
     }
     if (ledPins.length > 0) {
       for (let i = 0; i < ledPins.length; i++) {
@@ -153,7 +176,6 @@ export function generateCli({ preset, motors, servos, wingSettings, pids, rates,
 
   // Mixer type — FLYING_WING for basic wing (BF handles elevon mixing internally),
   // CUSTOMAIRPLANE for everything else (diff thrust, airplane, v-tail)
-  const useBuiltInWing = presetData?.mixerType === 'FLYING_WING';
   const mixerName = useBuiltInWing ? 'FLYING_WING' : 'CUSTOMAIRPLANE';
   const mixerLabel = useBuiltInWing ? 'Flying Wing (built-in elevon mix)' : 'Custom Airplane';
   lines.push(`# Mixer: ${mixerLabel}`);

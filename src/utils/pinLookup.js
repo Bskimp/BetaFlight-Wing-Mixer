@@ -8,3 +8,12 @@ export function findPin(assignments, type, index) {
   }
   return null;
 }
+
+// Reverse-lookup: find pin assigned to a servo with a given slotId
+export function findPinBySlotId(assignments, slotId) {
+  if (!assignments) return null;
+  for (const [pin, a] of Object.entries(assignments)) {
+    if (a.type === 'servo' && a.slotId === slotId) return pinToCli(pin);
+  }
+  return null;
+}

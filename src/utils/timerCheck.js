@@ -129,10 +129,14 @@ export function autoAssignResources(presetData, target) {
     servoGroup = remainingGroups[remainingGroups.length - 1];
   }
 
-  // Assign servos
+  // Assign servos (with slotId from preset for correct BF resource mapping)
   if (servoGroup) {
     for (let i = 0; i < Math.min(servoCount, servoGroup.pins.length); i++) {
-      assignments[servoGroup.pins[i]] = { type: 'servo', index: i + 1 };
+      assignments[servoGroup.pins[i]] = {
+        type: 'servo',
+        index: i + 1,
+        slotId: presetData.servos[i].id,
+      };
     }
   }
 
@@ -166,7 +170,11 @@ function autoAssignAioResources(presetData, target) {
   }
 
   for (let i = 0; i < Math.min(servoCount, availableForServo.length); i++) {
-    assignments[availableForServo[i]] = { type: 'servo', index: i + 1 };
+    assignments[availableForServo[i]] = {
+      type: 'servo',
+      index: i + 1,
+      slotId: presetData.servos[i].id,
+    };
   }
 
   return assignments;
@@ -239,15 +247,17 @@ export function pickBestTimer(timerOptions, assignments, timerPins) {
   if (!timerOptions || timerOptions.length === 0) return null;
   if (timerOptions.length === 1) return timerOptions[0];
 
-  // Build set of timers used by motors and servos
+  // Build set of timers used by motors, servos, and LED strip
   const motorTimers = new Set();
   const servoTimers = new Set();
+  const ledTimers = new Set();
   for (const tp of timerPins || []) {
     const a = assignments[tp.pin];
     if (!a) continue;
     const timerKey = tp.exact ? tp.timer : tp.timerFamily;
     if (a.type === 'motor') motorTimers.add(timerKey);
     if (a.type === 'servo') servoTimers.add(timerKey);
+    if (a.type === 'led') ledTimers.add(timerKey);
   }
 
   // Score each option (lower = better)
@@ -255,6 +265,7 @@ export function pickBestTimer(timerOptions, assignments, timerPins) {
     let score = 0;
     if (servoTimers.has(opt.timer)) score -= 10; // prefer servo timer
     if (motorTimers.has(opt.timer)) score += 20; // avoid motor timer
+    if (ledTimers.has(opt.timer)) score += 20;   // avoid LED timer
     // Prefer lower timer number
     const num = parseInt(opt.timer.replace('TIM', ''), 10) || 99;
     score += num;
@@ -284,7 +295,7 @@ export function detectConflicts(assignments, timerPins, uartRemaps) {
     const key = tp.exact ? tp.timer : tp.timerFamily;
     if (!key) continue;
     const assignment = assignments[tp.pin];
-    if (!assignment || assignment.type === 'led') continue;
+    if (!assignment) continue;
 
     if (!groupMap[key]) {
       groupMap[key] = { exact: tp.exact !== false, pins: [] };
@@ -309,11 +320,23 @@ export function detectConflicts(assignments, timerPins, uartRemaps) {
   for (const [timer, group] of Object.entries(groupMap)) {
     const hasMotor = group.pins.some(p => p.type === 'motor');
     const hasServo = group.pins.some(p => p.type === 'servo');
+    const hasLed = group.pins.some(p => p.type === 'led');
+    const pinList = group.pins.map(p => p.pin);
+
     if (hasMotor && hasServo) {
-      const pinList = group.pins.map(p => p.pin);
       const message = group.exact
         ? `${timer} has both Dshot motors and PWM servos — they cannot share a timer`
         : `${timer} pins may share a timer — verify with CLI \`timer\` command`;
+      conflicts.push({ timer, pins: pinList, exact: group.exact, message });
+    } else if (hasLed && hasServo) {
+      const message = group.exact
+        ? `${timer} has both LED strip and PWM servos — LED strip will block servo output on this timer`
+        : `${timer} pins may share a timer — LED strip could block servo output`;
+      conflicts.push({ timer, pins: pinList, exact: group.exact, message });
+    } else if (hasLed && hasMotor) {
+      const message = group.exact
+        ? `${timer} has both LED strip and Dshot motors — they cannot share a timer`
+        : `${timer} pins may share a timer — LED strip could conflict with motor output`;
       conflicts.push({ timer, pins: pinList, exact: group.exact, message });
     }
   }
@@ -341,7 +364,9 @@ export function renumberAssignments(assignments) {
   servos.sort((a, b) => assignments[a].index - assignments[b].index);
 
   motors.forEach((pin, i) => { result[pin] = { type: 'motor', index: i + 1 }; });
-  servos.forEach((pin, i) => { result[pin] = { type: 'servo', index: i + 1 }; });
+  servos.forEach((pin, i) => {
+    result[pin] = { type: 'servo', index: i + 1, slotId: assignments[pin].slotId };
+  });
 
   return result;
 }

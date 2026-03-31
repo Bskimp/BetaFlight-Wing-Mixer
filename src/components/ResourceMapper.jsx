@@ -23,6 +23,22 @@ function getNextIndex(assignments, type, uartRemaps) {
   return max + 1;
 }
 
+/**
+ * Find the next unassigned servo slot from the preset.
+ * Returns the slotId or null if all preset slots are assigned.
+ */
+function getNextServoSlot(assignments, presetData) {
+  if (!presetData?.servos) return null;
+  const assignedSlots = new Set();
+  for (const a of Object.values(assignments)) {
+    if (a.type === 'servo' && a.slotId != null) assignedSlots.add(a.slotId);
+  }
+  for (const s of presetData.servos) {
+    if (!assignedSlots.has(s.id)) return s.id;
+  }
+  return null;
+}
+
 function AccessBadge({ access }) {
   if (!access || access === 'accessible') return null;
   if (access === 'blocked') return <span className="pin-badge-blocked" title="Routed to on-board peripheral — not accessible">&#128274;</span>;
@@ -83,6 +99,10 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
       newAssignments = { ...assignments };
       delete newAssignments[pin];
       newAssignments = renumberAssignments(newAssignments);
+    } else if (next === 'servo') {
+      const index = getNextIndex(assignments, next, uartRemaps);
+      const slotId = getNextServoSlot(assignments, preset);
+      newAssignments = { ...assignments, [pin]: { type: next, index, slotId } };
     } else {
       const index = getNextIndex(assignments, next, uartRemaps);
       newAssignments = { ...assignments, [pin]: { type: next, index } };
@@ -94,7 +114,13 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
     const a = assignments[pin];
     if (!a) return '';
     if (a.type === 'motor') return `Motor ${a.index}`;
-    if (a.type === 'servo') return `Servo ${a.index}`;
+    if (a.type === 'servo') {
+      if (a.slotId != null && preset) {
+        const servoData = preset.servos?.find(s => s.id === a.slotId);
+        if (servoData) return servoData.shortLabel || servoData.label;
+      }
+      return `Servo ${a.index}`;
+    }
     if (a.type === 'led') return 'LED Strip';
     return '';
   };
@@ -119,7 +145,13 @@ export default function ResourceMapper({ target, assignments, onAssignmentsChang
       const timerOptions = role === 'tx' ? uart.txTimers : uart.rxTimers;
       const best = pickBestTimer(timerOptions, assignments, target.timerPins);
       if (!best) return;
-      const servoIndex = getNextIndex(assignments, 'servo', newRemaps);
+      // UART remap servo resource index must follow after the highest preset slot index
+      const useBuiltInWing = preset?.mixerType === 'FLYING_WING';
+      const minSlot = useBuiltInWing ? 3 : 2;
+      const maxPresetResource = preset?.servos?.reduce((max, s) => Math.max(max, s.id - minSlot + 1), 0) || 0;
+      // Count existing UART remaps to get next offset
+      const existingRemapCount = Object.keys(newRemaps).length;
+      const servoIndex = Math.max(maxPresetResource + existingRemapCount + 1, getNextIndex(assignments, 'servo', newRemaps));
       newRemaps[pin] = {
         uartIndex: uart.index,
         role,
