@@ -20,6 +20,7 @@ import CliOutput from './components/CliOutput';
 import ImportDialog from './components/ImportDialog';
 import WingDiagram from './components/WingDiagram';
 import ServoMapPanel from './components/ServoMapPanel';
+import WiringSummary from './components/WiringSummary';
 import GuidePanel from './components/GuidePanel';
 import TuningGuidePanel from './components/TuningGuidePanel';
 
@@ -121,7 +122,7 @@ export default function App() {
   const [passthrough, setPassthrough] = useState(null);
   const [uartRemaps, setUartRemaps] = useState({});
   const [servoReversed, setServoReversed] = useState({});
-  const [activeTab, setActiveTab] = useState('setup');
+  const [activeTab, setActiveTab] = useState('hardware');
 
   // Load from URL on mount
   useEffect(() => {
@@ -303,7 +304,7 @@ export default function App() {
   // Tab content rendering
   const renderTabContent = () => {
     switch (activeTab) {
-      case 'setup':
+      case 'wing-setup':
         return (
           <>
             {importSource && (
@@ -317,11 +318,8 @@ export default function App() {
                 Import Config
               </button>
             </div>
-            <TargetSelector
-              targets={targets}
-              selectedTarget={selectedTarget}
-              onSelectTarget={handleTargetSelect}
-            />
+            <PresetSelector selectedPreset={preset} onSelect={loadPreset} />
+            <WingDiagram preset={preset} motors={motors} servos={servos} assignments={assignments} />
             {selectedTarget && (
               <ResourceMapper
                 target={selectedTarget}
@@ -333,14 +331,6 @@ export default function App() {
                 onUartRemapsChange={setUartRemaps}
               />
             )}
-          </>
-        );
-
-      case 'mixer':
-        return (
-          <>
-            <PresetSelector selectedPreset={preset} onSelect={loadPreset} />
-            <WingDiagram preset={preset} motors={motors} servos={servos} assignments={assignments} />
             <ServoMapPanel
               preset={preset}
               servos={servos}
@@ -348,9 +338,26 @@ export default function App() {
               assignments={assignments}
               servoReversed={servoReversed}
               onServoReversedChange={setServoReversed}
+              selectedTarget={selectedTarget}
             />
-            <MotorMixer motors={motors} onChange={setMotors} />
-            <ServoMixer servos={servos} onChange={setServos} mode="full" />
+            {selectedTarget && Object.keys(assignments).length > 0 && (
+              <WiringSummary
+                target={selectedTarget}
+                assignments={assignments}
+                preset={AIRFRAME_PRESETS[preset]}
+              />
+            )}
+          </>
+        );
+
+      case 'hardware':
+        return (
+          <>
+            <TargetSelector
+              targets={targets}
+              selectedTarget={selectedTarget}
+              onSelectTarget={handleTargetSelect}
+            />
           </>
         );
 
@@ -365,6 +372,8 @@ export default function App() {
       case 'tuning':
         return (
           <>
+            <MotorMixer motors={motors} onChange={setMotors} />
+            <ServoMixer servos={servos} onChange={setServos} mode="full" />
             <WingSettings wingSettings={wingSettings} onChange={setWingSettings} />
             <TpaCurvePanel tpaSettings={tpaSettings} onChange={setTpaSettings} />
             <SpaPanel spaSettings={spaSettings} onChange={setSpaSettings} />
@@ -383,6 +392,7 @@ export default function App() {
             onShare={handleShare}
             selectedTarget={selectedTarget}
             assignments={assignments}
+            presetData={AIRFRAME_PRESETS[preset]}
           />
         );
 

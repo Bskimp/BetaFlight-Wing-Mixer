@@ -794,7 +794,7 @@ set debug_mode = S_TERM          # S-term before/after TPA`} />
       <Section title="Differential Thrust Tuning" defaultCollapsed>
         <div className="setting-note">
           For wings with 2 motors using throttle differential for yaw control.
-          Configure motor mix in the <TabLink tab="mixer" label="Mixer tab" onTabChange={onTabChange} />.
+          Configure motor mix in the <TabLink tab="wing-setup" label="Wing Setup tab" onTabChange={onTabChange} />.
         </div>
 
         <div className="sub-group">

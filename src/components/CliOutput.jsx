@@ -1,36 +1,8 @@
 import { useState, useMemo } from 'react';
 import { pinToCli } from '../utils/timerCheck';
 import { BF_DEFAULTS } from '../data/defaults';
+import { buildStockResources, assignmentLabel } from '../utils/pinLookup';
 import Section from './common/Section';
-
-/**
- * Build a map of pin → { type, index, label } from target's stock motor/servo arrays.
- */
-function buildStockResources(target) {
-  const map = {};
-  if (target.motors) {
-    for (const m of target.motors) {
-      map[m.pin] = { type: 'motor', index: m.index, label: `Motor ${m.index}` };
-    }
-  }
-  if (target.servos) {
-    for (const s of target.servos) {
-      map[s.pin] = { type: 'servo', index: s.index, label: `Servo ${s.index}` };
-    }
-  }
-  return map;
-}
-
-/**
- * Build a label for a resource assignment.
- */
-function assignmentLabel(a) {
-  if (!a) return null;
-  if (a.type === 'motor') return `Motor ${a.index}`;
-  if (a.type === 'servo') return `Servo ${a.index}`;
-  if (a.type === 'led') return 'LED';
-  return null;
-}
 
 /**
  * Parse CLI text into setting key → value map for diffing.
@@ -47,7 +19,7 @@ function parseSettings(text) {
 /**
  * Structured compare: resource changes + settings changes.
  */
-function CompareView({ target, assignments, cliText }) {
+function CompareView({ target, assignments, cliText, presetData }) {
   const stockResources = useMemo(() => buildStockResources(target), [target]);
 
   // Collect all pins, sorted by resource type/index (Motor 1, Motor 2, ..., Servo 1, Servo 2, ...)
@@ -76,7 +48,7 @@ function CompareView({ target, assignments, cliText }) {
       const stock = stockResources[pin];
       const user = assignments[pin];
       const stockLabel = stock ? stock.label : '\u2014';
-      const userLabel = assignmentLabel(user) || '\u2014';
+      const userLabel = assignmentLabel(user, presetData) || '\u2014';
 
       // Determine change status
       let status = 'unchanged';
@@ -187,7 +159,7 @@ function CliPre({ text }) {
   );
 }
 
-export default function CliOutput({ cliText, warnings, boardName, onShare, selectedTarget, assignments }) {
+export default function CliOutput({ cliText, warnings, boardName, onShare, selectedTarget, assignments, presetData }) {
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
   const [showCompare, setShowCompare] = useState(false);
@@ -258,6 +230,7 @@ export default function CliOutput({ cliText, warnings, boardName, onShare, selec
             target={selectedTarget}
             assignments={assignments}
             cliText={cliText}
+            presetData={presetData}
           />
         )}
       </div>

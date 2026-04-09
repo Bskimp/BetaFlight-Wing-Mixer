@@ -17,3 +17,40 @@ export function findPinBySlotId(assignments, slotId) {
   }
   return null;
 }
+
+/**
+ * Build a map of pin → { type, index, label } from target's stock motor/servo arrays.
+ * Represents the board's factory default resource assignments.
+ */
+export function buildStockResources(target) {
+  const map = {};
+  if (target.motors) {
+    for (const m of target.motors) {
+      map[m.pin] = { type: 'motor', index: m.index, label: `Motor ${m.index}` };
+    }
+  }
+  if (target.servos) {
+    for (const s of target.servos) {
+      map[s.pin] = { type: 'servo', index: s.index, label: `Servo ${s.index}` };
+    }
+  }
+  return map;
+}
+
+/**
+ * Build a label for a resource assignment, using preset function names when available.
+ */
+export function assignmentLabel(a, presetData) {
+  if (!a) return null;
+  if (a.type === 'motor') {
+    const m = presetData?.motors?.[a.index - 1];
+    return m ? (m.shortLabel || m.label) : `Motor ${a.index}`;
+  }
+  if (a.type === 'servo' && a.slotId != null && presetData) {
+    const s = presetData.servos?.find(sv => sv.id === a.slotId);
+    return s ? (s.shortLabel || s.label) : `Servo ${a.index}`;
+  }
+  if (a.type === 'servo') return `Servo ${a.index}`;
+  if (a.type === 'led') return 'LED';
+  return null;
+}

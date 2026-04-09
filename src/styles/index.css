@@ -2293,3 +2293,91 @@ select {
     padding: 3px 4px;
   }
 }
+
+/* Wiring Summary */
+.wiring-summary {
+  margin-top: 12px;
+  border: 2px solid var(--primary-500);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--surface-100);
+}
+
+.wiring-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.wiring-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.wiring-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--surface-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--surface-300);
+}
+
+.wiring-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--surface-200);
+}
+
+.wiring-pad {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.wiring-pin {
+  margin-left: 6px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--surface-500);
+}
+
+.wiring-arrow {
+  text-align: center;
+  color: var(--surface-400);
+  font-size: 16px;
+  width: 30px;
+}
+
+.wiring-function {
+  font-weight: 600;
+  color: var(--primary-700);
+}
+
+.wiring-row.wiring-motor .wiring-function {
+  color: var(--warning-600);
+}
+
+.wiring-row.wiring-led .wiring-function {
+  color: var(--success-600);
+}
+
+.wiring-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--surface-500);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .wiring-table {
+    font-size: 11px;
+  }
+  .wiring-table td {
+    padding: 4px;
+  }
+}

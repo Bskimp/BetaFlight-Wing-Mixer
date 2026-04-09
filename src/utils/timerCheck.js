@@ -105,39 +105,36 @@ export function autoAssignResources(presetData, target) {
     assignments[motorGroup.pins[i]] = { type: 'motor', index: i + 1 };
   }
 
-  // Pick servo group: different from motor group, prefer exact fit
+  // Collect all available servo pins from non-motor groups, plus unused motor group pins
   const remainingGroups = groups.filter((_, i) => i !== motorGroupIdx);
-  let servoGroup = null;
-  // Exact fit
-  for (const g of remainingGroups) {
-    if (g.pins.length === servoCount) {
-      servoGroup = g;
-      break;
+
+  // Sort remaining groups: prefer exact fit first, then smallest that fits
+  const sortedForServo = [...remainingGroups].sort((a, b) => {
+    const aExact = a.pins.length === servoCount ? 0 : 1;
+    const bExact = b.pins.length === servoCount ? 0 : 1;
+    if (aExact !== bExact) return aExact - bExact;
+    return a.pins.length - b.pins.length;
+  });
+
+  // Gather servo-eligible pins: sorted groups first, then unused motor group pins
+  const servoPins = [];
+  for (const g of sortedForServo) {
+    for (const pin of g.pins) {
+      if (!assignments[pin]) servoPins.push(pin);
     }
   }
-  // Smallest that fits
-  if (!servoGroup) {
-    for (const g of remainingGroups) {
-      if (g.pins.length >= servoCount) {
-        servoGroup = g;
-        break;
-      }
-    }
-  }
-  // Fallback: largest remaining
-  if (!servoGroup && remainingGroups.length > 0) {
-    servoGroup = remainingGroups[remainingGroups.length - 1];
+  // Add unused pins from motor group (if motor group had spares)
+  for (const pin of motorGroup.pins) {
+    if (!assignments[pin]) servoPins.push(pin);
   }
 
   // Assign servos (with slotId from preset for correct BF resource mapping)
-  if (servoGroup) {
-    for (let i = 0; i < Math.min(servoCount, servoGroup.pins.length); i++) {
-      assignments[servoGroup.pins[i]] = {
-        type: 'servo',
-        index: i + 1,
-        slotId: presetData.servos[i].id,
-      };
-    }
+  for (let i = 0; i < Math.min(servoCount, servoPins.length); i++) {
+    assignments[servoPins[i]] = {
+      type: 'servo',
+      index: i + 1,
+      slotId: presetData.servos[i].id,
+    };
   }
 
   return assignments;

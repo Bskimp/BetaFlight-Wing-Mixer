@@ -1,6 +1,6 @@
 const TABS = [
-  { id: 'setup', icon: '\u2699', label: 'Setup' },
-  { id: 'mixer', icon: '\u2630', label: 'Mixer' },
+  { id: 'hardware', icon: '\uD83D\uDCCB', label: 'Hardware' },
+  { id: 'wing-setup', icon: '\u2699', label: 'Wing Setup' },
   { id: 'pids', icon: '\u2261', label: 'PIDs' },
   { id: 'tuning', icon: '\u223F', label: 'Tuning' },
   { id: 'tuning-guide', icon: '\uD83D\uDCD6', label: 'Tuning Guide' },
